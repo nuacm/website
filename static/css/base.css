@@ -1,0 +1,93 @@
+body {
+    background-color: #005ca1;
+    margin: 0;
+    color: #333;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+}
+
+a, a:visited {
+    color: #13C;
+}
+
+img {
+    border: 0;
+}
+
+#content {
+    clear: both;
+    margin: 10px auto;
+    padding: 10px;
+    width: 70em;
+    background-color: #fffeff;
+    overflow: hidden;
+}
+
+.clearboth {
+    clear: both;
+}
+
+.clearfix {
+    min-height: 1%;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#header {
+    position: relative;
+    width: 70em;
+    height: 18em;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+}
+
+#logo {
+    width: 400px; 
+    margin: auto;
+    padding-left: 5px;
+    padding-top: 0;
+}
+
+#logo img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px; 
+    height: 113px;
+    padding-top: 2.5em;
+    padding-left: 2%;
+}
+
+#navigation {
+    width: 30em;
+    margin: auto;
+    height: 4em;
+    font-size: 1.7em;
+}
+
+#navigation ul a, #navigation ul a:visited {
+    color: #FFF;
+    text-decoration: none;
+    padding: 5px 12px;
+}
+
+#navigation ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 5px 0 4px;
+    margin: 0 1px;
+}
+
+.title {
+    font-size: 3.5em;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    text-shadow: #BBB 0px 1px 0px;
+}

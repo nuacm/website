@@ -1,0 +1,25 @@
+---
+layout: base
+title: Northeastern's chapter of the Association for Computing Machinery
+css: homepage.css
+---
+<div id="about">
+    <p>
+        <span class="nuacm">nuACM</span> is Northeastern University's
+        student chapter of the Association for Computing Machinery. Working
+        with the College of Computer and Information Science, we
+        organize talks, social events, and workshops.
+    </p>
+</div>
+
+<div id="events">
+    <h2>Upcoming Events</h2>
+    {% for post in site.posts %}
+    <a class="event-link" href="{{ post.url }}" target="_blank">
+        <div class="event">
+            <p class="text">{{ post.teaser }}</p>
+        </div>
+        <img src="/static/images/events/{{ post.image }}"/>
+    </a>
+    {% endfor %}
+</div>

@@ -1,0 +1,16 @@
+#about, #contact {
+    margin: 0em 3.5em;
+}
+
+#about p, #about ul {
+    font-size: 1.3em;
+}
+
+#about {
+    float: left;
+    width: 30em;
+}
+
+#contact h2 {
+    font-size: 2em;
+}

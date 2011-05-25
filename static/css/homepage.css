@@ -1,0 +1,20 @@
+#about {
+    width: 27em;
+    float: right;
+    padding: 1em;
+   font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+#about .nuacm {
+   font-size: 2em;
+}
+
+#about p {
+    font-size: 1.3em;
+    line-height: 1.5;
+}
+
+#events h2 {
+    font-size: 2.5em;
+    text-shadow: #BBB 0px 1px 0px;
+}
