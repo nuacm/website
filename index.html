@@ -2,6 +2,7 @@
 layout: base
 title: Northeastern's chapter of the Association for Computing Machinery
 css: homepage.css
+js: [jquery.cross-slide.min.js, homepage.js]
 ---
 <div id="about">
     <p>
@@ -14,12 +15,8 @@ css: homepage.css
 
 <div id="events">
     <h2>Upcoming Events</h2>
-    {% for post in site.posts %}
-    <a class="event-link" href="{{ post.url }}" target="_blank">
-        <div class="event">
-            <p class="text">{{ post.teaser }}</p>
-        </div>
-        <img src="/static/images/events/{{ post.image }}"/>
-    </a>
-    {% endfor %}
+    <div id="events-list"></div>
+    <div id="event-caption-container">
+        <div id="event-caption"></div>
+    </div>
 </div>

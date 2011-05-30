@@ -1,5 +1,5 @@
 #about {
-    width: 27em;
+    width: 26em;
     float: right;
     padding: 1em;
    font-family: "Helvetica Neue", Arial, sans-serif;
@@ -10,11 +10,42 @@
 }
 
 #about p {
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 1.4;
 }
 
 #events h2 {
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
+}
+
+#events-list {
+    width: 550px;
+    height: 300px;
+    float: left;
+    padding: 0px;
+    margin-bottom: -25px;
+    position: relative;
+}
+
+#event-caption-container {
+    width: 550px;
+    height: 80px;
+    float: left;
+    text-align: center;
+    background: black;
+    color: white;
+    font-family: "Raleway";
+}
+
+#event-caption-container h2 {
+    padding: 5px;
+    margin: 0px;
+    text-shadow: none;
+}
+
+#event-caption-container p {
+    padding: 0px;
+    margin: 5px;
+    font-size: 1.4em;
 }

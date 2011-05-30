@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("/static/fonts/Raleway.otf");
+}
+
 body {
     background-color: #005ca1;
     margin: 0;
