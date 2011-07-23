@@ -22,8 +22,8 @@ img {
 #content {
     clear: both;
     margin: 10px auto;
-    padding: 20px;
-    width: 70em;
+    padding: 2em 4em;
+    width: 65em;
     background-color: #fffeff;
     overflow: hidden;
 }
@@ -92,7 +92,6 @@ img {
 .title {
     font-size: 3.5em;
     margin-top: 15px;
-    margin-left: 30px;
     margin-bottom: 30px;
     text-shadow: #BBB 0px 1px 0px;
 }
