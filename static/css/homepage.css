@@ -21,10 +21,9 @@
 
 #events-list {
     width: 550px;
-    height: 300px;
+    height: 275px;
     float: left;
     padding: 0px;
-    margin-bottom: -25px;
     position: relative;
 }
 
@@ -36,6 +35,7 @@
     background: black;
     color: white;
     font-family: "Raleway";
+    z-index: 100;
 }
 
 #event-caption-container h2 {
