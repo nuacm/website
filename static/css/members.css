@@ -4,3 +4,16 @@
     font-size: 1.3em;
     line-height: 1.4;
 }
+
+#members p {
+    font-size: 1.4em;
+    font-weight:  bold;
+    float: left;
+    margin: 1em;
+    width: 180px;
+}
+
+#members p a {
+    text-decoration: none;
+    color: inherit;
+}
