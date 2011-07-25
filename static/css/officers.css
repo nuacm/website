@@ -7,3 +7,9 @@
 .officer li {
     padding-bottom: 5px;
 }
+
+.officer-name {
+    margin-left: 2em;
+    font-weight: bold;
+    float: right;
+}

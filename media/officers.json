@@ -1,0 +1,11 @@
+[{"office": "president", "name": "Melissa Xie"},
+ {"office": "vice-president", "name": "Adam Blackwell", "term": "Spring"},
+ {"office": "vice-president", "name": "Chris Jelly", "term": "Fall"},
+ {"office": "treasurer", "name": "Brandon Lerner"},
+ {"office": "events-chair", "name": "Nick Aldwin", "term": "Fall"},
+ {"office": "events-chair", "name": "Nikko Patten", "term": "Spring"},
+ {"office": "secretary", "name": "David Corbett", "term": "Fall" },
+ {"office": "secretary", "name": "Nick Aldwin", "term": "Spring"},
+ {"office": "speaker-series-chair", "name": "Ryan Schwerz"},
+ {"office": "webmaster", "name": "Adam Blackwell"},
+ {"office": "public-relations", "name": "Chris Jelly"}]
