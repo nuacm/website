@@ -27,25 +27,27 @@
     position: relative;
 }
 
-#event-caption-container {
-    width: 550px;
-    height: 80px;
+.event {
+    width: 30em;
+}
+
+.event-title {
+    font-size: 1.4em;    
+}
+
+.event-body {
+    font-size: 1.2em;
+    clear: left;
+}
+
+.event-where {
     float: left;
-    text-align: center;
-    background: black;
-    color: white;
-    font-family: "Raleway";
-    z-index: 100;
-}
-
-#event-caption-container h2 {
+    font-size: 0.8em;
     padding: 5px;
-    margin: 0px;
-    text-shadow: none;
 }
 
-#event-caption-container p {
-    padding: 0px;
-    margin: 5px;
-    font-size: 1.4em;
+.event-when {
+    float: left;
+    font-size: 0.8em;
+    padding: 5px;
 }

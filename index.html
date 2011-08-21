@@ -2,7 +2,8 @@
 layout: base
 title: Northeastern's chapter of the Association for Computing Machinery
 css: homepage.css
-js: [jquery.cross-slide.min.js, homepage.js]
+external_js: ["http://www.google.com/jsapi"]
+js: [resig-tmpl.js, date.js, homepage.js]
 ---
 <div id="about">
     <p>
@@ -15,8 +16,23 @@ js: [jquery.cross-slide.min.js, homepage.js]
 
 <div id="events">
     <h2>Upcoming Events</h2>
-    <div id="events-list"></div>
-    <div id="event-caption-container">
-        <div id="event-caption"></div>
+    <div id="events-list">
     </div>
 </div>
+
+<script type="text/html" id="event_tmpl">
+  <div class="event" >
+    <div class="event-title">
+      <%=title%>
+    </div>
+    <div class="event-where">
+      <%=where%>
+    </div>
+    <div class="event-when">
+      <%=when%>
+    </div>
+    <div class="event-body">
+      <p><%=content%></p>
+    </div>
+  </div>
+</script>

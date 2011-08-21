@@ -1,22 +1,24 @@
----
----
-$(function () {
-    $('#events-list').crossSlide({
-        sleep: 5,
-        fade: 1
-    }, [
-        {% for post in site.posts %}
-        { src: '/media/events/{{ post.img }}',
-          alt: '<h2>{{ post.title }}</h2> <p>{{ post.date | date: "%A, %m/%d" }}</p>',
-          href: '{{ post.url }}' },
-        {% endfor %}
-    ],function(idx, img, idxOut, imgOut) {
-        if (idxOut == undefined) {
-            // starting single image phase, put up caption
-            $("#event-caption").empty().append($(img.alt)).fadeIn();
-        } else {
-            // starting cross-fade phase, take out caption
-            $("#event-caption").fadeOut();
-        }
-    });
+google.load("gdata", "2.x", {packages: ["calendar"]});
+
+google.setOnLoadCallback(function () {
+  var service = new google.gdata.calendar.CalendarService("acm-events");
+  var query = new google.gdata.calendar.CalendarEventQuery("http://www.google.com/calendar/feeds/acm@ccs.neu.edu/public/full");
+  query.setOrderBy('starttime');
+  query.setSortOrder('ascending');
+  query.setFutureEvents(true);
+  query.setMaxResults(10);
+  var event_tmpl = tmpl("event_tmpl");
+  var event_list = $("#events-list");
+  service.getEventsFeed(query, function(root) {
+    var entries = root.feed.getEntries();
+    for(var i = 0; i < entries.length; i++) {
+      var entry = entries[i];
+      var locations = entry.getLocations();
+      var times = entry.getTimes();
+      event_list.append(event_tmpl({title: entry.title.getText(),
+                                    where: locations.length > 0 ? locations[0].getValueString() : "",
+                                    when: times.length > 0 ? times[0].getStartTime().getDate().toString("M/d h:mmtt") : "",
+                                    content: entry.content.getText() }));
+    }
+  })
 });
