@@ -28,6 +28,9 @@
         </div>
         <script src="/static/js/jquery-1.6.1.min.js" type="text/javascript"></script>
         <script src="/static/js/jquery-ui-1.8.13.custom.min.js" type="text/javascript"></script>
+        {% for js in page.external_js %}
+        <script src="{{ js }}" type="text/javascript"></script>
+        {% endfor %}
         {% for js in page.js %}
         <script src="/static/js/{{ js }}" type="text/javascript"></script>
         {% endfor %}
