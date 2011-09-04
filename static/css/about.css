@@ -3,11 +3,6 @@
     width: 32em;
 }
 
-#about p, #about ul {
-    font-size: 1.3em;
-    line-height: 1.4;
-}
-
 #about li {
     padding-bottom: 5px;
 }

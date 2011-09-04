@@ -90,8 +90,13 @@ img {
 }
 
 .title {
-    font-size: 3.5em;
+    font-size: 3em;
     margin-top: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-shadow: #BBB 0px 1px 0px;
+}
+
+.text {
+    font-size: 1.1em;
+    line-height: 1.4;
 }
