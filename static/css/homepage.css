@@ -1,42 +1,35 @@
 #about {
-    width: 26em;
-    float: right;
-    padding: 1em;
-   font-family: "Helvetica Neue", Arial, sans-serif;
+    padding-bottom: 3em;
+    font-size: 1.3em;
 }
 
 #about .nuacm {
    font-size: 2em;
 }
 
-#about p {
-    font-size: 1.2em;
-    line-height: 1.4;
+#photos {
+    float: right;
 }
 
 #events h2 {
+    margin-top: 0px;
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
 }
 
 #events-list {
-    width: 550px;
-    height: 275px;
     float: left;
     padding: 0px;
     position: relative;
-}
-
-.event {
     width: 30em;
 }
 
 .event-title {
-    font-size: 1.4em;    
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .event-body {
-    font-size: 1.2em;
     clear: left;
 }
 
