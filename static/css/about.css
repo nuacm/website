@@ -12,6 +12,6 @@
     width: 30em;
 }
 
-#contact h2 {
+#contact h2, #about h2 {
     font-size: 2em;
 }
