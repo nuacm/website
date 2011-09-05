@@ -24,11 +24,11 @@ google.setOnLoadCallback(function () {
 });
 
 $(function() {
-  $("#photos").flickr({api_key: "f388a91007aa5feefe4437be2b65e86c",
-                       thumbnail_size: "m"})
-              .callMethod("flickr.groups.pools.getPhotos", {group_id: "391770@N22", per_page: 5},
-                          function() {
-                            $('#photos').nivoSlider({width: 500, height: 375, effect: "boxRain",
-                                                     pauseTime: 8 * 1000, controlNav: false});
-                          });
+  $("#photos").slickr("flickr.groups.pools.getPhotos",
+                      {api_key: "f388a91007aa5feefe4437be2b65e86c",
+                       group_id: "391770@N22", per_page: 5},
+                     function(photos) {
+                         photos.nivoSlider({width: 500, height: 375, effect: "boxRain",
+                                            pauseTime: 8 * 1000, controlNav: false});
+                     });
 });

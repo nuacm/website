@@ -1,0 +1,3 @@
+[submodule "static/js/slickr"]
+	path = static/js/slickr
+	url = git://github.com/roderyc/slickr.git
