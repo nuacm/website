@@ -9,6 +9,7 @@ body {
     color: #333;
     font-family: "Helvetica Neue", Arial, sans-serif;
     font-size: 10pt;
+    padding: 60px 0 60px;
 }
 
 a, a:visited {
@@ -45,33 +46,11 @@ img {
 }
 
 #header {
-    position: relative;
-    width: 70em;
-    height: 18em;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
     overflow: hidden;
 }
 
-#logo {
-    width: 400px; 
-    margin: auto;
-    padding-left: 5px;
-    padding-top: 0;
-}
-
-#logo img {
-    margin-left: auto;
-    margin-right: auto;
-    width: 400px; 
-    height: 113px;
-    padding-top: 2.5em;
-    padding-left: 2%;
-}
-
 #navigation {
-    width: 30em;
-    margin: auto;
     height: 4em;
     font-size: 1.7em;
 }
