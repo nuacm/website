@@ -28,7 +28,7 @@ $(function() {
                        thumbnail_size: "m"})
               .callMethod("flickr.groups.pools.getPhotos", {group_id: "391770@N22", per_page: 5},
                           function() {
-                            $('#photos').nivoSlider({width: 500, height: 333, effect: "boxRain",
+                            $('#photos').nivoSlider({width: 500, height: 375, effect: "boxRain",
                                                      pauseTime: 8 * 1000, controlNav: false});
                           });
 });
