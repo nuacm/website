@@ -6,7 +6,7 @@ google.setOnLoadCallback(function () {
   query.setOrderBy('starttime');
   query.setSortOrder('ascending');
   query.setFutureEvents(true);
-  query.setMaxResults(10);
+  query.setMaxResults(5);
   var event_tmpl = tmpl("event_tmpl");
   var event_list = $("#events-list");
   service.getEventsFeed(query, function(root) {
