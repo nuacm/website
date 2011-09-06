@@ -1,6 +1,11 @@
 google.load("gdata", "2.x", {packages: ["calendar"]});
 
 google.setOnLoadCallback(function () {
+  function formatedTimes(time) {
+    return (time.getStartTime().getDate().toString("M/d h:mm tt") + " to " +
+            time.getEndTime().getDate().toString("h:mm tt"));
+  }
+
   var service = new google.gdata.calendar.CalendarService("acm-events");
   var query = new google.gdata.calendar.CalendarEventQuery("http://www.google.com/calendar/feeds/acm@ccs.neu.edu/public/full");
   query.setOrderBy('starttime');
@@ -17,7 +22,7 @@ google.setOnLoadCallback(function () {
       var times = entry.getTimes();
       event_list.append(event_tmpl({title: entry.title.getText(),
                                     where: locations.length > 0 ? locations[0].getValueString() : "",
-                                    when: times.length > 0 ? times[0].getStartTime().getDate().toString("M/d h:mmtt") : "",
+                                    when: times.length > 0 ? formatedTimes(times[0]) : "",
                                     content: entry.content.getText() }));
     }
   })
