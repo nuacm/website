@@ -6,6 +6,14 @@ google.setOnLoadCallback(function () {
             time.getEndTime().getDate().toString("h:mm tt"));
   }
 
+  function urlify(text) {
+    return text.replace(/\b(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/gi, '<a href="$&">$&</a>');
+  }
+
+  function cleanNewlines(text) {
+    return text.replace(/\n/gi, "<br/>");
+  }
+
   var service = new google.gdata.calendar.CalendarService("acm-events");
   var query = new google.gdata.calendar.CalendarEventQuery("http://www.google.com/calendar/feeds/acm@ccs.neu.edu/public/full");
   query.setOrderBy('starttime');
@@ -20,10 +28,11 @@ google.setOnLoadCallback(function () {
       var entry = entries[i];
       var locations = entry.getLocations();
       var times = entry.getTimes();
+
       event_list.append(event_tmpl({title: entry.title.getText(),
                                     where: locations.length > 0 ? locations[0].getValueString() : "",
                                     when: times.length > 0 ? formatedTimes(times[0]) : "",
-                                    content: entry.content.getText() }));
+                                    content: cleanNewlines(urlify(entry.content.getText())) }));
     }
   })
 });
