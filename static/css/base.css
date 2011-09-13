@@ -46,8 +46,11 @@ img {
 }
 
 #navigation {
-    height: 4em;
     font-size: 1.7em;
+}
+
+#navigation ul {
+    margin: .7em 0 .5em 0;
 }
 
 #navigation ul a, #navigation ul a:visited {
