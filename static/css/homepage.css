@@ -9,6 +9,7 @@
 
 #photos {
     float: right;
+    margin: 0 0 2em 2em;
     box-shadow: 1px 1px 5px #000;
 }
 
@@ -16,13 +17,6 @@
     margin-top: 0px;
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
-}
-
-#events-list {
-    float: left;
-    padding: 0px;
-    position: relative;
-    width: 30em;
 }
 
 .event-title {
