@@ -20,6 +20,7 @@ google.setOnLoadCallback(function () {
   query.setSortOrder('ascending');
   query.setFutureEvents(true);
   query.setMaxResults(5);
+  query.setSingleEvents(true);
   var event_tmpl = tmpl("event_tmpl");
   var event_list = $("#events-list");
   service.getEventsFeed(query, function(root) {
