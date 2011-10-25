@@ -1,6 +1,6 @@
 [{"office": "president", "name": "Melissa Xie"},
- {"office": "vice-president", "name": "Adam Blackwell", "term": "Spring"},
- {"office": "vice-president", "name": "Chris Jelly", "term": "Fall"},
+ {"office": "vice-president", "name": "Adam Blackwell", "term": "Fall"},
+ {"office": "vice-president", "name": "Chris Jelly", "term": "Spring"},
  {"office": "treasurer", "name": "Brandon Lerner"},
  {"office": "events-chair", "name": "Nick Aldwin", "term": "Fall"},
  {"office": "events-chair", "name": "Nikko Patten", "term": "Spring"},
