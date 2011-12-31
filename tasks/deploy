@@ -10,4 +10,4 @@ then
 fi
 
 jekyll && rsync -rvz --delete _site/ $1@acm.ccs.neu.edu:/var/www-acm/ &&
-ssh $1@acm.ccs.neu.edu sudo chown -R www-data:acm /var/www-acm/
+ssh -t $1@acm.ccs.neu.edu sudo chown -R www-data:acm /var/www-acm/
