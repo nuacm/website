@@ -43,7 +43,7 @@ $(function() {
                       {api_key: "f388a91007aa5feefe4437be2b65e86c",
                        group_id: "391770@N22", per_page: 5},
                      function(photos) {
-                         photos.nivoSlider({width: 500, height: 375, effect: "boxRain",
+                         photos.nivoSlider({width: 500, height: 320, effect: "boxRain",
                                             pauseTime: 8 * 1000, controlNav: false});
                      });
 });
