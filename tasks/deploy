@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# This script requires that you're a member of the acm unix group at ccis, and that you've got sudo
+# privelages on acm.ccs.neu.edu.
+
+if [ "$1" == "" ]
+then
+  echo "Give the username to deploy as, as an argument."
+  exit 1
+fi
+
+jekyll && rsync -rvz --delete _site/ $1@acm.ccs.neu.edu:/var/www-acm/ &&
+ssh $1@acm.ccs.neu.edu sudo chown -R www-data:acm /var/www-acm/
