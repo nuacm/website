@@ -26,6 +26,7 @@
 
 .event-body {
     clear: left;
+    padding: 0 0 0 5px;
 }
 
 .event-where {

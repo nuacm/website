@@ -1,9 +1,9 @@
 google.load("gdata", "2.x", {packages: ["calendar"]});
 
 google.setOnLoadCallback(function () {
-  function formatedTimes(time) {
-    return (time.getStartTime().getDate().toString("M/d h:mm tt") + " to " +
-            time.getEndTime().getDate().toString("h:mm tt"));
+  function formattedTimes(time) {
+    return (time.getStartTime().getDate().toString("M/d, h:mmtt") + " - " +
+            time.getEndTime().getDate().toString("h:mmtt"));
   }
 
   function urlify(text) {
@@ -32,7 +32,7 @@ google.setOnLoadCallback(function () {
 
       event_list.append(event_tmpl({title: entry.title.getText(),
                                     where: locations.length > 0 ? locations[0].getValueString() : "",
-                                    when: times.length > 0 ? formatedTimes(times[0]) : "",
+                                    when: times.length > 0 ? formattedTimes(times[0]) : "",
                                     content: cleanNewlines(urlify(entry.content.getText())) }));
     }
   })
@@ -41,7 +41,7 @@ google.setOnLoadCallback(function () {
 $(function() {
   $("#photos").slickr("flickr.groups.pools.getPhotos",
                       {api_key: "f388a91007aa5feefe4437be2b65e86c",
-                       group_id: "391770@N22", per_page: 5},
+                       group_id: "391770@N22", per_page: 25},
                      function(photos) {
                          photos.nivoSlider({width: 500, height: 320, effect: "boxRain",
                                             pauseTime: 8 * 1000, controlNav: false});
