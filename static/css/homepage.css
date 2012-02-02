@@ -17,7 +17,6 @@
     margin-top: 0px;
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
-		overflow: hidden;
 }
 
 .event-title {
@@ -40,4 +39,8 @@
     float: left;
     font-size: 0.8em;
     padding: 5px;
+}
+
+.event {
+    overflow: hidden;
 }
