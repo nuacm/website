@@ -17,6 +17,7 @@
     margin-top: 0px;
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
+		overflow: hidden;
 }
 
 .event-title {
