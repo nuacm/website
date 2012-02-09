@@ -15,6 +15,7 @@
 
 #events h2 {
     margin-top: 0px;
+    margin-bottom: -7px;
     font-size: 2.5em;
     text-shadow: #BBB 0px 1px 0px;
 }
@@ -32,13 +33,17 @@
 .event-where {
     float: left;
     font-size: 0.8em;
-    padding: 5px;
+    padding: 0 0 0 5px;
+    clear: left;
+    font-style: italic;
 }
 
 .event-when {
     float: left;
     font-size: 0.8em;
-    padding: 5px;
+    padding: 0 0 0 5px;
+    clear: left;
+    font-style: italic;
 }
 
 .event {
