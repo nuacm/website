@@ -1,2 +1,2 @@
 permalink: pretty
-exclude: [tasks, README.md]
+exclude: [tasks, README.md, generate-site-json.py]
