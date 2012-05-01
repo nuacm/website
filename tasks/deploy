@@ -3,7 +3,7 @@
 # This script requires that you're a member of the acm unix group at ccis, and that you've got sudo
 # privelages on acm.ccs.neu.edu.
 
-if [ "$1" == "" ]
+if [ "$1" = "" ]
 then
   echo "Give the username to deploy as, as an argument."
   exit 1
