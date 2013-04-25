@@ -1,0 +1,37 @@
+/* ACM Styles
+
+These are all of the ACM spacific css style, including:
+- Colors
+- Logos
+- Banners
+- Fonts
+- ...
+
+All acm classes / variables start with `acm-`.
+
+*/
+
+$acm-blue: #005ca1;
+$acm-lightblue: #4b9cd5;
+
+.acm-logo {
+  background-color: $acm-blue;
+  padding: 20px;
+
+  h1 {
+    color: #fff;
+    font-size: 86px;
+    text-align: center;
+    font-weight: 100;
+    margin: 0;
+    line-height: 56px;
+    strong { font-size: 64px; }
+  }
+
+  span {
+    color: $acm-lightblue;
+    display: block;
+    letter-spacing: 4px;
+    text-align: center;
+  }
+}
