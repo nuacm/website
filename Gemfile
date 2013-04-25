@@ -12,6 +12,7 @@ group :assets do
   gem 'coffee-rails', '~> 4.0.0.beta1'
   gem 'uglifier', '>= 1.0.3'
   gem 'bourbon'
+  gem 'neat'
 end
 
 gem 'jquery-rails'

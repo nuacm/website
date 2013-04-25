@@ -56,6 +56,9 @@ GEM
     mime-types (1.22)
     minitest (4.7.2)
     multi_json (1.7.2)
+    neat (1.2.0)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -115,6 +118,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0.beta1)
   jbuilder (~> 1.0.1)
   jquery-rails
+  neat
   rails (= 4.0.0.beta1)
   sass-rails (~> 4.0.0.beta1)
   sqlite3
