@@ -9,10 +9,10 @@
 <body>
 
 <div class="container">
-  <div class="acm-logo">
+  <%= link_to home_path, :class => "banner acm-logo" do %>
     <h1><strong>NU</strong>acm</h1>
     <span>Northeastern University</span>
-  </div>
+  <% end %>
 
   <%= yield %>
 </div>

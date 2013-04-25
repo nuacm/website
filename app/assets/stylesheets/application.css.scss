@@ -6,4 +6,9 @@
 
 div.container {
   @include outer-container;
+
+  .banner {
+    display: block;
+    text-decoration: none;
+  }
 }

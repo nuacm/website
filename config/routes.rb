@@ -1,3 +1,3 @@
 Acm::Application.routes.draw do
-  get '/', to: 'pages#home'
+  get '/',      to: 'pages#home', :as => 'home'
 end
