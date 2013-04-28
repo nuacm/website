@@ -5,7 +5,7 @@ require 'rails/all'
 # Assets should be precompiled for production (so we don't need the gems loaded then)
 Bundler.require(*Rails.groups(assets: %w(development test)))
 
-module Acm
+module NUACM
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

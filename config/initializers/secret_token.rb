@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Acm::Application.config.secret_key_base = '0ddc82059964c93a840a8152b67f3111b8a32a06b8a346634bea9bc07ad792c4bad4dcb7afb194d777b1e2d4aef04c3630d0812e7dbf3d4d23f8f8d8260336b8'
+NUACM::Application.config.secret_key_base = '0ddc82059964c93a840a8152b67f3111b8a32a06b8a346634bea9bc07ad792c4bad4dcb7afb194d777b1e2d4aef04c3630d0812e7dbf3d4d23f8f8d8260336b8'
