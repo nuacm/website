@@ -7,7 +7,7 @@
 div.container {
   @include outer-container;
 
-  .banner {
+  header a {
     display: block;
     text-decoration: none;
   }
