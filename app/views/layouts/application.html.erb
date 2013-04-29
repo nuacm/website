@@ -18,7 +18,8 @@
 
   <nav>
     <ul>
-      <li><%= link_to "Home", home_path %></li>
+      <li><%= link_to "Home", home_path, :class => cp(home_path) %></li>
+      <li><%= link_to "About", '#', :class => cp('#') %></li>
     </ul>
   </nav>
 

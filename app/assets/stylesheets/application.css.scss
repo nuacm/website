@@ -25,15 +25,16 @@ div.container {
     ul li {
       float: left;
       margin-left: 10px;
-      padding: 5px;
 
       a {
+        display: block;
+        padding: 5px;
         color: $acm-blue;
         text-decoration: none;
       }
 
-      &:hover {
-        a { color: #fff; }
+      a:hover, a.current {
+        color: #fff;
         background-color: $acm-blue;
       }
     }
