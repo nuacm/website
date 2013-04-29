@@ -1,7 +1,9 @@
 common: &common
   adapter: postgresql
   username: postgres
-  password: password # from psql setup, see Postgresql
+  password: password
+  host: localhost
+  pool: 5
 
 development:
   <<: *common
