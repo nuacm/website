@@ -11,4 +11,31 @@ div.container {
     display: block;
     text-decoration: none;
   }
+
+  nav {
+    background-color: $acm-lightblue;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      overflow: hidden;
+    }
+
+    ul li {
+      float: left;
+      margin-left: 10px;
+      padding: 5px;
+
+      a {
+        color: $acm-blue;
+        text-decoration: none;
+      }
+
+      &:hover {
+        a { color: #fff; }
+        background-color: $acm-blue;
+      }
+    }
+  }
 }
