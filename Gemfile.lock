@@ -140,6 +140,9 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    valid_email (0.0.4)
+      activemodel
+      mail
 
 PLATFORMS
   ruby
@@ -160,3 +163,4 @@ DEPENDENCIES
   therubyracer
   turbolinks
   uglifier (>= 1.0.3)
+  valid_email
