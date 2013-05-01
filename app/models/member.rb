@@ -4,4 +4,12 @@ class Member < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :email => true
 
   has_one :reset_key # Or none. (Never more then one)
+
+  def forgot_password!
+    if self.reset_key
+      self.reset_key.destroy
+    end
+
+    self.reset_key = ResetKey.create :valid_until => DateTime.current + 1.day
+  end
 end
