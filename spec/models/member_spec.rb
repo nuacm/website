@@ -8,4 +8,6 @@ describe Member do
   it { should allow_value("bob.smith@example.com").for(:email) }
   it { should_not allow_value("bob.smith.com").for(:email) }
   it { should_not allow_value("foo").for(:email) }
+
+  it { should have_one(:reset_key) }
 end
