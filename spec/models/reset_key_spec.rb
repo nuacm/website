@@ -10,8 +10,12 @@ describe ResetKey do
   it { should belong_to(:member) }
 
   it "persists it's key" do
-    value = subject.key
     second_instance = ResetKey.find(subject.id)
     second_instance.key.should eq(subject.key)
+  end
+
+  it "persists it's valid_until" do
+    second_instance = ResetKey.find(subject.id)
+    second_instance.valid_until.to_i.should eq(subject.valid_until.to_i)
   end
 end

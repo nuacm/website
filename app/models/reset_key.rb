@@ -4,5 +4,9 @@ class ResetKey < ActiveRecord::Base
 
   belongs_to :member
 
-  after_initialize { self.key ||= SecureRandom.hex }
+  # Set default values.
+  after_initialize do
+    self.valid_until ||= DateTime.current + 1.day
+    self.key         ||= SecureRandom.hex
+  end
 end
