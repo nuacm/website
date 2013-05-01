@@ -4,5 +4,5 @@ class ResetKey < ActiveRecord::Base
 
   belongs_to :member
 
-  after_initialize { self.key = SecureRandom.hex }
+  after_initialize { self.key ||= SecureRandom.hex }
 end
