@@ -9,6 +9,12 @@ describe ResetKey do
 
   it { should belong_to(:member) }
 
+  it "allows custom values for valid_until" do
+    datetime = DateTime.current + 1.week
+    subject = create(:reset_key, :valid_until => datetime)
+    subject.valid_until.should eq(datetime)
+  end
+
   it "persists it's key" do
     second_instance = ResetKey.find(subject.id)
     second_instance.key.should eq(subject.key)
