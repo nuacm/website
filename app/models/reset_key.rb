@@ -1,4 +1,6 @@
 class ResetKey < ActiveRecord::Base
+  attr_protected :key
+
   validates :valid_until, :presence => true
   validates :key, :presence => true, :length => { :is => 32 }
 
