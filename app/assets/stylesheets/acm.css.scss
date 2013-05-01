@@ -13,8 +13,13 @@ All acm classes / variables start with `acm-`.
 
 $northeastern-red: #c00;
 
-$acm-blue: #005ca1;
-$acm-lightblue: #4b9cd5;
+$acm-blue:      #005ba1;
+$acm-darkblue:  #003b69;
+$acm-lightblue: #348cd0;
+
+$acm-orange:      #fa8f00;
+$acm-darkorange:  #a35d00;
+$acm-lightorange: #fdac3f;
 
 .acm-logo {
   background-color: $acm-blue;
@@ -36,5 +41,9 @@ $acm-lightblue: #4b9cd5;
     display: block;
     letter-spacing: 3px;
     text-align: center;
+  }
+
+  &:hover {
+    background-color: $acm-darkblue;
   }
 }
