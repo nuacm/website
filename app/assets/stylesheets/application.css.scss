@@ -13,11 +13,7 @@ div.container {
   }
 
   nav {
-    background-color: $acm-orange;
-    width: 400px;
-    margin: 0 auto 10px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
+    background-color: $acm-lightblue;
     overflow: hidden;
 
     ul {
@@ -35,17 +31,18 @@ div.container {
       display: block;
       float: left;
       right: 50%;
-      margin: 0 5px;
 
       a {
         display: block;
-        padding: 7px;
+        padding: 5px 14px;
+        margin: 3px 0;
         color: #000;
         text-decoration: none;
       }
 
       a:hover, a.current {
-        background-color: $acm-lightorange;
+        border-bottom: 3px solid $acm-blue;
+        margin-bottom: 0;
       }
     }
   }
