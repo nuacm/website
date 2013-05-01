@@ -1,11 +1,17 @@
 set :user, "nixpulvis"
 set :application, "nuacm"
-set :repository,  "git@github.com:nuacm/website.git"
-set :branch, "rails"
+
+# Temp fix till Ali gives me a SSH key.
+# set :repository,  "git@github.com:nuacm/website.git"
+# set :branch, "rails"
+set :scm, :none
+set :repository, "."
+set :deploy_via, :copy
 
 server "acm.ccs.neu.edu", :app, :web, :db, :primary => true
 
 default_run_options[:pty] = true
+default_run_options[:shell] = 'zsh'
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
