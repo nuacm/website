@@ -13,7 +13,10 @@ div.container {
   }
 
   nav {
+    width: 400px;
+    margin: 0 auto;
     background-color: $acm-lightblue;
+    border-radius: 5px;
     overflow: hidden;
 
     ul {
@@ -33,6 +36,9 @@ div.container {
       right: 50%;
 
       a {
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        font-size: 18px;
         display: block;
         padding: 5px 14px;
         margin: 3px 0;

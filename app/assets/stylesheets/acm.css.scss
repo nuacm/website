@@ -22,28 +22,33 @@ $acm-darkorange:  #a35d00;
 $acm-lightorange: #fdac3f;
 
 .acm-logo {
-  background-color: $acm-blue;
-  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 5px 20px 20px;
+  text-align: center;
+  color: $acm-lightblue;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 
   h1 {
-    color: #fff;
-    font-size: 86px;
+    display: inline-block;
+    font-size: 100px;
     text-align: center;
     font-weight: 100;
     margin: 0;
-    line-height: 72px;
-    strong { font-variant: small-caps; }
+    line-height: 80px;
+    strong {
+      font-weight: 400;
+      font-variant: small-caps;
+    }
   }
 
   span {
     font-size: 17px;
-    color: $acm-lightblue;
-    display: block;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-align: center;
   }
 
   &:hover {
-    background-color: $acm-darkblue;
+    color: $acm-blue;
   }
 }
