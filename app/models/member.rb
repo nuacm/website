@@ -14,6 +14,6 @@ class Member < ActiveRecord::Base
       self.reset_key.destroy
     end
 
-    self.reset_key = ResetKey.create :valid_until => DateTime.current + 1.day
+    self.reset_key = ResetKey.create
   end
 end
