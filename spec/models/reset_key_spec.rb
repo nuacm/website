@@ -23,9 +23,9 @@ describe ResetKey do
   end
 
   it "knows when it's expired" do
-    pending "timecop integration."
     subject.should_not be_expired
-    # timecop set datetime to a day from now.
-    subject.should be_expired
+    Timecop.freeze(DateTime.current + 1.day) do
+      subject.should be_expired
+    end
   end
 end

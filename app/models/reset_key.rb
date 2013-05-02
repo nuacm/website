@@ -11,4 +11,8 @@ class ResetKey < ActiveRecord::Base
     self.valid_until ||= DateTime.current + 1.day
     self.key         ||= SecureRandom.hex
   end
+
+  def expired?
+    self.valid_until < DateTime.current
+  end
 end
