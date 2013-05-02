@@ -5,6 +5,7 @@
 @import "pages";
 
 div.container {
+  $max-width: 756px;
   @include outer-container;
   padding: 0 20px;
 
