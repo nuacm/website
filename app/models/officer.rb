@@ -1,0 +1,2 @@
+class Officer < Member
+end
