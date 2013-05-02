@@ -21,4 +21,11 @@ describe ResetKey do
     second_instance = ResetKey.find(subject.id)
     second_instance.valid_until.to_i.should eq(subject.valid_until.to_i)
   end
+
+  it "knows when it's expired" do
+    pending "timecop integration."
+    subject.should_not be_expired
+    # timecop set datetime to a day from now.
+    subject.should be_expired
+  end
 end
