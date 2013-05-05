@@ -1,12 +1,10 @@
 class MembersController < ApplicationController
-  # Set the @member for all actions that expect a member to
-  # already exist.
-  before_filter :except => [:index, :new, :create] do
-    @member = Member.find(params[:id])
-  end
-
   def index
     @members = Member.all
+  end
+
+  def show
+    @member = Member.find(params[:id])
   end
 
   def new
@@ -24,6 +22,8 @@ class MembersController < ApplicationController
   end
 
   def update
+    @member = Member.find(params[:id])
+
     if @member.update_attributes(member_params)
       redirect_to @member
     else
@@ -32,14 +32,16 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member.destroy
+    @member = Member.find(params[:id])
 
+    @member.destroy
     redirect_to members_path
   end
 
   # POST '/forgot-password'
   def forgot_password
     @member = Member.find_by_email(params[:email])
+
     if @member
       @member.forgot_password!
     else
