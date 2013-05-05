@@ -25,4 +25,8 @@ describe ResetKey do
       subject.should be_expired
     end
   end
+
+  it "forbids invalid values" do
+    ResetKey.new.forbids?(SecureRandom.hex).should be_true
+  end
 end

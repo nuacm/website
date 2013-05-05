@@ -18,7 +18,7 @@ class Member < ActiveRecord::Base
   end
 
   def update_password(value, confimation, options = {})
-    if options.key?(:key) && (reset_key.expired? || options[:key] != reset_key.key)
+    if options.key?(:key) && reset_key.forbids?(options[:key])
       raise "bad key"
     end
 

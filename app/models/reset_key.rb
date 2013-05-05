@@ -29,4 +29,11 @@ class ResetKey < ActiveRecord::Base
   def expired?
     self.valid_until < DateTime.current
   end
+
+  # forbids? String -> Boolean
+  # Checks to see if this key is expired and if the given
+  # value matches this key's value.
+  def forbids?(value)
+    expired? || self.key != value
+  end
 end
