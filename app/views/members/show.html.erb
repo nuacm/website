@@ -1,0 +1,9 @@
+<h1><%= @member.full_name %></h1>
+
+<ul>
+  <li>Email: <%= @member.email %></li>
+  <li>Member Since: <%= @member.created_at %></li>
+</ul>
+
+<%= link_to 'Edit', edit_member_path(@member) %>
+<%= link_to 'Delete', member_path(@member), :confirm => "Are you sure?", :method => :delete %>
