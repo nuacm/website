@@ -9,9 +9,6 @@ describe ResetKey do
 
   it { should belong_to(:member) }
 
-  it { should allow_mass_assignment_of(:valid_until) }
-  it { should_not allow_mass_assignment_of(:key) }
-
   it "persists it's key" do
     second_instance = ResetKey.find(subject.id)
     second_instance.key.should eq(subject.key)

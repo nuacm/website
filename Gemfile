@@ -18,9 +18,6 @@ gem 'jbuilder', '~> 1.0.1'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use attr_protected
-gem 'protected_attributes'
-
 # To validate emails. (harder then it should be)
 gem 'valid_email'
 

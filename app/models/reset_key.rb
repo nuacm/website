@@ -7,10 +7,6 @@ class ResetKey < ActiveRecord::Base
   # member who was emailed.
   validates :key, :presence => true, :length => { :is => 32 }
 
-  # We will setting this field upon creation automatically. Do not
-  # allow mass assignment of the key.
-  attr_protected :key
-
   # A member gets assigned a key when they request a password reset.
   # The member is also in charge of disposing of this key when they
   # are finished with it.
