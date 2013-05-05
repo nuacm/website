@@ -36,4 +36,33 @@ describe Member do
       ResetKey.count.should eq(1)
     end
   end
+
+  describe "setting new password with ResetKey" do
+    context "when given valid key" do
+      it "can set a new password" do
+        subject.forgot_password!
+        subject.update_password "billybob", "billybob", :key => subject.reset_key.key
+        subject.reload.password.should eq("billybob")
+      end
+    end
+
+    context "when given a invalid ResetKey" do
+      it "that is out of date, dosn't set password" do
+        subject.forgot_password!
+        subject.reset_key.valid_until = DateTime.current - 1.week
+        expect { subject.update_password "billybob", "billybob", :key => subject.reset_key.key }.to raise_error
+        subject.reload.password.should_not eq("billybob")
+      end
+
+      it "that has wrong key, dosn't set password" do
+        expect { subject.update_password "billybob", "billybob", :key => ResetKey.new.key }.to raise_error
+        subject.reload.password.should_not eq("billybob")
+      end
+
+      it "that has no key, dosn't set password" do
+        expect { subject.update_password "billybob", "billybob", :key => nil }.to raise_error
+        subject.reload.password.should_not eq("billybob")
+      end
+    end
+  end
 end

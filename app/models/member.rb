@@ -16,4 +16,12 @@ class Member < ActiveRecord::Base
 
     self.reset_key = ResetKey.create
   end
+
+  def update_password(value, confimation, options = {})
+    if options.key?(:key) && (reset_key.expired? || options[:key] != reset_key.key)
+      raise "bad key"
+    end
+
+    update_attributes(:password => value, :password_confirmation => confimation)
+  end
 end
