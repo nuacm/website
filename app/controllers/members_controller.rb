@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params :password => true)
+    @member = Member.new(member_params)
 
     if @member.save
       redirect_to @member
@@ -40,17 +40,13 @@ class MembersController < ApplicationController
 
   private
 
-  # Setup the strong_parameters for this controller.
-  # Require that :member be set and allow :full_name, and
-  # :email to be passed.
-  # If options[:password] is true also allow a password to be
-  # sent.
-  def member_params(options = {})
-    required = params.require(:member)
-    if options[:password]
-      required.permit(:full_name, :email, :password, :password_confirmation)
-    else
-      required.permit(:full_name, :email)
-    end
+  # Requires
+  # * `:member`
+  # Permits
+  # * `:full_name`
+  # * `:email`
+  #
+  def member_params
+    params.require(:member).permit(:full_name, :email)
   end
 end

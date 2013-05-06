@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20130503001418) do
   create_table "members", force: true do |t|
     t.string   "full_name"
     t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "type"

@@ -109,26 +109,6 @@ describe MembersController do
           assigns(:member).errors[:email].should include("has already been taken")
         end
       end
-
-      context "with non-matching passwords" do
-        let(:bad_password_params) { attributes_for(:member, :password => "foo", :password_confirmation => "bar") }
-
-        it "doesn't create a member" do
-          count = Member.count
-          post :create, :member => bad_password_params
-          Member.count.should eq(count)
-        end
-
-        it "renders the new template" do
-          post :create, :member => bad_password_params
-          expect(response).to render_template("new")
-        end
-
-        it "applies email existing error to the member" do
-          post :create, :member => bad_password_params
-          assigns(:member).errors[:password_confirmation].should include("doesn't match Password")
-        end
-      end
     end
   end
 
@@ -174,11 +154,6 @@ describe MembersController do
           patch :update, :id => member.id, :member => { :email => "test@example.com" }
           assigns(:member).errors[:email].should include("has already been taken")
         end
-      end
-
-      it "doesn't update passwords" do
-        patch :update, :id => member.id, :member => { :password => "newPassword", :password_confirmation => "newPassword" }
-        member.reload.password.should_not eq("newPassword")
       end
     end
 
