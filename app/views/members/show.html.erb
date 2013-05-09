@@ -5,5 +5,7 @@
   <li>Member Since: <%= @member.created_at %></li>
 </ul>
 
-<%= link_to 'Edit', edit_member_path(@member) %>
-<%= link_to 'Delete', member_path(@member), :confirm => "Are you sure?", :method => :delete %>
+<% if current_member == @member %>
+  <%= link_to 'Edit', edit_member_path(@member) %>
+  <%= link_to 'Delete', member_path(@member), :confirm => "Are you sure?", :method => :delete %>
+<% end %>
