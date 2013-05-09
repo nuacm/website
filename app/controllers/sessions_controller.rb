@@ -1,11 +1,8 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     member = Member.find_by_email(params[:email])
     if member && member.authenticate(params[:password])
-      session[:member_id] = member.id
+      login! member
       redirect_to home_path, notice: "Logged in."
     else
       flash.now.alert = "Email or password is invalid."
@@ -14,7 +11,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:member_id] = nil
+    logout!
     redirect_to home_path, :notice => "Logged out."
   end
 end
