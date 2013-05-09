@@ -70,7 +70,7 @@ describe MembersController do
 
   describe "POST #create" do
     context "with valid params" do
-      let(:params)  { attributes_for(:member) }
+      let(:params) { attributes_for(:member) }
 
       it "creates a new record for the member" do
         post :create, :member => params
@@ -81,6 +81,16 @@ describe MembersController do
       it "redirects to show view" do
         post :create, :member => params
         expect(response).to redirect_to(member_path(assigns(:member)))
+      end
+
+      it "has a notice flash message" do
+        post :create, :member => params
+        flash[:notice].should_not be_nil
+      end
+
+      it "logs in the member" do
+        post :create, :member => params
+        @controller.send(:authorize, {:is => assigns(:member)}).should be_true
       end
     end
 
@@ -110,24 +120,9 @@ describe MembersController do
         end
       end
 
-      context "with non-matching passwords" do
-        let(:bad_password_params) { attributes_for(:member, :password => "foo", :password_confirmation => "bar") }
-
-        it "doesn't create a member" do
-          count = Member.count
-          post :create, :member => bad_password_params
-          Member.count.should eq(count)
-        end
-
-        it "renders the new template" do
-          post :create, :member => bad_password_params
-          expect(response).to render_template("new")
-        end
-
-        it "applies email existing error to the member" do
-          post :create, :member => bad_password_params
-          assigns(:member).errors[:password_confirmation].should include("doesn't match Password")
-        end
+      it "doesn't have a notice flash message" do
+        post :create, :member => { :email => 'bad' }
+        flash[:notice].should be_nil
       end
     end
   end
@@ -135,50 +130,73 @@ describe MembersController do
   describe "PATCH/PUT #update" do
     let(:member) { create(:member) }
 
-    context "with valid params" do
-      it "updates full_name" do
-        patch :update, :id => member.id, :member => { :full_name => "Changed Name" }
-        member.reload.full_name.should eq("Changed Name")
-      end
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
 
-      it "updates email" do
-        patch :update, :id => member.id, :member => { :email => "change@email.com" }
-        member.reload.email.should eq("change@email.com")
-      end
-
-      it "redirects to show view" do
-        patch :update, :id => member.id, :member => attributes_for(:member)
-        expect(response).to redirect_to(member_path(assigns(:member)))
-      end
-    end
-
-    context "with invalid params" do
-      it "requires member parameter" do
-        expect { patch :update, :id => member.id, :foobar => {} }.to raise_error(ActionController::ParameterMissing)
-      end
-
-      context "with existing email" do
-        before { create(:member, :email => "test@example.com") }
-
-        it "doesn't update a member" do
-          patch :update, :id => member.id, :member => { :email => "test@example.com" }
-          member.email.should_not eq("test@example.com")
+      context "with valid params" do
+        it "updates full_name" do
+          patch :update, :id => member.id, :member => { :full_name => "Changed Name" }
+          member.reload.full_name.should eq("Changed Name")
         end
 
-        it "renders the edit template" do
-          patch :update, :id => member.id, :member => { :email => "test@example.com" }
-          expect(response).to render_template("edit")
+        it "updates email" do
+          patch :update, :id => member.id, :member => { :email => "change@email.com" }
+          member.reload.email.should eq("change@email.com")
         end
 
-        it "applies email existing error to the member" do
-          patch :update, :id => member.id, :member => { :email => "test@example.com" }
-          assigns(:member).errors[:email].should include("has already been taken")
+        it "redirects to show view" do
+          patch :update, :id => member.id, :member => attributes_for(:member)
+          expect(response).to redirect_to(member_path(assigns(:member)))
+        end
+
+        it "has a notice flash message" do
+          patch :update, :id => member.id, :member => attributes_for(:member)
+          flash[:notice].should_not be_nil
         end
       end
 
-      it "doesn't update passwords" do
-        patch :update, :id => member.id, :member => { :password => "newPassword", :password_confirmation => "newPassword" }
-        member.reload.password.should_not eq("newPassword")
+      context "with invalid params" do
+        it "requires member parameter" do
+          expect { patch :update, :id => member.id, :foobar => {} }.to raise_error(ActionController::ParameterMissing)
+        end
+
+        context "with existing email" do
+          before { create(:member, :email => "test@example.com") }
+
+          it "doesn't update a member" do
+            patch :update, :id => member.id, :member => { :email => "test@example.com" }
+            member.email.should_not eq("test@example.com")
+          end
+
+          it "renders the edit template" do
+            patch :update, :id => member.id, :member => { :email => "test@example.com" }
+            expect(response).to render_template("edit")
+          end
+
+          it "applies email existing error to the member" do
+            patch :update, :id => member.id, :member => { :email => "test@example.com" }
+            assigns(:member).errors[:email].should include("has already been taken")
+          end
+
+          it "doesn't have a notice flash message" do
+            patch :update, :id => member.id, :member => { :email => "bad" }
+            flash[:notice].should be_nil
+          end
+        end
+      end
+
+      context "as not logged in member" do
+        before { @controller.send(:logout!) }
+
+        it "redirects home" do
+          patch :update, :id => member.id, :member => attributes_for(:member)
+          expect(response).to redirect_to(home_path)
+        end
+
+        it "sets a alert flash" do
+          patch :update, :id => member.id, :member => attributes_for(:member)
+          flash[:alert].should_not be_nil
+        end
       end
     end
 
@@ -196,10 +214,33 @@ describe MembersController do
   describe "DELETE #destroy" do
     let(:member) { create(:member) }
 
-    context "with valid member ID" do
-      it "destorys the member" do
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
+
+      context "with valid member ID" do
+        it "destorys the member" do
+          delete :destroy, :id => member.id
+          expect { Member.find(member.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        end
+
+        it "has a notice flash message" do
+          delete :destroy, :id => member.id
+          flash[:notice].should_not be_nil
+        end
+      end
+    end
+
+    context "as not logged in member" do
+      before { @controller.send(:logout!) }
+
+      it "redirects home" do
         delete :destroy, :id => member.id
-        expect { Member.find(member.id) }.to raise_error(ActiveRecord::RecordNotFound)
+        expect(response).to redirect_to(home_path)
+      end
+
+      it "sets a alert flash" do
+        delete :destroy, :id => member.id
+        flash[:alert].should_not be_nil
       end
     end
 
