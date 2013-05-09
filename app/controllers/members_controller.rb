@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params)
+    @member = Member.new(member_params :allow_password => true)
 
     if @member.save
       redirect_to @member
@@ -46,7 +46,12 @@ class MembersController < ApplicationController
   # * `:full_name`
   # * `:email`
   #
-  def member_params
-    params.require(:member).permit(:full_name, :email)
+  def member_params(options = {})
+    required = params.require(:member)
+    if options[:allow_password]
+      required.permit(:full_name, :email, :password, :password_confirmation)
+    else
+      required.permit(:full_name, :email)
+    end
   end
 end
