@@ -8,7 +8,7 @@ class MembersController < ApplicationController
 
   # Authenticate @member before edit/update and destroy.
   before_filter :only => [:edit, :update, :destroy] do
-    authorize! :is => @member
+    authorize! :is => @member, :officer => true
   end
 
   def index

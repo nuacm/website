@@ -15,23 +15,29 @@ class ApplicationController < ActionController::Base
   helper_method :current_member
 
   # authorize : options -> Boolean
-  # :is  - Checks if the current user is the given user.
-  # :any - Checks if there is a current user.
+  # :is      - Checks if the current user is the given user.
+  # :any     - Checks if there is a current user.
+  # :officer - Checks if the current user is an Officer.
   #
   def authorize(options = {})
     options = { options => true } if options.is_a?(Symbol)
 
-    if options[:is]
+    result = if options[:officer]
+      current_member.is_a?(Officer)
+    end
+    result ||= if options[:is]
       current_member == options[:is]
-    elsif options[:any]
+    end
+    result ||= if options[:any]
       !current_member.nil?
     end
   end
   helper_method :authorize
 
   # authorize!
-  # :is  - Checks if the current user is the given user.
-  # :any - Checks if there is a current user.
+  # :is      - Checks if the current user is the given user.
+  # :any     - Checks if there is a current user.
+  # :officer - Checks if the current user is an Officer.
   # If authorize is false redirect home and alert the user.
   #
   def authorize!(options = {})
