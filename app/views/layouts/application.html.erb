@@ -23,6 +23,13 @@
     </ul>
   </nav>
 
+  <% if flash[:alert] %>
+    <p class='alert'><%=h flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class='notice'><%=h flash[:notice] %></p>
+  <% end %>
+
   <%= yield %>
 </div>
 

@@ -18,7 +18,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params :allow_password => true)
 
     if @member.save
-      redirect_to @member
+      redirect_to @member, :notice => "Signed up successfully."
     else
       render :new
     end
@@ -26,7 +26,7 @@ class MembersController < ApplicationController
 
   def update
     if @member.update_attributes(member_params)
-      redirect_to @member
+      redirect_to @member, :notice => "Updated successfully."
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class MembersController < ApplicationController
   def destroy
     @member.destroy
 
-    redirect_to members_path
+    redirect_to members_path, :notice => "Member deleted successfully."
   end
 
   private

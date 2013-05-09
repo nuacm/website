@@ -70,7 +70,7 @@ describe MembersController do
 
   describe "POST #create" do
     context "with valid params" do
-      let(:params)  { attributes_for(:member) }
+      let(:params) { attributes_for(:member) }
 
       it "creates a new record for the member" do
         post :create, :member => params
@@ -81,6 +81,11 @@ describe MembersController do
       it "redirects to show view" do
         post :create, :member => params
         expect(response).to redirect_to(member_path(assigns(:member)))
+      end
+
+      it "has a notice flash message" do
+        post :create, :member => params
+        flash[:notice].should_not be_nil
       end
     end
 
@@ -109,6 +114,11 @@ describe MembersController do
           assigns(:member).errors[:email].should include("has already been taken")
         end
       end
+
+      it "doesn't have a notice flash message" do
+        post :create, :member => { :email => 'bad' }
+        flash[:notice].should be_nil
+      end
     end
   end
 
@@ -129,6 +139,11 @@ describe MembersController do
       it "redirects to show view" do
         patch :update, :id => member.id, :member => attributes_for(:member)
         expect(response).to redirect_to(member_path(assigns(:member)))
+      end
+
+      it "has a notice flash message" do
+        patch :update, :id => member.id, :member => attributes_for(:member)
+        flash[:notice].should_not be_nil
       end
     end
 
@@ -154,6 +169,11 @@ describe MembersController do
           patch :update, :id => member.id, :member => { :email => "test@example.com" }
           assigns(:member).errors[:email].should include("has already been taken")
         end
+
+        it "doesn't have a notice flash message" do
+          patch :update, :id => member.id, :member => { :email => "bad" }
+          flash[:notice].should be_nil
+        end
       end
     end
 
@@ -175,6 +195,11 @@ describe MembersController do
       it "destorys the member" do
         delete :destroy, :id => member.id
         expect { Member.find(member.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+
+      it "has a notice flash message" do
+        delete :destroy, :id => member.id
+        flash[:notice].should_not be_nil
       end
     end
 
