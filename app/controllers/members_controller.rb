@@ -6,6 +6,11 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  # Authenticate @member before edit/update and destroy.
+  before_filter :only => [:edit, :update, :destroy] do
+    authorize! :is => @member
+  end
+
   def index
     @members = Member.all
   end
@@ -15,10 +20,11 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params :password => true)
+    @member = Member.new(member_params :allow_password => true)
 
     if @member.save
-      redirect_to @member
+      login! @member
+      redirect_to @member, :notice => "Signed up successfully."
     else
       render :new
     end
@@ -26,7 +32,7 @@ class MembersController < ApplicationController
 
   def update
     if @member.update_attributes(member_params)
-      redirect_to @member
+      redirect_to @member, :notice => "Updated successfully."
     else
       render :edit
     end
@@ -34,20 +40,21 @@ class MembersController < ApplicationController
 
   def destroy
     @member.destroy
-
-    redirect_to members_path
+    logout! if authorize :is => @member
+    redirect_to members_path, :notice => "Member deleted successfully."
   end
 
   private
 
-  # Setup the strong_parameters for this controller.
-  # Require that :member be set and allow :full_name, and
-  # :email to be passed.
-  # If options[:password] is true also allow a password to be
-  # sent.
+  # Requires
+  # * `:member`
+  # Permits
+  # * `:full_name`
+  # * `:email`
+  #
   def member_params(options = {})
     required = params.require(:member)
-    if options[:password]
+    if options[:allow_password]
       required.permit(:full_name, :email, :password, :password_confirmation)
     else
       required.permit(:full_name, :email)
