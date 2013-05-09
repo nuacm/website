@@ -23,6 +23,14 @@
     </ul>
   </nav>
 
+  <% if current_member %>
+    Logged in as <%= current_member.full_name %>
+    <%= link_to "Log Out", logout_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign Up", signup_path %>
+    <%= link_to "Sign In", login_path %>
+  <% end %>
+
   <% if flash[:alert] %>
     <p class='alert'><%=h flash[:alert] %></p>
   <% end %>
