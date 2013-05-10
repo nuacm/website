@@ -254,4 +254,76 @@ describe MembersController do
       end
     end
   end
+
+  describe "PUT #change_password" do
+    let(:member) { create(:member) }
+    let(:params) do
+      { :old_password => member.password,
+        :password => "gl0ry!ous",
+        :password_confirmation => "gl0ry!ous" }
+    end
+
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
+
+      context "with valid params" do
+        it "changes the password" do
+          put :change_password, :id => member.id, :password => params
+          member.reload.authenticate("gl0ry!ous").should be_true
+        end
+
+        it "redirects to show view" do
+          put :change_password, :id => member.id, :password => params
+          expect(response).to redirect_to(member_path(assigns(:member)))
+        end
+
+        it "has a notice flash message" do
+          put :change_password, :id => member.id, :password => params
+          flash[:notice].should_not be_nil
+        end
+      end
+
+      context "with invalid params" do
+        it "requires password parameter" do
+          expect { put :change_password, :id => member.id, :foobar => {} }.to raise_error(ActionController::ParameterMissing)
+        end
+
+        it "checks the old password" do
+          params[:old_password] = "sillyness"
+          put :change_password, :id => member.id, :password => params
+          member.reload.authenticate("gl0ry!ous").should_not be_true
+        end
+
+        it "checks the password confirmation" do
+          params[:password_confirmation] = "sillyness"
+          put :change_password, :id => member.id, :password => params
+          member.reload.authenticate("gl0ry!ous").should_not be_true
+        end
+      end
+
+      context "as not logged in member" do
+        before { @controller.send(:logout!) }
+
+        it "redirects home" do
+          put :change_password, :id => member.id, :password => params
+          expect(response).to redirect_to(home_path)
+        end
+
+        it "sets a alert flash" do
+          put :change_password, :id => member.id, :password => params
+          flash[:alert].should_not be_nil
+        end
+      end
+    end
+
+    context "with invalid member ID" do
+      it "doesn't find a member" do
+        expect { put :change_password, :id => 'wtfisthis', :password => params }.not_to assign_to :member
+      end
+
+      it "is a 404" do
+        expect { put :change_password, :id => 'wtfisthis', :password => params }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
 end

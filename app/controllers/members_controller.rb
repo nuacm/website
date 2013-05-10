@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   end
 
   # Authenticate @member before edit/update and destroy.
-  before_filter :only => [:edit, :update, :destroy] do
+  before_filter :only => [:edit, :update, :destroy, :change_password] do
     authorize! :is => @member
   end
 
@@ -44,6 +44,20 @@ class MembersController < ApplicationController
     redirect_to members_path, :notice => "Member deleted successfully."
   end
 
+  def change_password
+    if @member.authenticate change_password_params.delete(:old_password)
+      attrs = change_password_params.reject { |k| k.to_sym == :old_password }
+      if @member.update_attributes(attrs)
+        redirect_to @member, :notice => "Password changed successfully."
+      else
+        render :edit
+      end
+    else
+      @member.errors[:old_password] = "is not correct."
+      render :edit
+    end
+  end
+
   private
 
   # Requires
@@ -59,5 +73,16 @@ class MembersController < ApplicationController
     else
       required.permit(:full_name, :email)
     end
+  end
+
+  # Requires
+  # * `:password`
+  # Permits
+  # * `:old_password`
+  # * `:password`
+  # * `:password_confirmation`
+  #
+  def change_password_params
+    params.require(:password).permit(:old_password, :password, :password_confirmation)
   end
 end
