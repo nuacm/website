@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+  def new
+    params[:remember_me] = true
+  end
+
   def create
     member = Member.find_by_email(params[:email])
     if member && member.authenticate(params[:password])
