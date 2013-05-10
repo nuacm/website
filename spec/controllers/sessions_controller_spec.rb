@@ -36,6 +36,12 @@ describe SessionsController do
         post :create, params
         flash[:notice].should_not be_nil
       end
+
+      it "sets a cookie" do
+        member = Member.find_by_email(params[:email])
+        post :create, params
+        cookies[:auth_token].should eq(member.auth_token)
+      end
     end
 
     context "with invalid params" do
@@ -64,6 +70,11 @@ describe SessionsController do
     it "logs out the current member" do
       delete :destroy
       @controller.send(:authorize, :any).should_not be_true
+    end
+
+    it "removes the auth_token from the cookie" do
+      delete :destroy
+      cookies[:auth_token].should be_nil
     end
 
     it "redirects to home view" do

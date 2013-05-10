@@ -1,20 +1,24 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  # For APIs, you may want to use :null_cookies instead.
   protect_from_forgery with: :exception
 
   private
 
   # current_member : -> nil or Member
-  # Looks up the current member from the session :member_id.
+  # Looks up the current member from the cookies :auth_token.
   # The result is cached in the instance variable @current_member.
   #
   def current_member
-    @current_member ||= Member.find(session[:member_id]) if session[:member_id]
+    if cookies[:auth_token]
+      @current_member ||= Member.find_by_auth_token(cookies[:auth_token])
+    end
   end
   helper_method :current_member
 
   # authorize : options -> Boolean
+  #
+  # Options:
   # :is  - Checks if the current user is the given user.
   # :any - Checks if there is a current user.
   #
@@ -30,30 +34,39 @@ class ApplicationController < ActionController::Base
   helper_method :authorize
 
   # authorize!
+  # If authorize is false redirect home and alert the user.
+  #
+  # Options:
   # :is  - Checks if the current user is the given user.
   # :any - Checks if there is a current user.
-  # If authorize is false redirect home and alert the user.
   #
   def authorize!(options = {})
     redirect_to home_path, :alert => "Not authorized." unless authorize(options)
   end
   helper_method :authorize!
 
-  # login! : -> Boolean
-  # Sets the :member_id on the session. Effectively logging
+  # login! : Member -> Boolean
+  # Sets the :auth_token on the cookies. Effectively logging
   # the member in.
   #
-  def login!(member)
-    session[:member_id] = member.id
+  # Options:
+  # :remember_me - Sets a permanent cookie.
+  #
+  def login!(member, options = {})
+    if options[:remember_me]
+      cookies.permanent[:auth_token] = member.auth_token
+    else
+      cookies[:auth_token] = member.auth_token
+    end
   end
   helper_method :login!
 
   # logout! : -> Boolean
-  # Clears the :member_id from the session. If there is not a
-  # :member_id, return false. Otherwise true.
+  # Clears the :auth_token from the cookies. If there is not a
+  # :auth_token, return false. Otherwise true.
   #
   def logout!
-    session[:member_id] ? !session[:member_id] = nil : false
+    cookies[:auth_token] ? !cookies[:auth_token] = nil : false
   end
   helper_method :logout!
 end
