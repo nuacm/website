@@ -13,15 +13,25 @@ div.container {
   // 20px horizontal padding for the container.
   padding: 0 20px;
 
+  // The site navigation's width.
+  $nav-width: 400px;
+
   /* The site's logo. */
   header a {
     display: block;
+    margin: 0 auto;
+    width: $nav-width;
     text-decoration: none;
+    width: $nav-width;
+
+    &:hover {
+      color: $acm-blue;
+    }
   }
 
   /* Navigation bullet. */
   nav {
-    width: 400px;
+    width: $nav-width;
     margin: 0 auto 20px;
     background-color: $acm-lightblue;
     border-radius: 5px;

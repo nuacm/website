@@ -3,35 +3,30 @@ $acm-blue:      #005ba1;
 $acm-darkblue:  #003b69;
 $acm-lightblue: #348cd0;
 
+/* ACM Font */
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,500,200,600);
+
 /* Highly dynamic CSS logo. Requires Bigtext.js. */
 .acm-logo {
-  width: 400px;
-  margin: 0 auto;
-  padding: 5px 20px 20px;
-  text-align: center;
   color: $acm-lightblue;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: Raleway, sans-serif;
+  text-align: center;
+  font-weight: 100;
 
-  h1 {
-    display: inline-block;
-    font-size: 100px;
-    text-align: center;
-    font-weight: 100;
-    margin: 0;
-    line-height: 80px;
-    strong {
-      font-weight: 400;
-      font-variant: small-caps;
-    }
+  div { line-height: 0.85em; }
+
+  strong {
+    font-weight: 500;
+    font-variant: small-caps;
   }
 
-  span {
-    font-size: 17px;
-    letter-spacing: 4px;
-    text-align: center;
+  & div:nth-child(2) {
+    font-variant: small-caps;
+    padding-bottom: .5em;
   }
+}
 
-  &:hover {
-    color: $acm-blue;
-  }
+span.acm-logo {
+  font-weight: 200;
+  strong { font-weight: 600; }
 }
