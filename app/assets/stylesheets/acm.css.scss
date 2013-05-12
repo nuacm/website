@@ -1,26 +1,9 @@
-/* ACM Styles
-
-These are all of the ACM spacific css style, including:
-- Colors
-- Logos
-- Banners
-- Fonts
-- ...
-
-All acm classes / variables start with `acm-`.
-
-*/
-
-$northeastern-red: #c00;
-
+/* The ACM colors. */
 $acm-blue:      #005ba1;
 $acm-darkblue:  #003b69;
 $acm-lightblue: #348cd0;
 
-$acm-orange:      #fa8f00;
-$acm-darkorange:  #a35d00;
-$acm-lightorange: #fdac3f;
-
+/* Highly dynamic CSS logo. Requires Bigtext.js. */
 .acm-logo {
   width: 400px;
   margin: 0 auto;

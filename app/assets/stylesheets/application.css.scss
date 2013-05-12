@@ -3,16 +3,23 @@
 @import "neat";
 @import "acm";
 
+/* Site-wide styles. */
 div.container {
+
+  // Width of the container.
   $max-width: 756px;
   @include outer-container;
+
+  // 20px horizontal padding for the container.
   padding: 0 20px;
 
+  /* The site's logo. */
   header a {
     display: block;
     text-decoration: none;
   }
 
+  /* Navigation bullet. */
   nav {
     width: 400px;
     margin: 0 auto 20px;
