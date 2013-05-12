@@ -13,4 +13,11 @@ class Member < ActiveRecord::Base
       self[attribute] = SecureRandom.urlsafe_base64
     end while Member.exists?(attribute => self[attribute])
   end
+
+  def send_password_reset
+    generate_unique_token(:password_reset_token)
+    self.password_reset_sent_at = DateTime.current
+    save!
+    MemberMailer.password_reset(self).deliver
+  end
 end
