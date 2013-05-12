@@ -1,0 +1,88 @@
+<h1>Playground</h1>
+<p>We like to hack things together, this is where real work gets done.
+A playground allows the development of new things within a sand-boxed
+context. Promoting the idea of modularized CSS and HTML.</p>
+
+<p>As this page becomes more and more beautiful, rest assured the rest
+of the website will follow suit. Thus a playground allows for web
+developers to work within the UNIX philosophy easily and freely.</p>
+
+<blockquote cite="http://en.wikipedia.org/wiki/Unix_philosophy">Write programs
+that do one thing and do it well. Write programs to work together. Write
+programs to handle text streams, because that is a universal
+interface.<br />- <cite>Ken Thompson</cite></blockquote>
+
+<p><i>Maybe not the last one so much.</i></p>
+
+<h2>ACM Logo</h2>
+
+<p>The ACM logo is at the very heart of this application. Making it
+dynamic and scalable is very important. There are two version
+available <b>large</b> and <b>small</b>.</p>
+
+<h3>Large</h3>
+
+<p>Displayed in different size containers. This is exactly what you are
+seeing at the very top of the page. Putting the markup for this element
+anywhere on the site will yield this look.</p>
+
+<pre><code>
+<%="<div class=\"acm-logo\">
+  <div><strong>nu</strong>acm</div>
+  <div class=\"sub\">northeastern university</div>
+</div>" %>
+</code></pre>
+<br />
+
+<div style="width:100px; background-color:#eee;">
+  <div class="acm-logo">
+    <div><strong>nu</strong>acm</div>
+    <div class="sub">northeastern university</div>
+  </div>
+</div>
+<br />
+
+<div style="width:200px; background-color:#eee;">
+  <div class="acm-logo">
+    <div><strong>nu</strong>acm</div>
+    <div class="sub">northeastern university</div>
+  </div>
+</div>
+<br />
+
+<div style="width:300px; background-color:#eee;">
+  <div class="acm-logo">
+    <div><strong>nu</strong>acm</div>
+    <div class="sub">northeastern university</div>
+  </div>
+</div>
+<br />
+
+<div style="width:400px; background-color:#eee;">
+  <div class="acm-logo">
+    <div><strong>nu</strong>acm</div>
+    <div class="sub">northeastern university</div>
+  </div>
+</div>
+
+<h3>Small</h3>
+
+<p>Displayed in-line with text.</p>
+
+<pre><code>
+<%= "<span class=\"acm-logo\"><strong>nu</strong>acm</span>" %>
+</code></pre>
+<br />
+
+<p style="font-size:12px; background-color:#eee;">I am an officer of
+<span class="acm-logo"><strong>nu</strong>acm</span>, and it's pretty cool.</p>
+
+<p style="font-size:18px; background-color:#eee;">I am an officer of
+<span class="acm-logo"><strong>nu</strong>acm</span>, and it's pretty cool.</p>
+
+<p style="font-size:24px; background-color:#eee;">I am an officer of
+<span class="acm-logo"><strong>nu</strong>acm</span>, and it's pretty cool.</p>
+
+<p style="background-color:#eee;">This is 1,
+<span class="acm-logo"><strong>nu</strong>acm</span> and this is another,
+<span class="acm-logo"><strong>nu</strong>acm</span></p>
