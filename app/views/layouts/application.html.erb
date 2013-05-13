@@ -10,7 +10,7 @@
 
 <div class="container">
   <header>
-    <%= link_to home_path, :class => "acm-logo" do %>
+    <%= link_to home_path, :class => "logo" do %>
       <div><strong>nu</strong>acm</div>
       <div class="sub">northeastern university</div>
     <% end %>
@@ -25,7 +25,7 @@
     </ul>
   </nav>
 
-  <%= yield %>
+  <div id="<%= "#{controller_name}-#{action_name}" %>"><%= yield %></div>
 </div>
 
 </body>

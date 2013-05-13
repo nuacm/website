@@ -1,14 +1,6 @@
-/* The ACM colors. */
-$acm-blue:      #005ba1;
-$acm-darkblue:  #003b69;
-$acm-lightblue: #348cd0;
-
-/* ACM Font */
-@import url(http://fonts.googleapis.com/css?family=Raleway:100,500,200,600);
-
 /* Highly dynamic CSS logo. Requires Bigtext.js. */
-.acm-logo {
-  color: $acm-lightblue;
+.logo {
+  color: $lightblue;
   font-family: Raleway, sans-serif;
   text-align: center;
   font-weight: 100;
@@ -26,7 +18,7 @@ $acm-lightblue: #348cd0;
   }
 }
 
-span.acm-logo {
+span.logo {
   font-weight: 200;
   strong { font-weight: 600; }
 }

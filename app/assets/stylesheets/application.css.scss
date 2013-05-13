@@ -1,10 +1,20 @@
+// 3rd party.
 @import "normalize";
 @import "bourbon";
 @import "neat";
-@import "acm";
+
+// Global styles.
+@import "global";
+
+// Our element's styles.
+@import "elements/logo";
+
+// View styles.
+@import "playground";
 
 /* Site-wide styles. */
 div.container {
+  position: relative;
 
   // Width of the container.
   $max-width: 756px;
@@ -25,7 +35,7 @@ div.container {
     width: $nav-width;
 
     &:hover {
-      color: $acm-blue;
+      color: $blue;
     }
   }
 
@@ -33,7 +43,7 @@ div.container {
   nav {
     width: $nav-width;
     margin: 0 auto 20px;
-    background-color: $acm-lightblue;
+    background-color: $lightblue;
     border-radius: 5px;
     overflow: hidden;
 
@@ -65,7 +75,7 @@ div.container {
       }
 
       a:hover, a.current {
-        border-bottom: 3px solid $acm-blue;
+        border-bottom: 3px solid $blue;
         margin-bottom: 0;
       }
     }
