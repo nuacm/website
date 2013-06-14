@@ -1,4 +1,4 @@
-<%= form_for @member, :url => password_reset_path(params[:id]) do |f| %>
+<%= form_for @member, :url => password_reset_path(:reset_token => params[:reset_token]) do |f| %>
   <% if @member.errors.any? %>
     <ul>
       <% @member.errors.full_messages.each do |message| %>

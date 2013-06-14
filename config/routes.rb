@@ -13,5 +13,5 @@ NUACM::Application.routes.draw do
   delete 'logout'   => 'sessions#destroy', :as => 'logout'
 
   # Password Resets.
-  resources :password_resets
+  resource :password_reset
 end
