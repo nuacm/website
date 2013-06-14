@@ -2,14 +2,23 @@ require "spec_helper"
 
 describe MemberMailer do
   describe "password_reset" do
-    let(:mail) { MemberMailer.password_reset }
+    let(:member) { member = create(:member) }
+    let(:mail) { member.send_password_reset }
 
-    it "renders the headers" do
-      pending
+    it "sends the message to the right email" do
+      mail.to.should include(member.email)
+    end
+
+    it "sends the message from the right email" do
+      mail.from.should include("password-reset@acm.ccs.nue.edu")
+    end
+
+    it "renders the right subject" do
+      mail.subject.should eq("NUACM Password Reset")
     end
 
     it "renders the body" do
-      pending
+      mail.body.should include(edit_password_reset_url(:reset_token => member.password_reset_token))
     end
   end
 
