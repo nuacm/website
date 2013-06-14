@@ -14,6 +14,10 @@ class Member < ActiveRecord::Base
     end while Member.exists?(attribute => self[attribute])
   end
 
+  # send_password_reset -> Mail::Message
+  # Generates a fresh password reset token, and updates
+  # the password reset at before sending an email to the
+  # member with a link to reset his/her password.
   def send_password_reset
     generate_unique_token(:password_reset_token)
     self.password_reset_sent_at = DateTime.current
