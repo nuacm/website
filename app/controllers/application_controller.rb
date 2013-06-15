@@ -14,36 +14,41 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_member
 
-  # authorize : options -> Boolean
-  # :is      - Checks if the current user is the given user.
-  # :any     - Checks if there is a current user.
-  # :officer - Checks if the current user is an Officer.
+  # logged_in? : options -> Boolean
+  # Checks if there is a logged in member. Options provide more
+  # checks.
   #
-  def authorize(options = {})
-    options = { options => true } if options.is_a?(Symbol)
+  # :as_member => Member    - Checks if the current user is the given user.
+  # :as_officer => Boolean  - Checks if the current user is an Officer.
+  #
+  def logged_in?(options = {})
+    # options = { options => true } if options.is_a?(Symbol)
 
-    result = if options[:officer]
+    result = if options[:as_officer]
       current_member.is_a?(Officer)
     end
-    result ||= if options[:is]
-      current_member == options[:is]
+    result ||= if options[:as_member]
+      current_member == options[:as_member]
     end
-    result ||= if options[:any]
+    result ||= if options.empty?
       !current_member.nil?
     end
   end
-  helper_method :authorize
+  helper_method :logged_in?
 
-  # authorize!
-  # :is      - Checks if the current user is the given user.
-  # :any     - Checks if there is a current user.
-  # :officer - Checks if the current user is an Officer.
-  # If authorize is false redirect home and alert the user.
+  # logged_in! : options -> Boolean
+  # Checks if there is a logged in member. Options provide more
+  # checks. If checks do not pass, redirects to home page.
   #
-  def authorize!(options = {})
-    redirect_to home_path, :alert => "Not authorized." unless authorize(options)
+  # :as_member => Member    - Checks if the current user is the given user.
+  # :as_officer => Boolean  - Checks if the current user is an Officer.
+  #
+  def logged_in!(options = {})
+    unless logged_in?(options)
+      redirect_to home_path, :alert => "Not authorized."
+    end
   end
-  helper_method :authorize!
+  helper_method :logged_in!
 
   # login! : -> Boolean
   # Sets the :member_id on the session. Effectively logging

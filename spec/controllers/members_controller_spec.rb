@@ -90,7 +90,7 @@ describe MembersController do
 
       it "logs in the member" do
         post :create, :member => params
-        @controller.send(:authorize, {:is => assigns(:member)}).should be_true
+        @controller.send(:logged_in?, {:as_member => assigns(:member)}).should be_true
       end
     end
 
