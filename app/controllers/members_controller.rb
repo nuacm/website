@@ -8,7 +8,7 @@ class MembersController < ApplicationController
 
   # Authenticate @member before edit/update and destroy.
   before_filter :only => [:edit, :update, :destroy, :change_password] do
-    authorize! :is => @member
+    logged_in! :as_member => @member, :as_officer => true
   end
 
   def index
@@ -40,7 +40,7 @@ class MembersController < ApplicationController
 
   def destroy
     @member.destroy
-    logout! if authorize :is => @member
+    logout! if logged_in? :as_member => @member
     redirect_to members_path, :notice => "Member deleted successfully."
   end
 

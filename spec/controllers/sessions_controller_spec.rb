@@ -24,7 +24,7 @@ describe SessionsController do
 
       it "creates a new session" do
         post :create, params
-        @controller.send(:authorize, {:is => member}).should be_true
+        @controller.send(:logged_in?, {:as_member => member}).should be_true
       end
 
       it "redirects to home view" do
@@ -49,7 +49,7 @@ describe SessionsController do
 
       it "doesn't log in a member" do
         post :create, params
-        @controller.send(:authorize, :any).should_not be_true
+        @controller.send(:logged_in?).should_not be_true
       end
 
       it "renders the new template" do
@@ -69,7 +69,7 @@ describe SessionsController do
 
     it "logs out the current member" do
       delete :destroy
-      @controller.send(:authorize, :any).should_not be_true
+      @controller.send(:logged_in?).should_not be_true
     end
 
     it "removes the auth_token from the cookie" do

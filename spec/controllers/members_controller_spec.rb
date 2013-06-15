@@ -90,7 +90,7 @@ describe MembersController do
 
       it "logs in the member" do
         post :create, :member => params
-        @controller.send(:authorize, {:is => assigns(:member)}).should be_true
+        @controller.send(:logged_in?, {:as_member => assigns(:member)}).should be_true
       end
     end
 
@@ -127,12 +127,56 @@ describe MembersController do
     end
   end
 
-  describe "PATCH/PUT #update" do
+  describe "GET #edit" do
     let(:member) { create(:member) }
+
+    shared_examples "an edit with access" do
+      it "responds successfully with an HTTP 200 status code" do
+        get :edit, :id => member.id
+        expect(response).to be_success
+        expect(response.status).to eq(200)
+      end
+
+      it "renders the edit template" do
+        get :edit, :id => member.id
+        expect(response).to render_template("edit")
+      end
+
+      it "assigns the member" do
+        get :edit, :id => member.id
+        assigns(:member).should eq(member)
+      end
+    end
 
     context "as logged in member" do
       before { @controller.send(:login!, member) }
+      it_behaves_like("an edit with access")
+    end
 
+    context "as logged in officer" do
+      before { @controller.send(:login!, create(:officer)) }
+      it_behaves_like("an edit with access")
+    end
+
+    context "as other member" do
+      before { @controller.send(:login!, create(:member)) }
+
+      it "redirects home" do
+        get :edit, :id => member.id
+        expect(response).to redirect_to(home_path)
+      end
+
+      it "sets an alert flash" do
+        get :edit, :id => member.id
+        flash[:alert].should_not be_nil
+      end
+    end
+  end
+
+  describe "PATCH/PUT #update" do
+    let(:member) { create(:member) }
+
+    shared_examples "an update with access" do
       context "with valid params" do
         it "updates full_name" do
           patch :update, :id => member.id, :member => { :full_name => "Changed Name" }
@@ -184,19 +228,29 @@ describe MembersController do
           end
         end
       end
+    end
 
-      context "as not logged in member" do
-        before { @controller.send(:logout!) }
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
+      it_behaves_like("an update with access")
+    end
 
-        it "redirects home" do
-          patch :update, :id => member.id, :member => attributes_for(:member)
-          expect(response).to redirect_to(home_path)
-        end
+    context "as logged in officer" do
+      before { @controller.send(:login!, create(:officer)) }
+      it_behaves_like("an update with access")
+    end
 
-        it "sets a alert flash" do
-          patch :update, :id => member.id, :member => attributes_for(:member)
-          flash[:alert].should_not be_nil
-        end
+    context "as not logged in member" do
+      before { @controller.send(:logout!) }
+
+      it "redirects home" do
+        patch :update, :id => member.id, :member => attributes_for(:member)
+        expect(response).to redirect_to(home_path)
+      end
+
+      it "sets a alert flash" do
+        patch :update, :id => member.id, :member => attributes_for(:member)
+        flash[:alert].should_not be_nil
       end
     end
 
@@ -214,23 +268,29 @@ describe MembersController do
   describe "DELETE #destroy" do
     let(:member) { create(:member) }
 
-    context "as logged in member" do
-      before { @controller.send(:login!, member) }
+    shared_examples "a destroy with access" do
+      it "destorys the member" do
+        delete :destroy, :id => member.id
+        expect { Member.find(member.id) }.to raise_error(ActiveRecord::RecordNotFound)
+      end
 
-      context "with valid member ID" do
-        it "destorys the member" do
-          delete :destroy, :id => member.id
-          expect { Member.find(member.id) }.to raise_error(ActiveRecord::RecordNotFound)
-        end
-
-        it "has a notice flash message" do
-          delete :destroy, :id => member.id
-          flash[:notice].should_not be_nil
-        end
+      it "has a notice flash message" do
+        delete :destroy, :id => member.id
+        flash[:notice].should_not be_nil
       end
     end
 
-    context "as not logged in member" do
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
+      it_behaves_like("a destroy with access")
+    end
+
+    context "as logged in officer" do
+      before { @controller.send(:login!, create(:officer)) }
+      it_behaves_like("a destroy with access")
+    end
+
+    context "when not logged in" do
       before { @controller.send(:logout!) }
 
       it "redirects home" do
@@ -263,9 +323,7 @@ describe MembersController do
         :password_confirmation => "gl0ry!ous" }
     end
 
-    context "as logged in member" do
-      before { @controller.send(:login!, member) }
-
+    shared_examples "a change_password with access" do
       context "with valid params" do
         it "changes the password" do
           put :change_password, :id => member.id, :password => params
@@ -300,19 +358,29 @@ describe MembersController do
           member.reload.authenticate("gl0ry!ous").should_not be_true
         end
       end
+    end
 
-      context "as not logged in member" do
-        before { @controller.send(:logout!) }
+    context "as logged in member" do
+      before { @controller.send(:login!, member) }
+      it_behaves_like("a change_password with access")
+    end
 
-        it "redirects home" do
-          put :change_password, :id => member.id, :password => params
-          expect(response).to redirect_to(home_path)
-        end
+    context "as logged in officer" do
+      before { @controller.send(:login!, create(:officer)) }
+      it_behaves_like("a change_password with access")
+    end
 
-        it "sets a alert flash" do
-          put :change_password, :id => member.id, :password => params
-          flash[:alert].should_not be_nil
-        end
+    context "as not logged in member" do
+      before { @controller.send(:logout!) }
+
+      it "redirects home" do
+        put :change_password, :id => member.id, :password => params
+        expect(response).to redirect_to(home_path)
+      end
+
+      it "sets a alert flash" do
+        put :change_password, :id => member.id, :password => params
+        flash[:alert].should_not be_nil
       end
     end
 

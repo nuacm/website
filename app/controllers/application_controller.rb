@@ -16,34 +16,41 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_member
 
-  # authorize : options -> Boolean
+  # logged_in? : options -> Boolean
+  # Checks if there is a logged in member. Options provide more
+  # checks.
   #
-  # Options:
-  # :is  - Checks if the current user is the given user.
-  # :any - Checks if there is a current user.
+  # :as_member => Member    - Checks if the current user is the given user.
+  # :as_officer => Boolean  - Checks if the current user is an Officer.
   #
-  def authorize(options = {})
-    options = { options => true } if options.is_a?(Symbol)
+  def logged_in?(options = {})
+    # options = { options => true } if options.is_a?(Symbol)
 
-    if options[:is]
-      current_member == options[:is]
-    elsif options[:any]
+    result = if options[:as_officer]
+      current_member.is_a?(Officer)
+    end
+    result ||= if options[:as_member]
+      current_member == options[:as_member]
+    end
+    result ||= if options.empty?
       !current_member.nil?
     end
   end
-  helper_method :authorize
+  helper_method :logged_in?
 
-  # authorize!
-  # If authorize is false redirect home and alert the user.
+  # logged_in! : options -> Boolean
+  # Checks if there is a logged in member. Options provide more
+  # checks. If checks do not pass, redirects to home page.
   #
-  # Options:
-  # :is  - Checks if the current user is the given user.
-  # :any - Checks if there is a current user.
+  # :as_member => Member    - Checks if the current user is the given user.
+  # :as_officer => Boolean  - Checks if the current user is an Officer.
   #
-  def authorize!(options = {})
-    redirect_to home_path, :alert => "Not authorized." unless authorize(options)
+  def logged_in!(options = {})
+    unless logged_in?(options)
+      redirect_to home_path, :alert => "Not authorized."
+    end
   end
-  helper_method :authorize!
+  helper_method :logged_in!
 
   # login! : Member -> Boolean
   # Sets the :auth_token on the cookies. Effectively logging
