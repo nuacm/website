@@ -63,15 +63,15 @@ class MembersController < ApplicationController
   # Requires
   # * `:member`
   # Permits
-  # * `:full_name`
+  # * `:name`
   # * `:email`
   #
   def member_params(options = {})
     required = params.require(:member)
     if options[:allow_password]
-      required.permit(:full_name, :email, :password, :password_confirmation)
+      required.permit(:name, :email, :password, :password_confirmation)
     else
-      required.permit(:full_name, :email)
+      required.permit(:name, :email)
     end
   end
 

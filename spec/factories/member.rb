@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   factory :member do
-    full_name 'Billy Black'
+    name 'Billy Black'
     email
     password 'ziRon^fo1'
     password_confirmation 'ziRon^fo1'

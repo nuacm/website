@@ -178,9 +178,9 @@ describe MembersController do
 
     shared_examples "an update with access" do
       context "with valid params" do
-        it "updates full_name" do
-          patch :update, :id => member.id, :member => { :full_name => "Changed Name" }
-          member.reload.full_name.should eq("Changed Name")
+        it "updates name" do
+          patch :update, :id => member.id, :member => { :name => "Changed Name" }
+          member.reload.name.should eq("Changed Name")
         end
 
         it "updates email" do

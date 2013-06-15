@@ -24,7 +24,7 @@
   </nav>
 
   <% if current_member %>
-    Logged in as <%= current_member.full_name %>
+    Logged in as <%= current_member.name %>
     <%= link_to "Log Out", logout_path, :method => :delete %>
   <% else %>
     <%= link_to "Sign Up", signup_path %>
