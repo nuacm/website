@@ -33,4 +33,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Always clear out the ActionMailer deliveries before each test.
+  # This will make testing mail sending much more stable and reliable.
+  config.before(:each) { ActionMailer::Base.deliveries.clear }
 end
