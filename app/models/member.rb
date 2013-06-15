@@ -6,12 +6,16 @@ class Member < ActiveRecord::Base
 
   before_create { generate_unique_token(:auth_token) }
 
-  # generate_unique_token : Symbol ->
+  # generate_unique_token : Symbol -> Member
   # Generates a unique token and sets it to the given attribute.
+  #
+  # Note: This method does NOT save the attribute to the member,
+  # you must call #save afterward.
   def generate_unique_token(attribute)
     begin
       self[attribute] = SecureRandom.urlsafe_base64
     end while Member.exists?(attribute => self[attribute])
+    self
   end
 
   # send_password_reset -> Mail::Message
