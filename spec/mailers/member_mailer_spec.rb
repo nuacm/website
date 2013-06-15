@@ -10,11 +10,11 @@ describe MemberMailer do
     end
 
     it "sends the message from the right email" do
-      mail.from.should include("password-reset@acm.ccs.nue.edu")
+      mail.from.should include("noreply@acm.ccs.neu.edu")
     end
 
     it "renders the right subject" do
-      mail.subject.should eq("NUACM Password Reset")
+      mail.subject.should eq("Password Reset")
     end
 
     it "renders the body" do

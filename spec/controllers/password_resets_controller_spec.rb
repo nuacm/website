@@ -51,47 +51,26 @@ describe PasswordResetsController do
 
       it "has a notice flash message" do
         post :create, params
-        flash[:notice].should_not be_nil
+        flash[:notice].should include("Email sent")
       end
     end
 
     context "with invalid params" do
-      context "bad email format" do
-        let(:params) { {:email => "food"} }
+      let(:params) { {:email => "doesnotexist@unknown.com"} }
 
-        it "doesn't send an email" do
-          post :create, params
-          ActionMailer::Base.deliveries.should be_empty
-        end
-
-        it "renders the new template" do
-          post :create, params
-          expect(response).to render_template("new")
-        end
-
-        it "has an alert flash message" do
-          post :create, params
-          flash[:alert].should_not be_nil
-        end
+      it "doesn't send an email" do
+        post :create, params
+        ActionMailer::Base.deliveries.should be_empty
       end
 
-      context "email does not exist" do
-        let(:params) { {:email => "doesnotexist@unknown.com"} }
+      it "redirects to home view" do
+        post :create, params
+        expect(response).to redirect_to(home_path)
+      end
 
-        it "doesn't send an email" do
-          post :create, params
-          ActionMailer::Base.deliveries.should be_empty
-        end
-
-        it "redirects to home view" do
-          post :create, params
-          expect(response).to redirect_to(home_path)
-        end
-
-        it "has a notice flash message" do
-          post :create, params
-          flash[:notice].should_not be_nil
-        end
+      it "has a notice flash message" do
+        post :create, params
+        flash[:notice].should include("Email sent")
       end
     end
   end
@@ -165,7 +144,9 @@ describe PasswordResetsController do
 
       it "removes the password reset token" do
         patch :update, params
+        member.reload
         member.password_reset_token.should be_nil
+        member.password_reset_sent_at.should be_nil
       end
 
       it "redirects to the home page" do
