@@ -24,8 +24,6 @@ class ApplicationController < ActionController::Base
   # :as_officer => Boolean  - Checks if the current user is an Officer.
   #
   def logged_in?(options = {})
-    # options = { options => true } if options.is_a?(Symbol)
-
     result = if options[:as_officer]
       current_member.is_a?(Officer)
     end
