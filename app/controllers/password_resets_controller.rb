@@ -19,10 +19,7 @@ class PasswordResetsController < ApplicationController
     @member = Member.find_by_password_reset_token(params[:reset_token])
     if @member.nil? || expired_reset_token?(@member)
       redirect_to new_password_reset_path, :alert => "Invalid password reset token, Try again."
-    elsif @member.update_attributes(reset_password_params.merge({
-        :password_reset_token   => nil,
-        :password_reset_sent_at => nil,
-      }))
+    elsif @member.update_attributes(reset_password_params)
       redirect_to home_path, :notice => "Password has been reset."
     else
       render :edit
@@ -38,7 +35,11 @@ class PasswordResetsController < ApplicationController
   # * `:password_confirmation`
   #
   def reset_password_params
-    params.require(:member).permit(:password, :password_confirmation)
+    filtered = params.require(:member).permit(:password, :password_confirmation)
+
+    # Remove the member's token and sent_at attributes.
+    filtered.merge :password_reset_token   => nil,
+                   :password_reset_sent_at => nil
   end
 
   # expired_reset_token? Member -> boolean
