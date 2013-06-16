@@ -1,0 +1,7 @@
+<h1>Members</h1>
+
+<ul>
+  <% @members.each do |member| %>
+    <li><%= link_to member.name, member_path(member) %></li>
+  <% end %>
+</ul>

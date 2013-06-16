@@ -16,6 +16,12 @@ gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 
+# To validate emails. (harder then it should be)
+gem 'valid_email'
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -27,6 +33,12 @@ group :assets do
   gem 'neat'
 end
 
-group :test, :development do
-  gem "rspec-rails", "~> 2.0"
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'timecop'
 end

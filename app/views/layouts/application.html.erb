@@ -25,7 +25,22 @@
     </ul>
   </nav>
 
-  <div id="<%= "#{controller_name}-#{action_name}" %>"><%= yield %></div>
+  <% if current_member %>
+    Logged in as <%= current_member.name %>
+    <%= link_to "Log Out", logout_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign Up", signup_path %>
+    <%= link_to "Sign In", login_path %>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <p class='alert'><%=h flash[:alert] %></p>
+  <% end %>
+  <% if flash[:notice] %>
+    <p class='notice'><%=h flash[:notice] %></p>
+  <% end %>
+
+  <%= yield %>
 </div>
 
 </body>
