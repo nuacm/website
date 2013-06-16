@@ -80,4 +80,7 @@ NUACM::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Secret key for verifying the integrity of signed cookies.
+  NUACM::Application.config.secret_key_base = ENV["SECRET_KEY"]
 end
