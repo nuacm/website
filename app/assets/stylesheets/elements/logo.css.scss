@@ -1,0 +1,24 @@
+/* Highly dynamic CSS logo. Requires Bigtext.js. */
+.logo {
+  color: $lightblue;
+  font-family: Raleway, sans-serif;
+  text-align: center;
+  font-weight: 100;
+
+  div { line-height: 0.85em; }
+
+  strong {
+    font-weight: 500;
+    font-variant: small-caps;
+  }
+
+  & div:nth-child(2) {
+    font-variant: small-caps;
+    padding-bottom: .5em;
+  }
+}
+
+span.logo {
+  font-weight: 200;
+  strong { font-weight: 600; }
+}

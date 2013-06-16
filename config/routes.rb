@@ -1,5 +1,10 @@
 NUACM::Application.routes.draw do
-  get '/',      to: 'pages#home', :as => 'home'
+  # General routes.
+  get '/',      :to => 'pages#home',  :as => 'home'
+  get '/about', :to => 'pages#about', :as => 'about'
+
+  # Every site needs a playground.
+  get '/playground', :to => 'pages#playground', :as => 'playground'
 
   # Members and Officers.
   resources :members do

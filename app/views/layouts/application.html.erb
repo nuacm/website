@@ -10,16 +10,18 @@
 
 <div class="container">
   <header>
-    <%= link_to home_path, :class => "acm-logo" do %>
-      <h1><strong>nu</strong>acm</h1>
-      <span>Northeastern University</span>
+    <%= link_to home_path, :class => "logo" do %>
+      <div><strong>nu</strong>acm</div>
+      <div>northeastern university</div>
     <% end %>
   </header>
 
   <nav>
     <ul>
-      <li><%= active_link_to "Home", home_path %></li>
-      <li><%= active_link_to "About", '#' %></li>
+      <li><%= current_link_to "Home", home_path %></li>
+      <li><%= current_link_to "About", about_path %></li>
+      <li><%= current_link_to "Events", '#' %></li>
+      <li><%= current_link_to "Members", '#' %></li>
     </ul>
   </nav>
 
