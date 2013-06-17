@@ -24,7 +24,7 @@ describe SessionsController do
 
       it "creates a new session" do
         post :create, params
-        @controller.send(:logged_in?, {:as_member => member}).should be_true
+        @controller.send(:logged_in?, :as_member => member).should be_true
       end
 
       it "redirects to home view" do
@@ -37,10 +37,25 @@ describe SessionsController do
         flash[:notice].should_not be_nil
       end
 
-      it "sets a cookie" do
+      it "sets a session" do
         member = Member.find_by_email(params[:email])
         post :create, params
-        cookies[:auth_token].should eq(member.auth_token)
+        session[:auth_token].should eq(member.auth_token)
+      end
+
+      context "remembered" do
+        before { params.merge!(:remember_me => true) }
+
+        it "creates a new session" do
+          post :create, params
+          @controller.send(:logged_in?, :as_member => member).should be_true
+        end
+
+        it "sets a cookie" do
+          member = Member.find_by_email(params[:email])
+          post :create, params
+          cookies[:auth_token].should eq(member.auth_token)
+        end
       end
     end
 
@@ -72,9 +87,10 @@ describe SessionsController do
       @controller.send(:logged_in?).should_not be_true
     end
 
-    it "removes the auth_token from the cookie" do
+    it "removes the auth_token from the cookie/session" do
       delete :destroy
       cookies[:auth_token].should be_nil
+      session[:auth_token].should be_nil
     end
 
     it "redirects to home view" do
