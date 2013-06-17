@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   private
 
   # current_member : -> nil or Member
-  # Looks up the current member from the cookies :auth_token.
+  # Looks up the current member from the cookies/session :auth_token.
   # The result is cached in the instance variable @current_member.
   #
   def current_member
-    if cookies[:auth_token]
-      @current_member ||= Member.find_by_auth_token(cookies[:auth_token])
+    if auth_token = session[:auth_token] || cookies[:auth_token]
+      @current_member ||= Member.find_by_auth_token(auth_token)
     end
   end
   helper_method :current_member
@@ -49,27 +49,27 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in!
 
   # login! : Member -> Boolean
-  # Sets the :auth_token on the cookies. Effectively logging
+  # Sets the :auth_token on the cookies/session. Effectively logging
   # the member in.
   #
   # Options:
   # :remember_me - Sets a permanent cookie.
   #
   def login!(member, options = {})
+    session[:auth_token] = member.auth_token
+
     if options[:remember_me]
       cookies.permanent[:auth_token] = member.auth_token
-    else
-      cookies[:auth_token] = member.auth_token
     end
   end
   helper_method :login!
 
   # logout! : -> Boolean
-  # Clears the :auth_token from the cookies. If there is not a
-  # :auth_token, return false. Otherwise true.
+  # Clears the :auth_token from the cookies/session.
   #
   def logout!
-    cookies[:auth_token] ? !cookies[:auth_token] = nil : false
+    session[:auth_token] = nil
+    cookies[:auth_token] = nil
   end
   helper_method :logout!
 end
