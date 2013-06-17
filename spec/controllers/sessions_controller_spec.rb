@@ -37,7 +37,7 @@ describe SessionsController do
         flash[:notice].should_not be_nil
       end
 
-      it "sets a cookie" do
+      it "sets a session" do
         member = Member.find_by_email(params[:email])
         post :create, params
         session[:auth_token].should eq(member.auth_token)
