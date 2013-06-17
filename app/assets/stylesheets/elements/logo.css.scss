@@ -1,24 +1,19 @@
 /* Highly dynamic CSS logo. Requires Bigtext.js. */
 .logo {
   color: $lightblue;
-  font-family: Raleway, sans-serif;
+  font-family: "MyriadPro-Light", sans-serif;
   text-align: center;
-  font-weight: 100;
 
-  div { line-height: 0.85em; }
+  div { line-height: .68em; }
 
   strong {
-    font-weight: 500;
+    font-family: "MyriadPro-Regular", sans-serif;
     font-variant: small-caps;
   }
 
   & div:nth-child(2) {
     font-variant: small-caps;
-    padding-bottom: .5em;
+    letter-spacing: .46em;
+    padding-bottom: .75em;
   }
-}
-
-span.logo {
-  font-weight: 200;
-  strong { font-weight: 600; }
 }

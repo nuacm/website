@@ -14,16 +14,16 @@
       <div><strong>nu</strong>acm</div>
       <div>northeastern university</div>
     <% end %>
-  </header>
 
-  <nav>
-    <ul>
-      <li><%= current_link_to "Home", home_path %></li>
-      <li><%= current_link_to "About", about_path %></li>
-      <li><%= current_link_to "Events", '#' %></li>
-      <li><%= current_link_to "Members", members_path %></li>
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+        <li><%= current_link_to "Home", home_path %></li>
+        <li><%= current_link_to "About", about_path %></li>
+        <li><%= current_link_to "Events", '#' %></li>
+        <li><%= current_link_to "Members", members_path %></li>
+      </ul>
+    </nav>
+  </header>
 
   <% if current_member %>
     Logged in as <%= current_member.name %>

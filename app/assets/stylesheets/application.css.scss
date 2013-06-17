@@ -2,6 +2,7 @@
 @import "normalize";
 @import "bourbon";
 @import "neat";
+@import "myriadpro";
 
 // Global styles.
 @import "global";
@@ -9,9 +10,8 @@
 // Our element's styles.
 @import "elements/logo";
 
-/* Site-wide styles. */
+
 div.container {
-  position: relative;
 
   // Width of the container.
   $max-width: 756px;
@@ -20,60 +20,57 @@ div.container {
   // 20px horizontal padding for the container.
   padding: 0 20px;
 
-  // The site navigation's width.
-  $nav-width: 400px;
+  header {
+    width: 400px;
+    margin: 20px auto;
 
-  /* The site's logo. */
-  header a {
-    display: block;
-    margin: 0 auto;
-    width: $nav-width;
-    text-decoration: none;
-    width: $nav-width;
-
-    &:hover {
-      color: $blue;
-    }
-  }
-
-  /* Navigation bullet. */
-  nav {
-    width: $nav-width;
-    margin: 0 auto 20px;
-    background-color: $lightblue;
-    border-radius: 5px;
-    overflow: hidden;
-
-    ul {
-      position: relative;
-      float: left;
+    /* Logo. */
+    .logo {
       display: block;
-      left: 50%;
-      padding: 0;
-      margin: 0;
-      list-style: none;
+      text-decoration: none;
+
+      &:hover {
+        color: $blue;
+      }
     }
 
-    ul li {
-      position: relative;
-      display: block;
-      float: left;
-      right: 50%;
+    /* Navigation bullet. */
+    nav {
+      background-color: $lightblue;
+      border-radius: 5px;
+      overflow: hidden;
 
-      a {
-        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-        font-weight: 300;
-        font-size: 18px;
+      ul {
+        position: relative;
+        float: left;
         display: block;
-        padding: 5px 14px;
-        margin: 3px 0;
-        color: #eee;
-        text-decoration: none;
+        left: 50%;
+        padding: 0;
+        margin: 0;
+        list-style: none;
       }
 
-      a:hover, a.current {
-        border-bottom: 3px solid $blue;
-        margin-bottom: 0;
+      ul li {
+        position: relative;
+        display: block;
+        float: left;
+        right: 50%;
+
+        a {
+          font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+          font-weight: 300;
+          font-size: 18px;
+          display: block;
+          padding: 5px 14px;
+          margin: 3px 0;
+          color: #eee;
+          text-decoration: none;
+        }
+
+        a:hover, a.current {
+          border-bottom: 3px solid $blue;
+          margin-bottom: 0;
+        }
       }
     }
   }

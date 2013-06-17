@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'MyriadPro-Regular';
+    src: url('myriadpro/myriadpro-regular.eot');
+    src: url('myriadpro/myriadpro-regular.eot') format('embedded-opentype'),
+         url('myriadpro/myriadpro-regular.woff') format('woff'),
+         url('myriadpro/myriadpro-regular.ttf') format('truetype'),
+         url('myriadpro/myriadpro-regular.svg#MyriadProRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Light';
+    src: url('myriadpro/myriadpro-light.eot');
+    src: url('myriadpro/myriadpro-light.eot') format('embedded-opentype'),
+         url('myriadpro/myriadpro-light.woff') format('woff'),
+         url('myriadpro/myriadpro-light.ttf') format('truetype'),
+         url('myriadpro/myriadpro-light.svg#MyriadProLight') format('svg');
+}
+
+@font-face {
+    font-family: 'MyriadPro-Bold';
+    src: url('myriadpro/myriadpro-bold.eot');
+    src: url('myriadpro/myriadpro-bold.eot') format('embedded-opentype'),
+         url('myriadpro/myriadpro-bold.woff') format('woff'),
+         url('myriadpro/myriadpro-bold.ttf') format('truetype'),
+         url('myriadpro/myriadpro-bold.svg#MyriadProBold') format('svg');
+}

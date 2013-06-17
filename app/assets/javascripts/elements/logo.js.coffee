@@ -1,6 +1,9 @@
-$ ->
+# This is what allows the ACM logo to be dynamic size.
 
-  # This is what allows the ACM logo to be dynamic size.
-  # With turbolinks in use we need the jquery.turbolinks
-  # gem to ensure this operates properly.
+# On a "real" load event "reload page".
+$(window).bind "load", ->
+  $('.logo').bigtext { 'resize' : false }
+
+# On a turboloaded event.
+$(window).bind "page:load", ->
   $('.logo').bigtext { 'resize' : false }
