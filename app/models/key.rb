@@ -21,7 +21,7 @@ class Key < ActiveRecord::Base
   # Returns true when the key is BOTH unlocked and it's before
   # the `expires_on` datetime.
   def good?
-    unlocked? && self.expires_on ? DateTime.current < self.expires_on : true
+    unlocked? && (self.expires_on ? DateTime.current < self.expires_on : true)
   end
 
   # Returns true when the key is either locked OR before
