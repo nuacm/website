@@ -1,0 +1,66 @@
+<h2 id="extras">Extras</h2>
+
+<!-- Code playground. -->
+<h3 id="code">Code</h3>
+
+<p>
+  One might be browsing this site and discover code, considering this is my site
+  after all, if you know me this should hardly be a surprise. The containers for
+  the code on this site should be as sexy as the code itself.
+</p>
+
+<dl>
+
+  <dt><code>&#060;code&#062;</code></dt>
+  <dd>
+    <p>
+      When using a <code>code</code> tag, please remember to put code inside.
+    </p>
+  </dd>
+
+  <dt><code>&#060;pre&#062; &#060;code&#062;</code></dt>
+  <dd>
+    <pre><code data-lang="ruby">
+# Very slow fibonacci sequence.
+def fib(index)
+  if index == 0 || index == 1
+    index
+  else
+    fib(index - 1) + fib(index - 2)
+  end
+end
+
+fib(0)  #=> 0
+fib(1)  #=> 1
+fib(2)  #=> 1
+fib(3)  #=> 2
+fib(4)  #=> 3
+fib(5)  #=> 5
+fib(6)  #=> 8
+    </code></pre>
+
+    <p><em>
+      The <code>data-lang</code> attribute should be used to define the language
+      of the code block.
+    </em></p>
+  </dd>
+
+  <dt><code>&#060;samp&#062;</code></dt>
+  <dd>
+    <p>
+    Ping is a great tool for debugging networks. Running
+    <code>ping localhost</code> will give output that looks something like this.
+    <samp>
+PING localhost (127.0.0.1): 56 data bytes
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.045 ms
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.129 ms
+    </samp>
+    </p>
+  </dd>
+
+  <dt><code>&#060;kbd&#062;</code></dt>
+  <dd>
+    <p>Press <kbd>Enter</kbd> to continue.</p>
+  </dd>
+
+</dl>
