@@ -1,5 +1,5 @@
 class Key < ActiveRecord::Base
-  extend AliasMethodizer
+  extend ACM::AliasMethodizer
 
   # A Key has the following attributes.
   #
