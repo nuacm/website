@@ -1,8 +1,8 @@
 module AliasMethodizer
   private
 
-  def alias_method(name, &function)
-    define_method name.to_s + '!', -> (*args, &block) do
+  def alias_method(alias_name, name, &function)
+    define_method alias_name, -> (*args, &block) do
       value = method(name)[*args, &block]
       instance_exec &function
       value

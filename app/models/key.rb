@@ -44,36 +44,36 @@ class Key < ActiveRecord::Base
   def lock
     self.is_locked = true
   end
-  alias_method(:lock) { save! }
+  alias_method(:lock!, :lock) { save! }
 
   # Unlock this key, allowing it to be valid.
   def unlock
     self.is_locked = false
   end
-  alias_method(:unlock) { save! }
+  alias_method(:unlock!, :unlock) { save! }
 
   # Adds the given amount of time to `expires_on`.
   def extend(time)
     self.expires_on += time
   end
-  alias_method(:extend) { save! }
+  alias_method(:extend!, :extend) { save! }
 
   # Removes the given amount of time from `expires_on`.
   def retract(time)
     self.expires_on -= time
   end
-  alias_method(:retract) { save! }
+  alias_method(:retract!, :retract) { save! }
 
   # Sets the `expires_on` to now.
   def expire
     self.expires_on = DateTime.current
   end
-  alias_method(:expire) { save! }
+  alias_method(:expire!, :expire) { save! }
 
   # Sets the key to not expire.
   def imortalize
     self.expires_on = 1.0/0
   end
-  alias_method(:imortalize) { save! }
+  alias_method(:imortalize!, :imortalize) { save! }
 
 end
