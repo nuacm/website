@@ -2,18 +2,21 @@
 .logo {
   color: $lightblue;
   font-family: "MyriadPro-Light", sans-serif;
+  font-size: 1.25em;
   text-align: center;
-
-  div { line-height: .68em; }
 
   strong {
     font-family: "MyriadPro-Regular", sans-serif;
     font-variant: small-caps;
   }
 
+  & div:first-child {
+    line-height: .70em;
+  }
+
   & div:nth-child(2) {
     font-variant: small-caps;
-    letter-spacing: .46em;
-    padding-bottom: .75em;
+    letter-spacing: .45em;
+    padding-bottom: .70em;
   }
 }
