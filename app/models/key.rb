@@ -77,7 +77,7 @@ class Key < ActiveRecord::Base
 
   # Sets the key to not expire.
   def imortalize
-    self.expires_on = 1.0/0
+    self.expires_on = nil
     self
   end
   alias_method(:imortalize!, :imortalize) { save! }
