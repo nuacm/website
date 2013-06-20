@@ -18,6 +18,9 @@ class Key < ActiveRecord::Base
     self.token ||= SecureRandom.base64
   end
 
+  # We can't have keys share tokens.
+  validates :token, :uniqueness => true
+
   # Returns true when the key is BOTH unlocked and it's before
   # the `expires_on` datetime.
   def good?
