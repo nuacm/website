@@ -1,6 +1,8 @@
 class Key < ActiveRecord::Base
   extend ACM::AliasMethodizer
 
+  belongs_to :keyable, :polymorphic => true
+
   # A Key has the following attributes.
   #
   # * token (String)        : A _unique_ hash to identify this key.

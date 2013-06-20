@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20130619030550) do
     t.string   "token"
     t.datetime "expires_on"
     t.boolean  "is_locked"
+    t.integer  "keyable_id"
+    t.string   "keyable_type"
+    t.string   "key_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,9 +34,6 @@ ActiveRecord::Schema.define(version: 20130619030550) do
     t.datetime "updated_at"
     t.string   "type"
     t.string   "password_digest"
-    t.string   "auth_token"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
   end
 
   create_table "members_positions", id: false, force: true do |t|

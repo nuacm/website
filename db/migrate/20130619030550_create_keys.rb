@@ -4,6 +4,8 @@ class CreateKeys < ActiveRecord::Migration
       t.string :token
       t.datetime :expires_on
       t.boolean :is_locked
+      t.references :keyable, :polymorphic => true
+      t.string :key_type
 
       t.timestamps
     end
