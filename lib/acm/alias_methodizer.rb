@@ -6,7 +6,7 @@ module ACM
     def alias_method(alias_name, name, &function)
       define_method alias_name, -> (*args, &block) do
         value = method(name)[*args, &block]
-        instance_exec &function
+        instance_exec &function if function
         value
       end
     end

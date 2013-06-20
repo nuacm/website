@@ -12,9 +12,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
-# Also test lib.
-Dir[Rails.root.join("spec/lib/**/*.rb")].each {|f| require f}
-
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
