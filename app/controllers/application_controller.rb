@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   #
   def current_member
     if auth_token = session[:auth_token] || cookies[:auth_token]
-      @current_member ||= Member.find_by_auth_token(auth_token)
+      key = Key.find_by_token(auth_token)
+      @current_member ||= key.keyable if key
     end
   end
   helper_method :current_member
@@ -56,10 +57,11 @@ class ApplicationController < ActionController::Base
   # :remember_me - Sets a permanent cookie.
   #
   def login!(member, options = {})
-    session[:auth_token] = member.auth_token
+    token = member.authorization_key.token
 
+    session[:auth_token] = token
     if options[:remember_me]
-      cookies.permanent[:auth_token] = member.auth_token
+      cookies.permanent[:auth_token] = token
     end
   end
   helper_method :login!

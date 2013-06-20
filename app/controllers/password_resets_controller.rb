@@ -6,20 +6,24 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @member = Member.find_by_password_reset_token(params[:reset_token])
+    key = Key.find_by_token(params[:reset_token])
+    @member = key.keyable if key
 
-    if @member.nil? || expired_reset_token?(@member)
-      redirect_to new_password_reset_path, :alert => "Invalid password reset token, Try again."
-    else
+    if @member && @member.password_reset_key.good?
       render :edit
+    else
+      redirect_to new_password_reset_path, :alert => "Invalid password reset token, Try again."
     end
   end
 
   def update
-    @member = Member.find_by_password_reset_token(params[:reset_token])
-    if @member.nil? || expired_reset_token?(@member)
+    key = Key.find_by_token(params[:reset_token])
+    @member = key.keyable if key
+
+    if @member.nil? || @member.password_reset_key.bad?
       redirect_to new_password_reset_path, :alert => "Invalid password reset token, Try again."
     elsif @member.update_attributes(reset_password_params)
+      @member.password_reset_key.destroy
       redirect_to home_path, :notice => "Password has been reset."
     else
       render :edit
@@ -35,16 +39,6 @@ class PasswordResetsController < ApplicationController
   # * `:password_confirmation`
   #
   def reset_password_params
-    filtered = params.require(:member).permit(:password, :password_confirmation)
-
-    # Remove the member's token and sent_at attributes.
-    filtered.merge :password_reset_token   => nil,
-                   :password_reset_sent_at => nil
-  end
-
-  # expired_reset_token? Member -> boolean
-  # Returns true if the given member has an expired reset token.
-  def expired_reset_token?(member)
-    member.password_reset_sent_at < 2.hours.ago
+    params.require(:member).permit(:password, :password_confirmation)
   end
 end

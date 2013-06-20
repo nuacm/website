@@ -31,15 +31,15 @@ describe PasswordResetsController do
         email.to.should include(member.email)
       end
 
-      it "creates a reset token for the member" do
+      it "creates a reset key for the member" do
         post :create, params
-        member.reload.password_reset_token.should_not be_nil
+        member.reload.password_reset_key.should_not be_nil
       end
 
       it "sends email with a link to reset the member's password" do
         post :create, params
         email = ActionMailer::Base.deliveries.first
-        reset_token = member.reload.password_reset_token
+        reset_token = member.reload.password_reset_key.token
         url = edit_password_reset_url(:reset_token => reset_token)
         email.body.raw_source.should include(url)
       end
@@ -78,7 +78,7 @@ describe PasswordResetsController do
   describe "GET #edit" do
     context "with valid reset password token" do
       before(:each) { member.send_password_reset }
-      let(:params)  { {:reset_token => member.password_reset_token} }
+      let(:params)  { {:reset_token => member.password_reset_key.token} }
 
       it "responds successfully with an HTTP 200 status code" do
         get :edit, params
@@ -111,7 +111,7 @@ describe PasswordResetsController do
         member.send_password_reset
         Timecop.travel(Time.now + 2.hours)
       end
-      let(:params) { {:reset_token => member.password_reset_token} }
+      let(:params) { {:reset_token => member.password_reset_key.token} }
 
       it "redirects to the new page" do
         get :edit, params
@@ -129,7 +129,7 @@ describe PasswordResetsController do
     context "with valid params" do
       before(:each) { member.send_password_reset }
       let(:params) do
-        { :reset_token => member.password_reset_token,
+        { :reset_token => member.password_reset_key.token,
           :member => {
             :password              => "updatedPassword",
             :password_confirmation => "updatedPassword"
@@ -142,11 +142,10 @@ describe PasswordResetsController do
         member.reload.authenticate("updatedPassword").should be_true
       end
 
-      it "removes the password reset token" do
+      it "removes the password reset key" do
         patch :update, params
         member.reload
-        member.password_reset_token.should be_nil
-        member.password_reset_sent_at.should be_nil
+        member.password_reset_key.should be_nil
       end
 
       it "redirects to the home page" do
@@ -185,7 +184,7 @@ describe PasswordResetsController do
       context "unmatching passwords" do
         before(:each) { member.send_password_reset }
         let(:params) do
-          { :reset_token => member.password_reset_token,
+          { :reset_token => member.password_reset_key.token,
             :member => {
               :password              => "updatedPassword",
               :password_confirmation => "updated"
@@ -210,7 +209,7 @@ describe PasswordResetsController do
           Timecop.travel(Time.now + 2.hours)
         end
         let(:params) do
-          { :reset_token => member.password_reset_token,
+          { :reset_token => member.password_reset_key.token,
             :member => {
               :password              => "updatedPassword",
               :password_confirmation => "updated"
