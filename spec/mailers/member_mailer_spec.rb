@@ -18,7 +18,8 @@ describe MemberMailer do
     end
 
     it "renders the body" do
-      mail.body.should include(edit_password_reset_url(:reset_token => member.password_reset_token))
+      mail.body.should include edit_password_reset_url(:reset_token =>
+                                 member.password_reset_key.token)
     end
   end
 
