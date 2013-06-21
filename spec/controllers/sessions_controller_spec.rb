@@ -40,7 +40,7 @@ describe SessionsController do
       it "sets a session" do
         member = Member.find_by_email(params[:email])
         post :create, params
-        session[:auth_token].should eq(member.auth_token)
+        session[:auth_token].should eq(member.authorization_key.token)
       end
 
       context "remembered" do
@@ -54,7 +54,7 @@ describe SessionsController do
         it "sets a cookie" do
           member = Member.find_by_email(params[:email])
           post :create, params
-          cookies[:auth_token].should eq(member.auth_token)
+          cookies[:auth_token].should eq(member.authorization_key.token)
         end
       end
     end

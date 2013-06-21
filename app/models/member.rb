@@ -4,28 +4,25 @@ class Member < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :email => true
 
-  before_create { generate_unique_token(:auth_token) }
+  before_create { create_authorization_key }
 
-  # generate_unique_token : Symbol -> Member
-  # Generates a unique token and sets it to the given attribute.
-  #
-  # Note: This method does NOT save the attribute to the member,
-  # you must call #save afterward.
-  def generate_unique_token(attribute)
-    begin
-      self[attribute] = SecureRandom.urlsafe_base64
-    end while Member.exists?(attribute => self[attribute])
-    self
-  end
+  has_one :authorization_key,
+          -> { where :key_type => "authorization_key" },
+          :class_name => "Key",
+          :as         => :keyable,
+          :dependent  => :destroy
+  has_one :password_reset_key,
+          -> { where :key_type => "password_reset_key" },
+          :class_name => "Key",
+          :as         => :keyable,
+          :dependent  => :destroy
 
   # send_password_reset -> Mail::Message
   # Generates a fresh password reset token, and updates
   # the password reset at before sending an email to the
   # member with a link to reset his/her password.
   def send_password_reset
-    generate_unique_token(:password_reset_token)
-    self.password_reset_sent_at = DateTime.current
-    save!
+    create_password_reset_key(:expires_on => DateTime.current + 2.hours)
     MemberMailer.password_reset(self).deliver
   end
 end
