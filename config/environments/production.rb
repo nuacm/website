@@ -31,6 +31,9 @@ NUACM::Application.configure do
   # Whether to fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  # Add webfonts to the precompile list.
+  config.assets.precompile += %w(.svg .eot .woff .ttf)
+
   # Generate digests for assets URLs.
   config.assets.digest = true
 
