@@ -27,7 +27,4 @@ NUACM::Application.configure do
 
   # Setup mailer.
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
-
-  # Secret key for verifying the integrity of signed cookies.
-  NUACM::Application.config.secret_key_base = '0ddc82059964c93a840a8152b67f3111b8a32a06b8a346634bea9bc07ad792c4bad4dcb7afb194d777b1e2d4aef04c3630d0812e7dbf3d4d23f8f8d8260336b8'
 end

@@ -1,3 +1,5 @@
+require 'socket'
+
 NUACM::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -65,8 +67,9 @@ NUACM::Application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # TODO: Setup mailer.
-  config.action_mailer.default_url_options = { lambda { raise "Not Set" } }
+  # Setup mailer.
+  host = "#{Socket.gethostname}.ccs.neu.edu"
+  config.action_mailer.default_url_options = { :host => host }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -80,7 +83,4 @@ NUACM::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  # Secret key for verifying the integrity of signed cookies.
-  NUACM::Application.config.secret_key_base = ENV["SECRET_KEY"]
 end
