@@ -16,7 +16,7 @@ NUACM::Application.routes.draw do
 
   # Sessions.
   get    'signup'   => 'members#new',      :as => 'signup'
-  get    'login'    => 'sessions#new',     :as => 'login'
-  post   'login'    => 'sessions#create',  :as => 'login'
   delete 'logout'   => 'sessions#destroy', :as => 'logout'
+  get    'login'    => 'sessions#new',     :as => 'login'
+  post   'login'    => 'sessions#create'
 end

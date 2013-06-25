@@ -40,10 +40,6 @@ describe MembersController do
     end
 
     context "with invalid member ID" do
-      it "doesn't find a member" do
-        expect { get :show, :id => 'wtfisthis' }.not_to assign_to :member
-      end
-
       it "is a 404" do
         expect { get :show, :id => 'wtfisthis' }.to raise_error(ActiveRecord::RecordNotFound)
       end
@@ -255,10 +251,6 @@ describe MembersController do
     end
 
     context "with invalid member ID" do
-      it "doesn't find a member" do
-        expect { patch :update, :id => 'wtfisthis', :member => attributes_for(:member) }.not_to assign_to :member
-      end
-
       it "is a 404" do
         expect { patch :update, :id => 'wtfisthis', :member => attributes_for(:member) }.to raise_error(ActiveRecord::RecordNotFound)
       end
@@ -305,10 +297,6 @@ describe MembersController do
     end
 
     context "with invalid member ID" do
-      it "doesn't find a member" do
-        expect { delete :destroy, :id => 'wtfisthis' }.not_to assign_to :member
-      end
-
       it "is a 404" do
         expect { delete :destroy, :id => 'wtfisthis' }.to raise_error(ActiveRecord::RecordNotFound)
       end
@@ -385,10 +373,6 @@ describe MembersController do
     end
 
     context "with invalid member ID" do
-      it "doesn't find a member" do
-        expect { put :change_password, :id => 'wtfisthis', :password => params }.not_to assign_to :member
-      end
-
       it "is a 404" do
         expect { put :change_password, :id => 'wtfisthis', :password => params }.to raise_error(ActiveRecord::RecordNotFound)
       end
