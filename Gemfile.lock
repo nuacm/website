@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 8eb1287f94b37c65ecb718c589eb988348174866
+  branch: 3.0.0
+  specs:
+    anjlab-bootstrap-rails (3.0.0.0.alpha1)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -28,9 +37,6 @@ GEM
     arel (4.0.0)
     atomic (1.1.10)
     bcrypt-ruby (3.0.1)
-    bourbon (3.1.8)
-      sass (>= 3.2.0)
-      thor
     builder (3.1.4)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -67,9 +73,6 @@ GEM
     mime-types (1.23)
     minitest (4.7.5)
     multi_json (1.7.7)
-    neat (1.3.0)
-      bourbon (>= 2.1)
-      sass (>= 3.2)
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
@@ -147,14 +150,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails!
   bcrypt-ruby (~> 3.0.0)
-  bourbon
   coffee-rails (~> 4.0.0)
   factory_girl_rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
-  neat
   pg
   rails (~> 4.0.0)
   rspec-rails

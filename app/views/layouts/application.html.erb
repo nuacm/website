@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Acm</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -15,14 +16,14 @@
       <div>northeastern university</div>
     <% end %>
 
-    <nav>
-      <ul>
-        <li><%= current_link_to "Home", home_path %></li>
-        <li><%= current_link_to "About", about_path %></li>
-        <li><%= current_link_to "Events", '#' %></li>
-        <li><%= current_link_to "Members", members_path %></li>
+    <div class="navbar">
+      <ul class="nav navbar-nav">
+        <li><%= active_link_to "Home", home_path %></li>
+        <li><%= active_link_to "About", about_path %></li>
+        <li><%= active_link_to "Events", '#' %></li>
+        <li><%= active_link_to "Members", members_path %></li>
       </ul>
-    </nav>
+    </div>
   </header>
 
   <% if current_member %>
