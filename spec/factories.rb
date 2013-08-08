@@ -1,4 +1,32 @@
 FactoryGirl.define do
+
+  # Sequences
+
+  sequence :email do |n|
+    "email#{n}@example.com"
+  end
+
+  # Factories
+
+  factory :key
+
+  factory :member do
+    name 'Billy Black'
+    email
+    password 'ziRon^fo1'
+    password_confirmation 'ziRon^fo1'
+
+    factory :officer, :class => Officer do
+      after(:create) do |officer, evaluator|
+        officer.positions << create(:position)
+      end
+    end
+  end
+
+  factory :position do
+    title { "Position#{rand(100)}" }
+  end
+
   factory :event do
     title 'Intro to Rails'
     description <<-EOS
@@ -13,8 +41,9 @@ deserunt mollit anim id est laborum.
     end_time DateTime.new(2013, 8, 7, 19, 30)  # year, month, day, hour, minute.
     location "102 WVH"
 
-    factory :talk do
+    factory :talk, :class => Talk do
       talker "Nathan Lilienthal"
     end
   end
+
 end
