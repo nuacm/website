@@ -12,5 +12,9 @@ deserunt mollit anim id est laborum.
     start_time DateTime.new(2013, 8, 7, 18, 30)  # year, month, day, hour, minute.
     end_time DateTime.new(2013, 8, 7, 19, 30)  # year, month, day, hour, minute.
     location "102 WVH"
+
+    factory :talk do
+      talker "Nathan Lilienthal"
+    end
   end
 end
