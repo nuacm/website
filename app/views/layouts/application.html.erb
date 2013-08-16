@@ -29,13 +29,9 @@
     <% end %>
   </header>
 
-  <% if current_member %>
-    Logged in as <%= current_member.name %>
-    <%= link_to "Log Out", logout_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Sign In", login_path %>
-  <% end %>
+  <div class="row">
+
+    <div class="col-md-8 col-lg-8">
 
   <% if flash[:alert] %>
     <p class='alert'><%=h flash[:alert] %></p>
@@ -45,6 +41,19 @@
   <% end %>
 
   <%= yield %>
+    </div>
+
+    <div class="col-md-4 col-lg-4">
+        <% if current_member %>
+          Logged in as <%= current_member.name %>
+          <%= link_to "Log Out", logout_path, :method => :delete %>
+        <% else %>
+          <%= link_to "Sign Up", signup_path %>
+          <%= link_to "Sign In", login_path %>
+        <% end %>
+    </div>
+
+</div> <!-- end row -->
 </div>
 
 </body>
