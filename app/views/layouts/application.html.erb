@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Acm</title>
+  <title>Northeastern University ACM</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -11,19 +11,22 @@
 
 <div class="container">
   <header>
+
+    <nav class="navbar">
+      <ul class="nav navbar-nav">
+        <li><%= active_link_to "Home", 'home_path' %></li>
+        <li><%= active_link_to "Events", '#' %></li>
+        <li><%= active_link_to "About", about_path %></li>
+        <li><%= active_link_to "Members", members_path %></li>
+        <li><%= active_link_to "Join", '#' %></li>
+
+      </ul>
+    </nav>
+
     <%= link_to home_path, :class => "logo" do %>
       <div><strong>nu</strong>acm</div>
       <div>northeastern university</div>
     <% end %>
-
-    <div class="navbar">
-      <ul class="nav navbar-nav">
-        <li><%= active_link_to "Home", home_path %></li>
-        <li><%= active_link_to "About", about_path %></li>
-        <li><%= active_link_to "Events", '#' %></li>
-        <li><%= active_link_to "Members", members_path %></li>
-      </ul>
-    </div>
   </header>
 
   <% if current_member %>
