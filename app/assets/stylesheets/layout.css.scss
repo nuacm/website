@@ -3,13 +3,13 @@
 $bigpic-height: 400px;
 
 .bigpic {
-  background-color: $grey;
-  height: $bigpic-height;
-  width: 100%;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: -1;
+    background-color: $grey;
+    height: $bigpic-height;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
 }
 
 nav {
@@ -17,6 +17,19 @@ nav {
     left: 0px;
     top: 0px;
     z-index: 2;
+}
+
+.navbar {
+      border-radius: 0px;
+      background-color: rgba(255,255,255,.4);
+}
+
+.navbar-nav {
+    li {
+        a {
+            color: #333;
+        }
+    }
 }
 
 .content {
