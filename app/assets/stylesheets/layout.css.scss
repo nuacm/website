@@ -1,2 +1,25 @@
 @import "global";
 
+$bigpic-height: 400px;
+
+.bigpic {
+  background-color: $grey;
+  height: $bigpic-height;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: -1;
+}
+
+nav {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 2;
+}
+
+.content {
+    position: absolute;
+    top: $bigpic-height;
+}
