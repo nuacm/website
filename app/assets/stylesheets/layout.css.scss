@@ -1,38 +1,19 @@
 @import "global";
 
-$bigpic-height: 400px;
+// $bigpic-height: 400px;
 
-.bigpic {
-    background-color: $grey;
-    height: $bigpic-height;
-    width: 100%;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: -1;
-    background-image: url('http://placekitten.com/1920/600');
-}
+// .bigpic {
+//     background-color: $grey;
+//     height: $bigpic-height;
+//     width: 100%;
+//     position: absolute;
+//     left: 0px;
+//     top: 0px;
+//     z-index: -1;
+//     background-image: url('http://placekitten.com/1920/600');
+// }
 
-nav {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index: 2;
-}
-
-.navbar {
-      border-radius: 0px;
-      background-color: rgba(255,255,255,.4);
-}
-
-.navbar-nav {
-    li {
-        a {
-            color: #333;
-        }
-    }
-}
-
-.content {
-    margin-top: $bigpic-height;
-}
+// .navbar {
+//     border-radius: 0px;
+//     background-color: rgba(255,255,255,.4);
+// }

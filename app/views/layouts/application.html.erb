@@ -8,55 +8,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="container">
 
-<div class="container">
-  <header>
-    <div class="bigpic">
+      <nav class="navbar">
+        <ul class="links">
+          <li><%= active_link_to "Home", home_path %></li>
+          <li><%= active_link_to "Events", '#' %></li>
+          <li><%= active_link_to "About", about_path %></li>
+          <li><%= active_link_to "Members", members_path %></li>
+          <li><%= active_link_to "Join", '#' %></li>
+        </ul>
+      </nav>
 
-    </div>
+      <div class="bigpic">
+        <%= image_tag("logos/logo-white.png", :class=>"image-logo") %>
+      </div>
 
-    <nav class="navbar">
-      <ul class="nav navbar-nav">
-        <li><%= active_link_to "Home", home_path %></li>
-        <li><%= active_link_to "Events", '#' %></li>
-        <li><%= active_link_to "About", about_path %></li>
-        <li><%= active_link_to "Members", members_path %></li>
-        <li><%= active_link_to "Join", '#' %></li>
+      <% if flash[:alert] %>
+        <p class='alert'>
+          <%=h flash[:alert] %>
+        </p>
+      <% end %>
 
-      </ul>
-    </nav>
+      <% if flash[:notice] %>
+        <p class='notice'>
+          <%=h flash[:notice] %>
+        </p>
+      <% end %>
 
-  </header>
-
-  <div class="content"><div class="row">
-
-    <div class="col-md-8 col-lg-8">
-
-  <% if flash[:alert] %>
-    <p class='alert'><%=h flash[:alert] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-    <p class='notice'><%=h flash[:notice] %></p>
-  <% end %>
-
-  <%= yield %>
-    </div>
-
-    <div class="col-md-4 col-lg-4">
-        <% if current_member %>
-          Logged in as <%= current_member.name %>
-          <%= link_to "Log Out", logout_path, { :class=>"btn btn-default" }, :method => :delete %>
-        <% else %>
-          <%= link_to "Sign Up", signup_path,
-            { :class=>"btn btn-default" } %>
-          <%= link_to "Sign In", login_path, 
-            { :class=>"btn btn-default" } %>
-        <% end %>
-    </div>
-
-</div> <!-- end row -->
-</div>
-</div>
-
+      <div class="content">
+        <%= yield %>
+      </div>
+  </div>
 </body>
 </html>
