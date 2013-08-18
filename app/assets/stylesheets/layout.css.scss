@@ -1,13 +1,13 @@
 @import "global";
 
 $bigpic-height: 400px;
-
+$content-width: 90%;
 
 .navbar {
     background-color: rgba(255,255,255,.4);
     z-index: 1;
     position: absolute;
-    width: 90%;
+    width: $content-width;
     left: 5%;
 
     .links {
@@ -49,4 +49,40 @@ $bigpic-height: 400px;
         right: 0;
         bottom: 0;
     }
+}
+
+
+.columns {
+    width: $content-width;
+    margin: auto;
+    background-color: $blue;
+    color: white;
+
+    .col1 {
+        width: 60%;
+        display: inline-block;
+
+        margin: {
+            right: 10%;
+        }
+    }
+
+    .col2 {
+        width: 30%;
+        vertical-align: top;
+        display: inline-block;
+
+        .content {
+            padding: {
+                right: 10px;
+            }
+        }
+    }
+}
+
+
+.footer {
+    width: 100%;
+    min-height: 300px;
+    background-color: green;
 }

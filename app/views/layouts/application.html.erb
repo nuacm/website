@@ -36,11 +36,15 @@
         </p>
       <% end %>
 
-      <div class="col1">
-        <%= yield %>
+      <div class="columns">
+        <div class="col1">
+          <div class="content">
+            <%= yield %>
+          </div>
+        </div><%= render(:partial => "shared/col2") %></div>
       </div>
 
-      <%= render(:partial => "shared/col2") %>  </div>
+      <%= render(:partial => "shared/footer") %>
 
 </body>
 </html>
