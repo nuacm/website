@@ -13,8 +13,13 @@ body {
     position: absolute;
     width: $content-width;
     left: 5%;
-    font-size: 2.1em;
-
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font: {
+        size: 2.1em;
+        family: 'Roboto Condensed', sans-serif;
+        weight: 300;
+    }
 
     .links {
         padding: 0;
@@ -24,15 +29,15 @@ body {
         li {
             display: inline-block;
             padding: {
-                top: 20px;
-                bottom: 20px;
+                top: 15px;
+                bottom: 15px;
             }
             min-width: 120px;
-            
+
             a {
                 padding: {
-                    top: 20px;
-                    bottom: 20px;
+                    top: 15px;
+                    bottom: 15px;
                     left: 20px;
                     right: 20px;
                 }
