@@ -13,6 +13,8 @@ body {
     position: absolute;
     width: $content-width;
     left: 5%;
+    font-size: 2.1em;
+
 
     .links {
         padding: 0;
@@ -21,19 +23,25 @@ body {
 
         li {
             display: inline-block;
-            background-color: red;
             padding: {
-                top: 30px;
-                bottom: 30px;
+                top: 20px;
+                bottom: 20px;
             }
-
+            min-width: 120px;
+            
             a {
                 padding: {
-                    top: 30px;
-                    bottom: 30px;
+                    top: 20px;
+                    bottom: 20px;
                     left: 20px;
                     right: 20px;
                 }
+                text-decoration: none;
+                color: #333;
+            }
+
+            a:hover {
+                background-color: rgba(233,233,233,.9);
             }
         }
     }
