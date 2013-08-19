@@ -3,6 +3,10 @@
 $bigpic-height: 400px;
 $content-width: 90%;
 
+body {
+    background-color: #005ba1;
+}
+
 .navbar {
     background-color: rgba(255,255,255,.4);
     z-index: 1;
@@ -39,6 +43,10 @@ $content-width: 90%;
     background-color: $grey;
     height: $bigpic-height;
     position: relative;
+    background: url("http://farm3.staticflickr.com/2839/9147863710_c177101952_k.jpg");
+    background-repeat: no-repeat;
+    background-position-y: -500px;
+    background-size: 100%;
 
     .image-logo {
         margin: auto;
@@ -55,8 +63,7 @@ $content-width: 90%;
 .columns {
     width: $content-width;
     margin: auto;
-    background-color: $blue;
-    color: white;
+    background-color: #FFF;
 
     .col1 {
         width: 60%;
@@ -65,6 +72,13 @@ $content-width: 90%;
         margin: {
             right: 10%;
         }
+
+        .content {
+            padding: {
+                left: 20px;
+            }
+        }
+
     }
 
     .col2 {
