@@ -22,15 +22,15 @@
     </div>
 
     <% if flash[:alert] %>
-      <p class='alert'>
-        <%=h flash[:alert] %>
-      </p>
+      <div class='alert notification'>
+        <p><%=h flash[:alert] %></p>
+      </div>
     <% end %>
 
     <% if flash[:notice] %>
-      <p class='notice'>
-        <%=h flash[:notice] %>
-      </p>
+      <div class='notice notification'>
+        <p><%=h flash[:notice] %></p>
+      </div>
     <% end %>
 
     <div class="columns">

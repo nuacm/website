@@ -1,24 +1,35 @@
+@import "global";
+
 .login {
+	text-align: center;
 
 	.btn {
-		padding: 15px;
-		background-color: #FFA;
+		color: black;
 		display: inline-block;
+		width: 100%;
+		margin-bottom: 20px;
+		border: solid 1px black;
+
+
+		a {
+			width: 100%;
+			padding: 10px 0;
+			display: inline-block;
+			text-decoration: none;
+
+			&:visited {
+				color: black;
+			}
+
+			&:hover {
+				background-color: #EDEDED;
+			}
+		}
 	}
 
-	.welcome {
-
+	.logged-in {
+		text-align: left;
+		margin-bottom: 20px;
 	}
 
-	.log-out {
-
-	}
-
-	.sign-up {
-
-	}
-
-	.sign-in {
-
-	}
 }
