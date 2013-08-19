@@ -5,6 +5,11 @@ $content-width: 90%;
 
 body {
     background-color: #005ba1;
+    font: {
+        family: 'Roboto', sans-serif;
+        size: 1.2em;
+    }
+    line-height: 1.2em;
 }
 
 .navbar {
@@ -17,9 +22,9 @@ body {
     letter-spacing: -1px;
     font: {
         size: 2.1em;
-        family: 'Roboto Condensed', sans-serif;
         weight: 300;
     }
+    line-height: 2.1em;
 
     .links {
         padding: 0;
@@ -28,21 +33,12 @@ body {
 
         li {
             display: inline-block;
-            padding: {
-                top: 15px;
-                bottom: 15px;
-            }
             min-width: 120px;
 
             a {
-                padding: {
-                    top: 15px;
-                    bottom: 15px;
-                    left: 20px;
-                    right: 20px;
-                }
                 text-decoration: none;
                 color: #333;
+                padding: 15px 20px;
             }
 
             a:hover {
