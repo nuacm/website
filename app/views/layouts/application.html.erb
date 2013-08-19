@@ -11,41 +11,41 @@
 <body>
   <div class="container">
 
-      <nav class="navbar">
-        <ul class="links">
-          <li><%= active_link_to "Home", home_path %></li>
-          <li><%= active_link_to "Events", '#' %></li>
-          <li><%= active_link_to "About", about_path %></li>
-          <li><%= active_link_to "Members", members_path %></li>
-          <li><%= active_link_to "Join", '#' %></li>
-        </ul>
-      </nav>
+    <nav class="navbar">
+      <ul class="links">
+        <li><%= active_link_to "Home", home_path %></li><li><%= active_link_to "Events", '#' %></li><li><%= active_link_to "About", about_path %></li><li><%= active_link_to "Members", members_path %></li><li><%= active_link_to "Join", '#' %></li>
+      </ul>
+    </nav>
 
-      <div class="bigpic">
-        <%= image_tag("logos/logo-white.png", :class=>"image-logo") %>
-      </div>
+    <div class="bigpic">
+      <%= image_tag("logos/logo-white.png", :class=>"image-logo") %>
+    </div>
 
-      <% if flash[:alert] %>
-        <p class='alert'>
-          <%=h flash[:alert] %>
-        </p>
-      <% end %>
+    <% if flash[:alert] %>
+      <p class='alert'>
+        <%=h flash[:alert] %>
+      </p>
+    <% end %>
 
-      <% if flash[:notice] %>
-        <p class='notice'>
-          <%=h flash[:notice] %>
-        </p>
-      <% end %>
+    <% if flash[:notice] %>
+      <p class='notice'>
+        <%=h flash[:notice] %>
+      </p>
+    <% end %>
 
-      <div class="columns">
-        <div class="col1">
-          <div class="content">
-            <%= yield %>
-          </div>
-        </div><%= render(:partial => "shared/col2") %></div>
-      </div>
+    <div class="columns">
+      <div class="col1">
+        <div class="content">
+          <%= yield %>
+        </div>
+        <!-- Column 2 -->
+      </div><%= render(:partial => "shared/col2") %>
+    </div>
 
-      <%= render(:partial => "shared/footer") %>
+    <%= render(:partial => "shared/footer") %>
+  </div>
+
+      
 
 </body>
 </html>

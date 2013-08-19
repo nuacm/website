@@ -1,7 +1,7 @@
 <% if current_member %>
-  <span class="logged-in">Logged in as <%= current_member.name %></span>
-  <span class="log-out"><%= link_to "Log Out", logout_path, :method => :delete %></span>
+  <div class="logged-in">Logged in as <%= current_member.name %></div>
+  <div class="log-out"><%= link_to "Log Out", logout_path, :method => :delete %></div>
 <% else %>
-  <span class="sign-up"><%= link_to "Sign Up", signup_path %>
-  <%= link_to "Sign In", login_path %>
+  <div class="sign-up"><%= link_to "Sign Up", signup_path %></div>
+  <div class="sign-in"><%= link_to "Sign In", login_path %></div>
 <% end %>
