@@ -166,3 +166,20 @@ input[type="button"] {
       border: 0px;
     }
 }
+
+.about-box {
+    border-bottom:1px solid #ccc;
+    padding:100px;
+    color: #37464A;
+}
+
+.about-box:nth-child(even) {
+    background: #FFFCF5;
+}
+
+.about-box:last-child {
+    margin-bottom:40px;
+}
+
+
+
