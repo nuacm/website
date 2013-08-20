@@ -4,26 +4,24 @@
 	text-align: center;
 
 	.btn {
-		color: black;
-		display: inline-block;
 		width: 100%;
 		margin-bottom: 20px;
-		border: solid 1px black;
+	}
 
+	a {
+		width: 100%;
+   		border: solid 1px black;
+		max-width: 250px;
+		padding: 10px 0;
+		display: inline-block;
+		text-decoration: none;
 
-		a {
-			width: 100%;
-			padding: 10px 0;
-			display: inline-block;
-			text-decoration: none;
+		&:visited {
+			color: black;
+		}
 
-			&:visited {
-				color: black;
-			}
-
-			&:hover {
-				background-color: #EDEDED;
-			}
+		&:hover {
+			background-color: #EDEDED;
 		}
 	}
 

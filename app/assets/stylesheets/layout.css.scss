@@ -22,6 +22,12 @@ body {
     }
 }
 
+.btn {
+    color: black;
+    background-color: white;
+    display: inline-block;
+}
+
 input {
     padding: 2px 10px 5px 10px;
 }
@@ -162,7 +168,7 @@ input[type="button"] {
       margin-top: 0;
     }
 
-    input[type="email"] {
+    input {
       border: 0px;
     }
 }
@@ -180,6 +186,5 @@ input[type="button"] {
 .about-box:last-child {
     margin-bottom:40px;
 }
-
 
 
