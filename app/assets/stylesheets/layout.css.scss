@@ -5,8 +5,12 @@ $content-width: 90%;
 
 $minPageWidth: 780px;
 
+.clearfix {
+    clear:both;
+}
+
 body {
-    background-color: $blue;
+    background-color: white;
     font: {
         family: 'Roboto', sans-serif;
         size: 1.2em;
@@ -61,39 +65,18 @@ input[type="button"] {
   }
 }
 
-.navbar {
-    background-color: rgba(255,255,255,.4);
-    min-width: $minPageWidth;
-    z-index: 1;
-    position: absolute;
+.navbar-container {
     width: $content-width;
-    left: 5%;
-    letter-spacing: -1px;
-    font: {
-        size: 1.7em;
-        weight: 300;
+    ul {
+        float: right;
     }
-    line-height: 1.7em;
 
-    .links {
-        padding: 0;
-        margin: 0;
-        list-style-type: none; 
-        text-align: center;
-
-        li {
-            display: inline-block;
-            min-width: 120px;
-
-            a {
-                text-decoration: none;
-                color: #333;
-                padding: 15px 20px;
-            }
-
-            a:hover {
-                background-color: rgba(233,233,233,.9);
-            }
+    ul li {
+        display: inline;
+        margin-right: 25px;
+        a {
+            color: #08c;
+            text-decoration: none;
         }
     }
 }
@@ -158,7 +141,7 @@ input[type="button"] {
 .footer {
     width: 100%;
     min-height: 100px;
-    background-color: $acmblue;
+    background-color: #37464A;
 
     .content {
       padding: 1em 0;

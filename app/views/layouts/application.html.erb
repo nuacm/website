@@ -11,10 +11,12 @@
 <body>
   <div class="container">
 
-    <nav class="navbar">
+    <nav class="navbar-container">
+      <img src='logo.png'>
       <ul class="links">
         <li><%= active_link_to "Home", home_path %></li><li><%= active_link_to "Events", '#' %></li><li><%= active_link_to "About", about_path %></li><li><%= active_link_to "Members", members_path %></li><li><%= active_link_to "Join", '#' %></li>
       </ul>
+      <div class="clearfix"></div>
     </nav>
 
     <div class="bigpic">
