@@ -154,22 +154,27 @@ input {
     min-height: 100px;
     background-color: $grey;
     color: $whitegrey;
+    font-weight: lighter;
+
 
     .content {
-      padding: 1em 0;
+        padding: 1em 0;
     }
 
     p:first-of-type {
-      margin-top: 0;
+        font-weight: lighter;
+        margin-top: 0;
     }
 
     input {
+        font-weight: lighter;
+
         color: $grey;
         &[type=email] {
-         border: 1px solid #FFFFFF;
+            border: 1px solid #FFFFFF;
         }
         &[type=submit] {
-         border: 0px;
+            border: 0px;
         }
     }
 
