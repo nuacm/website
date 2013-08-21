@@ -1,5 +1,8 @@
 class Event < ActiveRecord::Base
 
+  has_many :taggings, :as => :taggable
+  has_many :tags, :through => :taggings
+
   validates :title, :presence => true
   validates :description, :presence => true
   validates :location, :presence => true
