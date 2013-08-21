@@ -74,4 +74,15 @@ class ApplicationController < ActionController::Base
     cookies[:auth_token] = nil
   end
   helper_method :logout!
+
+  def get_bigpic
+    pool = [
+      'https://farm9.staticflickr.com/8323/8429149142_04932dfa25_k.jpg',
+      'http://farm6.staticflickr.com/5538/9145652131_e87e9e4bf3_k.jpg',
+      'http://farm9.staticflickr.com/8054/8429138978_98e1d89081_k.jpg',
+      'http://farm9.staticflickr.com/8096/8428048907_cb647a407a_k.jpg'
+    ]
+    return pool.sample
+  end
+  helper_method :get_bigpic
 end
