@@ -76,13 +76,17 @@ input[type="button"] {
         margin-right: 25px;
 
         a {
-            color: #444;
+            color: #999;
             text-decoration: none;
         }
 
         a:hover {
-            color: #08c;
+            color: #000;
             text-decoration: underline;
+        }
+
+        .active {
+            color: #000;
         }
     }
 
@@ -96,7 +100,6 @@ input[type="button"] {
 .bigpic {
     background-color: $grey;
     height: $bigpic-height;
-    /*background: url("https://farm9.staticflickr.com/8323/8429149142_04932dfa25_k.jpg");*/
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100%;
