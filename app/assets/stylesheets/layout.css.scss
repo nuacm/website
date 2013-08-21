@@ -74,9 +74,15 @@ input[type="button"] {
     ul li {
         display: inline;
         margin-right: 25px;
+
         a {
-            color: #08c;
+            color: #444;
             text-decoration: none;
+        }
+
+        a:hover {
+            color: #08c;
+            text-decoration: underline;
         }
     }
 
