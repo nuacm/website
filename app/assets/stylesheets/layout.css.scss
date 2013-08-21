@@ -168,13 +168,14 @@ input[type="button"] {
 }
 
 .about-box {
-    border-bottom:1px solid #ccc;
     padding:50px;
     color: #37464A;
     line-height: 1.75;
 }
 
 .about-box:nth-child(even) {
+    border-bottom:1px solid #ccc;
+    border-top:1px solid #ccc;
     background: #fbfbfb;
 }
 
