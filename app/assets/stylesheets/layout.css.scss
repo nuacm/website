@@ -195,3 +195,18 @@ input {
 .about-box:last-child {
     margin-bottom:40px;
 }
+
+
+img.events {
+    border-radius:50%;
+
+}
+
+.icecream-crop {
+    background: url('http://farm9.staticflickr.com/8221/8428051401_c5ecb7c10a_n.jpg');
+    width:200px;
+    height: 200px;
+    border-radius:50%;
+    float: left;
+    margin:0 10px;
+}
