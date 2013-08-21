@@ -31,15 +31,14 @@ body {
     background-color: white;
     display: inline-block;
     border: 0px;
-
 }
 
 input {
     padding: 2px 10px 5px 10px;
-}
-
-input[type="submit"] {
-    padding: 3px 10px 6px 10px;
+    
+    &[type="submit"] {
+      padding: 3px 10px 6px 10px;
+    }
 }
 
 .notification {
@@ -74,17 +73,17 @@ input[type="submit"] {
         margin-right: 25px;
 
         a {
-            color: #999;
+            color: $blue;
             text-decoration: none;
         }
 
         a:hover {
-            color: #000;
+            color: $grey;
             text-decoration: underline;
         }
 
         .active {
-            color: #000;
+            color: $grey;
         }
     }
 
@@ -191,5 +190,3 @@ input[type="submit"] {
 .about-box:last-child {
     margin-bottom:40px;
 }
-
-
