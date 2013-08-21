@@ -3,10 +3,10 @@ NUACM::Application.routes.draw do
   get '/',      :to => 'pages#home',  :as => 'home'
   get '/about', :to => 'pages#about', :as => 'about'
 
-  # Every site needs a playground.
-  get '/playground', :to => 'pages#playground', :as => 'playground'
+  # Events routes.
+  resources :events
 
-  # Members and Officers.
+  # Members routes.
   resources :members do
     member { put 'change_password' }
   end
@@ -19,4 +19,9 @@ NUACM::Application.routes.draw do
   delete 'logout'   => 'sessions#destroy', :as => 'logout'
   get    'login'    => 'sessions#new',     :as => 'login'
   post   'login'    => 'sessions#create'
+
+  ### Silly pages.
+
+  # Every site needs a playground.
+  get '/playground', :to => 'pages#playground', :as => 'playground'
 end
