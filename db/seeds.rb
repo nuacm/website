@@ -13,12 +13,20 @@ when "development"
   # Create a development Officer.
   if Officer.count == 0
     your_name = Etc.getlogin
-    you = Officer.create :name => your_name,
+    Officer.create :name => your_name,
                    :email => "#{your_name}@ccs.neu.edu",
                    :password => "password",
                    :password_confirmation => "password",
                    :positions => [position]
   end
+
+  # Make a Post on the behalf of the first Officer.
+  Officer.first.posts.create :title => "How to build a rails blog",
+                             :body => "Step 1: Open a terminal, Step 2: rails scaffold",
+                             :taggings => [
+                              Tagging.create(:tag => Tag.find_by_name(:code)),
+                              Tagging.create(:tag => Tag.find_by_name(:ruby)),
+                             ]
 
   # Create a development basic Member.
   if Member.count <= 1

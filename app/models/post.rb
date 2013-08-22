@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  belongs_to :author, :class_name => "Member", :foreign_key => "member_id"
+  belongs_to :member
   has_many :taggings, :as => :taggable
   has_many :tags, :through => :taggings
 
