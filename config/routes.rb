@@ -14,6 +14,9 @@ NUACM::Application.routes.draw do
     member { put 'change_password' }
   end
 
+  # Officer routes.
+  resources :officers
+
   # Password Resets.
   resource :password_reset, :except => [:show, :destroy]
 
