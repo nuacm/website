@@ -3,10 +3,13 @@ NUACM::Application.routes.draw do
   get '/',      :to => 'pages#home',  :as => 'home'
   get '/about', :to => 'pages#about', :as => 'about'
 
-  # Events routes.
+  # Event routes.
   resources :events
 
-  # Members routes.
+  # Post routes.
+  resources :posts
+
+  # Member routes.
   resources :members do
     member { put 'change_password' }
   end
@@ -14,7 +17,7 @@ NUACM::Application.routes.draw do
   # Password Resets.
   resource :password_reset, :except => [:show, :destroy]
 
-  # Sessions.
+  # Session routes.
   get    'signup'   => 'members#new',      :as => 'signup'
   delete 'logout'   => 'sessions#destroy', :as => 'logout'
   get    'login'    => 'sessions#new',     :as => 'login'
