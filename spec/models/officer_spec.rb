@@ -13,7 +13,8 @@ describe Officer do
   end
 
   it "can have more than 1 Position" do
-    subject.positions << web_chair << create(:position, :title => "President")
-    subject.positions.count.should eq(2)
+    expect do
+      subject.positions << web_chair << create(:position, :title => "President")
+    end.to change{subject.positions.count}.by(2)
   end
 end
