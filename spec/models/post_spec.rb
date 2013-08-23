@@ -12,7 +12,7 @@ describe Post do
   it { should validate_presence_of :member }
 
   it "validates that the title doesn't end in a period" do
-    create(:post, :title => "This ends in a period.").should_not be_valid
+    build(:post, :title => "This ends in a period.").should_not be_valid
   end
 
 end

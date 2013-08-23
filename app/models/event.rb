@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_many :taggings, :as => :taggable
   has_many :tags, :through => :taggings
 
-  validates :title, :presence => true
+  validates :title, :presence => true, :punctuation => { :without => '\.' }
   validates :description, :presence => true
   validates :location, :presence => true
   validates :start_time, :presence => true

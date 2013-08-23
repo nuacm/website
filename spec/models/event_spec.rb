@@ -15,7 +15,7 @@ describe Event do
   end
 
   it "validates that the title doesn't end in a period" do
-    create(:event, :title => "This ends in a period.").should_not be_valid
+    build(:event, :title => "This ends in a period.").should_not be_valid
   end
 
 end
