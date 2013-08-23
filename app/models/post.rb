@@ -6,6 +6,6 @@ class Post < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :body, :presence => true
-  validates :author, :presence => true
+  validates :member, :presence => true
 
 end
