@@ -9,6 +9,12 @@
 </head>
 <body>
 
+<% if logged_in? :as_officer => true %>
+  <div class="admin">
+    <%= link_to "Create Event", new_event_path %>
+  </div>
+<% end %>
+
 <div class="container">
   <header>
     <%= link_to home_path, :class => "logo" do %>
