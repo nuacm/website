@@ -44,6 +44,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'timecop'
+  gem 'faker'
 end
 
 group :doc do
