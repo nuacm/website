@@ -1,5 +1,11 @@
 class PostsController < ApplicationController
 
+  # Set the @post for all actions that expect an post to
+  # already exist.
+  before_filter :except => [:index, :new, :create] do
+    @post = Post.find(params[:id])
+  end
+
   # Authenticate logged in member is an officer.
   before_filter :except => [:index, :show] do
     logged_in! :as_officer => true
