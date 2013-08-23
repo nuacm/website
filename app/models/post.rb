@@ -6,6 +6,6 @@ class Post < ActiveRecord::Base
 
   validates :title, :presence => true, :punctuation => { :without => '\.' }
   validates :body, :presence => true
-  validates :member, :presence => true
+  validates :member, :presence => true, :officer => true
 
 end

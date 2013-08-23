@@ -17,4 +17,8 @@ describe Post do
     build(:post, :title => "This ends in a period.").should_not be_valid
   end
 
+  it "validates that it's author is an officer" do
+    build(:post, :member => create(:member)).should_not be_valid
+  end
+
 end
