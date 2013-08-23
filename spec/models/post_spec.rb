@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Post do
-  subject { create(:post) }
 
   it { should respond_to :title }
   it { should respond_to :body }
   it { should respond_to :member }
+
+  it { should have_many :taggings }
+  it { should have_many :tags }
 
   it { should validate_presence_of :title }
   it { should validate_presence_of :body }

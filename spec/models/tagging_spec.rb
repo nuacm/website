@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Tagging do
-  pending "TODO: write some specs."
+
+  it { should belong_to :tag }
+  it { should belong_to :taggable }
+
 end
