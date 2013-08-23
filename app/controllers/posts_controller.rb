@@ -16,17 +16,42 @@ class PostsController < ApplicationController
   end
 
   def new
-  end
-
-  def edit
+    @post = Post.new
+    render :edit
   end
 
   def create
+    @post = Post.new(post_params)
+
+    if @post.save
+      redirect_to @post, :notice => "Created post."
+    else
+      render :edit
+    end
   end
 
   def update
+    if @post.update_attributes(post_params)
+      redirect_to @post, :notice => "Updated successfully."
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @post.destroy
+    redirect_to posts_path, :notice => "Post deleted successfully."
+  end
+
+  private
+
+  # Requires
+  # * `:post`
+  # Permits
+  # * `:title`
+  # * `:body`
+  #
+  def post_params
+    params.require(:post).permit(:title, :body)
   end
 end
