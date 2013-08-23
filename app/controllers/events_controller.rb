@@ -1,5 +1,11 @@
 class EventsController < ApplicationController
 
+  # Set the @event for all actions that expect an event to
+  # already exist.
+  before_filter :except => [:index, :new, :create] do
+    @event = Event.find(params[:id])
+  end
+
   # Authenticate logged in member is an officer.
   before_filter :except => [:index, :show] do
     logged_in! :as_officer => true

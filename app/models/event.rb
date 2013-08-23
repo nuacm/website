@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  default_scope { order("start_time ASC") }
 
   has_many :taggings, :as => :taggable
   has_many :tags, :through => :taggings
