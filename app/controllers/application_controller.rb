@@ -74,4 +74,5 @@ class ApplicationController < ActionController::Base
     cookies[:auth_token] = nil
   end
   helper_method :logout!
+
 end

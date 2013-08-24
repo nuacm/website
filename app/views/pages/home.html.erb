@@ -1,3 +1,12 @@
-<p>We are Northeastern University's student chapter of the Association for
-Computing Machinery. Amongst other things, we organize talks and social
-events for the college.</p>
+<div class="col1">
+  <h1><%= @post.title %></h1>
+  <p><%= simple_format @post.body %></p>
+  <i>&mdash; <%= @post.member.name %></i>
+</div>
+
+<div class="col2">
+  <% @events.each do |event| %>
+    <h1><%= event.title %></h1>
+    <p><%= event.description %></p>
+  <% end %>
+</div>

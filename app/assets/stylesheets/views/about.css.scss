@@ -1,0 +1,18 @@
+/* about.css.scss
+This is where styles specific to the about page live. */
+
+.about-box {
+  padding: 50px;
+  color: $grey;
+  line-height: 1.75;
+}
+
+.about-box:nth-child(even) {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  background: #fbfbfb;
+}
+
+.about-box:last-child {
+  margin-bottom: 40px;
+}

@@ -1,36 +1,136 @@
-@import "global";
+/* layout.css.scss
+This is where the layout of the page is defined. If you are looking for a
+place to put element styles or global styles look in styles.css.scss or
+/elements */
 
+body {
+  background-color: white;
+  font: {
+    family: 'Roboto', sans-serif;
+    size: 1.2em;
+  }
+  line-height: 1.2em;
+}
 
-header {
-  width: 400px;
-  margin: 20px auto;
+.container {
+  min-width: $min-page-width;
+}
 
-  /* Logo. */
-  .logo {
-    display: block;
-    text-decoration: none;
-
-    &:hover {
-      color: $blue;
+.navbar-container {
+    width: $content-width;
+    ul {
+      float: right;
     }
-  }
 
-  .navbar {
-    background-color: $lightblue;
-  }
-
-  .navbar-nav {
-    width: 100%;
-    text-align: center;
-
-    li {
-      float: none;
-      display: inline-block;
+    ul li {
+      display: inline;
+      margin-right: 25px;
 
       a {
-        color: #eee;
-        font-size: 16px;
+        color: $blue;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $grey;
+        text-decoration: underline;
+      }
+
+      .active {
+        color: $grey;
       }
     }
+
+    img {
+      max-height: 25px;
+      float: left;
+      margin:18px 0 0 10%;
+    }
+}
+
+.bigpic {
+  background-color: $grey;
+  height: $bigpic-height;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: 100%;
+  min-width: $min-page-width;
+
+  .image-logo {
+    margin: auto;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
+}
+
+
+.columns {
+  width: $content-width;
+  margin: auto;
+  background-color: white;
+  min-height: 400px;
+
+  .col1 {
+    float: left;
+    width: 66%;
+    display: inline-block;
+
+    margin: {
+      right: 1%;
+    }
+  }
+
+  .col2 {
+    float: left;
+    width: 33%;
+    vertical-align: top;
+    display: inline-block;
+
+    .content {
+      padding: 10px 40px;
+    }
+  }
+}
+
+.footer {
+  width: 100%;
+  min-height: 100px;
+  background-color: $grey;
+  color: $whitegrey;
+  font-weight: lighter;
+
+  .content {
+    padding: 1em 0;
+  }
+
+  p:first-of-type {
+    font-weight: lighter;
+    margin-top: 0;
+  }
+
+  input {
+    font-weight: lighter;
+    color: $grey;
+
+    &[type=email] {
+      border: 1px solid #FFFFFF;
+    }
+
+    &[type=submit] {
+      border: 0px;
+    }
+  }
+
+  .signup {
+    margin-bottom: 10px;
+  }
+}
+
+img.events {
+    border-radius:50%;
+
 }

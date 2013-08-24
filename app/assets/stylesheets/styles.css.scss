@@ -1,0 +1,59 @@
+/* global.css.scss
+This is where sitewide styles are defined. Need to style a link or codeblock
+this is the right place. */
+
+a {
+  color: $dutchteal;
+
+  &:visited {
+    color: $oldblue;
+  }
+
+  &:hover {
+    color: $grey;
+  }
+}
+
+input {
+  padding: 2px 10px 5px 10px;
+
+  &[type="submit"] {
+    padding: 3px 10px 6px 10px;
+  }
+}
+
+/* Classes */
+
+.center {
+  text-align: center;
+}
+
+.clearfix {
+  clear:both;
+}
+
+.btn {
+  color: black;
+  background-color: white;
+  display: inline-block;
+  border: 0px;
+}
+
+.notification {
+  text-align: center;
+
+  p {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  &.alert {
+    background-color: $alert;
+    color: $alert-text;
+  }
+
+  &.notice {
+    background-color: $notice;
+    color: $notice-text;
+  }
+}
