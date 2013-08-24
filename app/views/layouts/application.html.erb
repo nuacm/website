@@ -1,55 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Acm</title>
+  <title>Northeastern University ACM</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700|Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="container">
 
-<% if logged_in? :as_officer => true %>
-  <div class="admin">
-    <%= link_to "Create Event", new_event_path %>
-    <%= link_to "Create Post", new_post_path %>
-  </div>
-<% end %>
-
-<div class="container">
-  <header>
-    <%= link_to home_path, :class => "logo" do %>
-      <div><strong>nu</strong>acm</div>
-      <div>northeastern university</div>
+    <% if logged_in? :as_officer => true %>
+      <nav class="admin-nav">
+        <%= link_to current_member.name, member_path(current_member) %>
+        <i><%= link_to "logout", logout_path, :method => :delete %></i>
+        <ul>
+          <li><%= link_to "Create Event", new_event_path %></li>
+          <li><%= link_to "Create Post", new_post_path %></li>
+        </ul>
+      </nav>
     <% end %>
 
-    <div class="navbar">
-      <ul class="nav navbar-nav">
-        <li><%= active_link_to "Home", home_path %></li>
+    <nav class="navbar-container">
+      <a href="/"><img src='/images/logos/logo-blue.png'></a>
+      <ul class="links">
+        <li><%= active_link_to "Events", events_path %></li>
         <li><%= active_link_to "About", about_path %></li>
-        <li><%= active_link_to "Events", '#' %></li>
         <li><%= active_link_to "Members", members_path %></li>
+        <li><%= active_link_to "News", posts_path %></li>
+        <li><%= active_link_to "Join", '#' %></li>
       </ul>
+      <div class="clearfix"></div>
+    </nav>
+
+    <%= bigpic %>
+
+    <% if flash[:alert] %>
+      <div class='notification alert'>
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class='notification notice'>
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end %>
+
+    <div class="columns">
+      <%= yield %>
+      <div class="clearfix"></div>
     </div>
-  </header>
 
-  <% if current_member %>
-    Logged in as <%= current_member.name %>
-    <%= link_to "Log Out", logout_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign Up", signup_path %>
-    <%= link_to "Sign In", login_path %>
-  <% end %>
+    <%= render(:partial => "shared/footer") %>
+  </div>
 
-  <% if flash[:alert] %>
-    <p class='alert'><%=h flash[:alert] %></p>
-  <% end %>
-  <% if flash[:notice] %>
-    <p class='notice'><%=h flash[:notice] %></p>
-  <% end %>
 
-  <%= yield %>
-</div>
 
 </body>
 </html>
