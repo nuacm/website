@@ -1,0 +1,31 @@
+/* admin.css.scss
+This is where styles for admin only features of the site will live. */
+
+.admin-nav {
+  padding: 10px 20px;
+  background-color: $grey;
+  border-bottom: 3px solid #aaaa00;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  i {
+    font-size: 10px;
+  }
+
+  ul {
+    float: right;
+    margin: 0 25px;
+
+    & li {
+      display: inline;
+      margin-right: 25px;
+    }
+  }
+}

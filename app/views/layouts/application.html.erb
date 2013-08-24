@@ -12,9 +12,13 @@
   <div class="container">
 
     <% if logged_in? :as_officer => true %>
-      <nav class="navbar-container admin">
-        <%= link_to "Create Event", new_event_path %>
-        <%= link_to "Create Post", new_post_path %>
+      <nav class="admin-nav">
+        <%= link_to current_member.name, member_path(current_member) %>
+        <i><%= link_to "logout", logout_path, :method => :delete %></i>
+        <ul>
+          <li><%= link_to "Create Event", new_event_path %></li>
+          <li><%= link_to "Create Post", new_post_path %></li>
+        </ul>
       </nav>
     <% end %>
 
