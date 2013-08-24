@@ -26,6 +26,16 @@ body {
     }
 }
 
+a { 
+    color: $dutchteal;
+    &:visited {
+        color: $oldblue;
+    }
+    &:hover {
+        color: $grey;
+    }
+}
+
 .btn {
     color: black;
     background-color: white;
@@ -116,7 +126,7 @@ input {
 .columns {
     width: $content-width;
     margin: auto;
-    background-color: #FFF;
+    background-color: white;
     min-height: 400px;
 
     // Column 1
@@ -186,7 +196,7 @@ input {
 
 .about-box {
     padding:50px;
-    color: #37464A;
+    color: $grey;
     line-height: 1.75;
 }
 
