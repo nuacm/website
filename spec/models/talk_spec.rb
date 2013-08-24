@@ -6,6 +6,4 @@ describe Talk do
 
   it { should be_an(Event) }
 
-  it { create(:talk).talker.should == "Nathan Lilienthal" }
-
 end

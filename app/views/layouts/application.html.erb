@@ -11,6 +11,13 @@
 <body>
   <div class="container">
 
+    <% if logged_in? :as_officer => true %>
+      <nav class="navbar-container admin">
+        <%= link_to "Create Event", new_event_path %>
+        <%= link_to "Create Post", new_post_path %>
+      </nav>
+    <% end %>
+
     <nav class="navbar-container">
       <a href="/"><img src='/images/logos/logo-blue.png'></a>
       <ul class="links">

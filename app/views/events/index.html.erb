@@ -2,7 +2,9 @@
 
 <ul>
   <% @events.each do |event| %>
-    <h2><%= event.title %></h2>
-    <p><%= event.description %></p>
+    <%= link_to event_path(event) do %>
+      <h2><%= event.title %></h2>
+      <p><%= event.description %></p>
+    <% end %>
   <% end %>
 </ul>

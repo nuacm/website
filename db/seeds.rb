@@ -1,67 +1,25 @@
 case Rails.env
 when "development"
+  require "factory_girl_rails"
+  require "faker"
 
-  # Create a Position for your Officer.
-  position = Position.where(:title => "Bishop").first_or_create
+  5.times { FactoryGirl.create(:position) }
+  25.times { FactoryGirl.create(:tag) }
 
-  # Create a few Tags to have handy.
-  tags = [:code, :startup, :ruby, :rails, :avr, :social, :games]
-  tags.each do |tag|
-    Tag.find_or_create_by_name(tag)
+  your_name = Etc.getlogin
+  you = FactoryGirl.create :officer, :name => your_name,
+                                     :email => "#{your_name}@ccs.neu.edu",
+                                     :password => "password"
+
+  100.times { FactoryGirl.create(:member) }
+  10.times { FactoryGirl.create(:event) }
+  20.times { FactoryGirl.create(:talk) }
+  20.times { FactoryGirl.create(:post) }
+  5.times do
+    FactoryGirl.create(:post, :member => you)
   end
 
-  # Create a development Officer.
-  if Officer.count == 0
-    your_name = Etc.getlogin
-    Officer.create :name => your_name,
-                   :email => "#{your_name}@ccs.neu.edu",
-                   :password => "password",
-                   :password_confirmation => "password",
-                   :positions => [position]
-  end
-
-  # Make a Post on the behalf of the first Officer.
-  Officer.first.posts.create :title => "How to build a rails blog",
-                             :body => "Step 1: Open a terminal, Step 2: rails scaffold",
-                             :taggings => [
-                              Tagging.create(:tag => Tag.find_by_name(:code)),
-                              Tagging.create(:tag => Tag.find_by_name(:ruby)),
-                             ]
-
-  # Create a development basic Member.
-  if Member.count <= 1
-    Member.create :name => "Jill Hoft",
-                  :email => "jill-hoft@example.com",
-                  :password => "i-suck@passw0rds",
-                  :password_confirmation => "i-suck@passw0rds"
-  end
-
-  if Talk.count == 0
-    Talk.create :title => "Embedded Ruby",
-                :description => "Write ruby for the embedded world.",
-                :location => "104 WVG",
-                :start_time => DateTime.new(2014,01,6,18,00),
-                :end_time => DateTime.new(2014,01,6,19,00),
-                :talker => "Paul Newman",
-                :taggings => [
-                  Tagging.create(:tag => Tag.find_by_name(:code)),
-                  Tagging.create(:tag => Tag.find_by_name(:ruby)),
-                  Tagging.create(:tag => Tag.find_by_name(:avr))
-                ]
-  end
-
-  if Event.count <= 1
-    Event.create :title => "CCS CS Competition",
-                 :description => "Compete to be the best CS player at NU.",
-                 :location => "102 WVH",
-                 :start_time => DateTime.new(2014,03,12,18,30),
-                 :end_time => DateTime.new(2014,03,12,20,30),
-                 :taggings => [
-                   Tagging.create(:tag => Tag.find_by_name(:social)),
-                   Tagging.create(:tag => Tag.find_by_name(:games))
-                 ]
-  end
-
+  10.times { FactoryGirl.create(:tagging) }
 when "production"
   # maybe one day we'll need this.
 end

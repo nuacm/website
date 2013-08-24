@@ -1,0 +1,22 @@
+<%= form_for @event do |f| %>
+  <% @event.errors.full_messages.each do |error_message| %>
+    <%= error_message %><br>
+  <% end %>
+  <br>
+
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title %><br />
+
+  <%= f.label :location, 'Location' %>
+  <%= f.text_field :location %><br />
+
+  <%= f.label :start_time, 'Start time' %>
+  <%= f.datetime_select :start_time %><br />
+
+  <%= f.label :end_time, 'End time' %>
+  <%= f.datetime_select :end_time %><br />
+
+  <%= f.label :description, 'Description' %>
+  <%= f.text_area :description, :size => '50x6' %><br />
+  <%= f.submit %>
+<% end %>
