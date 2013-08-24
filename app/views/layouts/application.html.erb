@@ -36,14 +36,14 @@
     <%= bigpic %>
 
     <% if flash[:alert] %>
-      <div class='alert notification'>
-        <p><%=h flash[:alert] %></p>
+      <div class='notification alert'>
+        <p><%= flash[:alert] %></p>
       </div>
     <% end %>
 
     <% if flash[:notice] %>
-      <div class='notice notification'>
-        <p><%=h flash[:notice] %></p>
+      <div class='notification notice'>
+        <p><%= flash[:notice] %></p>
       </div>
     <% end %>
 

@@ -40,9 +40,6 @@ input {
 }
 
 .notification {
-  width: 90%;
-  background-color: white;
-  margin: auto;
   text-align: center;
 
   p {
@@ -52,10 +49,11 @@ input {
 
   &.alert {
     background-color: $alert;
-    color: white;
+    color: $alert-text;
   }
 
   &.notice {
-    background-color: $success;
+    background-color: $notice;
+    color: $notice-text;
   }
 }
