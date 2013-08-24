@@ -48,9 +48,8 @@
     <% end %>
 
     <div class="columns">
-      <div class="content">
-          <%= yield %>
-      </div>
+      <%= yield %>
+      <div class="clearfix"></div>
     </div>
 
     <%= render(:partial => "shared/footer") %>

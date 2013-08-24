@@ -75,19 +75,17 @@ body {
   min-height: 400px;
 
   .col1 {
+    float: left;
     width: 66%;
     display: inline-block;
 
     margin: {
       right: 1%;
     }
-
-    .content {
-      padding-left: 20px;
-    }
   }
 
   .col2 {
+    float: left;
     width: 33%;
     vertical-align: top;
     display: inline-block;
