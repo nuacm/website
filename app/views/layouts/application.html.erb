@@ -11,13 +11,17 @@
 <body>
 
   <% if logged_in? :as_officer => true %>
-  <nav class="navbar navbar-inverse admin-nav">
-    <%= link_to current_member.name, member_path(current_member) %>
-    <i><%= link_to "logout", logout_path, :method => :delete %></i>
-    <ul>
-      <li><%= link_to "Create Event", new_event_path %></li>
-      <li><%= link_to "Create Post", new_post_path %></li>
-    </ul>
+  <nav class="navbar navbar-inverse navbar-static-top admin-nav">
+    <div class="container">
+      <%= link_to current_member.name, member_path(current_member), :class => "navbar-brand" %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "logout", logout_path, :method => :delete %></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "Create Event", new_event_path %></li>
+        <li><%= link_to "Create Post", new_post_path %></li>
+      </ul>
+    </div>
   </nav>
   <% end %>
 
