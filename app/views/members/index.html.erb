@@ -1,7 +1,11 @@
-<h1 class="center">Members</h1>
+<div class="container content">
+  <h1>Members</h1>
 
-<ul>
-  <% @members.each do |member| %>
-    <li><%= link_to member.name, member_path(member) %></li>
-  <% end %>
-</ul>
+  <p>As an ACM member, you get access to stuff.</p>
+
+  <ul id="members">
+    <% @members.each do |member| %>
+      <li><%= link_to member.name, member_path(member) %></li>
+    <% end %>
+  </ul>
+</div>

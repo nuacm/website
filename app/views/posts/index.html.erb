@@ -1,10 +1,12 @@
-<h1>Posts</h1>
+<div class="container">
+  <h1>NUACM Newsroom</h1>
 
-<ul>
-  <% @posts.each do |post| %>
-    <%= link_to post_path(post) do %>
-        <h2><%= post.title %></h2>
-        <p><%= post.body %></p>
-      <% end %>
-  <% end %>
-</ul>
+  <ol id="posts">
+    <% @posts.each do |post| %>
+    <div class="post">
+      <h2><%= link_to post.title, post_path(post) %></h2>
+      <p><%= post.body %></p>
+    </div>
+    <% end %>
+  </ol>
+</div>

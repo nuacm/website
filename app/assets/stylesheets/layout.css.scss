@@ -4,133 +4,48 @@ place to put element styles or global styles look in styles.css.scss or
 /elements */
 
 body {
-  background-color: white;
-  font: {
-    family: 'Roboto', sans-serif;
-    size: 1.2em;
+  background-image: url('/images/square_bg.png');
+  background-color: #DDD;
+}
+
+.navbar {
+  margin-bottom: 0;
+
+  .navbar-brand img {
+    max-width: 5em;
   }
-  line-height: 1.2em;
 }
 
-.container {
-  min-width: $min-page-width;
-}
-
-.navbar-container {
-    width: $content-width;
-    ul {
-      float: right;
-    }
-
-    ul li {
-      display: inline;
-      margin-right: 25px;
-
-      a {
-        color: $blue;
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: $grey;
-        text-decoration: underline;
-      }
-
-      .active {
-        color: $grey;
-      }
-    }
-
-    img {
-      max-height: 25px;
-      float: left;
-      margin:18px 0 0 10%;
-    }
-}
-
-.bigpic {
-  background-color: $grey;
-  height: $bigpic-height;
+#pitch {
+  // This used to be a random image, but this setup isn't compatible
+  // with the way we were doing it before. Womp womp.
+  background: url('/images/selfie.jpg');
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 100%;
-  min-width: $min-page-width;
+  background-size: cover;
+  padding: 2em 0;
+  color: #FFF;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  height: 350px;
+  margin-bottom: 2em;
 
-  .image-logo {
-    margin: auto;
-    height: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
+  .jumbotron {
+    background: none;
 
-
-.columns {
-  width: $content-width;
-  margin: auto;
-  background-color: white;
-  min-height: 400px;
-
-  .col1 {
-    float: left;
-    width: 66%;
-    display: inline-block;
-
-    margin: {
-      right: 1%;
-    }
-  }
-
-  .col2 {
-    float: left;
-    width: 33%;
-    vertical-align: top;
-    display: inline-block;
-
-    .content {
-      padding: 10px 40px;
+    .lead {
+      font-size: 2em;
     }
   }
 }
 
-.footer {
-  width: 100%;
-  min-height: 100px;
-  background-color: $grey;
-  color: $whitegrey;
-  font-weight: lighter;
+#footer {
+  background-image: url('/images/square_bg.png');
+  background: $dark;
+  color: #FFF;
+  text-align: center;
 
-  .content {
+  &> div {
     padding: 1em 0;
   }
-
-  p:first-of-type {
-    font-weight: lighter;
-    margin-top: 0;
-  }
-
-  input {
-    font-weight: lighter;
-    color: $grey;
-
-    &[type=email] {
-      border: 1px solid #FFFFFF;
-    }
-
-    &[type=submit] {
-      border: 0px;
-    }
-  }
-
-  .signup {
-    margin-bottom: 10px;
-  }
-}
-
-img.events {
-    border-radius:50%;
-
 }

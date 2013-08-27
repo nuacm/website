@@ -1,7 +1,6 @@
 common: &common
   adapter: postgresql
-  username: postgres
-  password: password
+  username: ali
   host: localhost
   pool: 5
 

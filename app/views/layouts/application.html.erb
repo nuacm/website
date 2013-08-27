@@ -9,54 +9,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="container">
 
-    <% if logged_in? :as_officer => true %>
-      <nav class="admin-nav">
-        <%= link_to current_member.name, member_path(current_member) %>
-        <i><%= link_to "logout", logout_path, :method => :delete %></i>
-        <ul>
-          <li><%= link_to "Create Event", new_event_path %></li>
-          <li><%= link_to "Create Post", new_post_path %></li>
-        </ul>
-      </nav>
-    <% end %>
+  <% if logged_in? :as_officer => true %>
+  <nav class="navbar navbar-inverse admin-nav">
+    <%= link_to current_member.name, member_path(current_member) %>
+    <i><%= link_to "logout", logout_path, :method => :delete %></i>
+    <ul>
+      <li><%= link_to "Create Event", new_event_path %></li>
+      <li><%= link_to "Create Post", new_post_path %></li>
+    </ul>
+  </nav>
+  <% end %>
 
-    <nav class="navbar-container">
-      <a href="/"><img src='/images/logos/logo-blue.png'></a>
-      <ul class="links">
+  <nav class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/images/logos/logo-white.png" alt="NU ACM">
+      </a>
+
+      <ul class="nav navbar-nav pull-right">
         <li><%= active_link_to "Events", events_path %></li>
         <li><%= active_link_to "About", about_path %></li>
         <li><%= active_link_to "Members", members_path %></li>
         <li><%= active_link_to "News", posts_path %></li>
         <li><%= active_link_to "Join", '#' %></li>
       </ul>
-      <div class="clearfix"></div>
-    </nav>
-
-    <%= bigpic %>
-
-    <% if flash[:alert] %>
-      <div class='notification alert'>
-        <p><%= flash[:alert] %></p>
-      </div>
-    <% end %>
-
-    <% if flash[:notice] %>
-      <div class='notification notice'>
-        <p><%= flash[:notice] %></p>
-      </div>
-    <% end %>
-
-    <div class="columns">
-      <%= yield %>
-      <div class="clearfix"></div>
     </div>
+  </nav>
 
-    <%= render(:partial => "shared/footer") %>
+  <div id="pitch">
+    <div class="container">
+      <div class="row jumbotron">
+        <h1>We run cool events</h1>
+        <p class="lead">
+          Talks, hackathons, and meetups.
+        </p>
+      </div>
+    </div>
   </div>
 
+  <% if flash[:alert] %>
+    <div class="alert alert-info">
+      <p><%= flash[:alert] %></p>
+    </div>
+  <% end %>
 
+  <% if flash[:notice] %>
+    <div class="alert alert-info">
+      <p><%= flash[:notice] %></p>
+    </div>
+  <% end %>
 
+  <%= yield %>
+
+  <%= render(:partial => "shared/footer") %>
 </body>
 </html>
