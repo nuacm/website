@@ -7,11 +7,19 @@
 </div>
 
 <div id="events" class="col-lg-4 col-lg-offset-1">
-  <h2>Upcoming Events</h2>
-  <% @events.each do |event| %>
-    <div class="entry">
-      <h4><%= event.title %></h4>
-      <p><%= event.description %></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Upcoming Events</h3>
     </div>
-  <% end %>
+    <div class="panel-body">
+      <% @events.each do |event| %>
+      <div class="entry">
+        <h4><%= event.title %></h4>
+        <p><span class="glyphicon glyphicon-time"></span> <%= event.start_time.localtime.strftime("%m/%d/%Y - %I:%M %p") %></p>
+        <p><span class="glyphicon glyphicon-map-marker"></span> <%= event.location %></p>
+        <p><%= event.description %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>
