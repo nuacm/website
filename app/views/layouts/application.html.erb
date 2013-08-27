@@ -52,19 +52,19 @@
     </div>
   </div>
 
-  <% if flash[:alert] %>
-    <div class="alert alert-info">
-      <p><%= flash[:alert] %></p>
-    </div>
-  <% end %>
-
-  <% if flash[:notice] %>
-    <div class="alert alert-info">
-      <p><%= flash[:notice] %></p>
-    </div>
-  <% end %>
-
   <div class="container">
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <p><%= flash[:alert] %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </div>
 
