@@ -66,33 +66,60 @@ describe MembersController do
 
   describe "POST #create" do
     context "with valid params" do
-      let(:params) { attributes_for(:member) }
+      context "for basic member" do
+        let(:params) { attributes_for(:member) }
 
-      it "creates a new record for the member" do
-        post :create, :member => params
-        assigns(:member).should be_persisted
-        assigns(:member).email.should eq(params[:email])
+        it "creates a new record for the member" do
+          post :create, :member => params
+          assigns(:member).should be_persisted
+          assigns(:member).email.should eq(params[:email])
+        end
+
+        it "redirects to show view" do
+          post :create, :member => params
+          expect(response).to redirect_to(member_path(assigns(:member)))
+        end
+
+        it "has a notice flash message" do
+          post :create, :member => params
+          flash[:notice].should_not be_nil
+        end
+
+        it "doesn't log in the member" do
+          post :create, :member => params
+          @controller.send(:logged_in?, {:as_member => assigns(:member)}).should_not be_true
+        end
       end
 
-      it "redirects to show view" do
-        post :create, :member => params
-        expect(response).to redirect_to(member_path(assigns(:member)))
-      end
+      context "for secure member" do
+        let(:params) { attributes_for(:secure_member) }
 
-      it "has a notice flash message" do
-        post :create, :member => params
-        flash[:notice].should_not be_nil
-      end
+        it "creates a new record for the member" do
+          post :create, :member => params
+          assigns(:member).should be_persisted
+          assigns(:member).email.should eq(params[:email])
+        end
 
-      it "logs in the member" do
-        post :create, :member => params
-        @controller.send(:logged_in?, {:as_member => assigns(:member)}).should be_true
+        it "redirects to show view" do
+          post :create, :member => params
+          expect(response).to redirect_to(member_path(assigns(:member)))
+        end
+
+        it "has a notice flash message" do
+          post :create, :member => params
+          flash[:notice].should_not be_nil
+        end
+
+        it "logs in the member" do
+          post :create, :member => params
+          @controller.send(:logged_in?, {:as_member => assigns(:member)}).should be_true
+        end
       end
     end
 
     context "with invalid params" do
       it "requires member parameter" do
-        expect { post :create, :foobar => {} }.to raise_error(ActionController::ParameterMissing)
+        expect { post :create, :foobar => {} }.to raise_error
       end
 
       context "with existing email" do
@@ -124,7 +151,7 @@ describe MembersController do
   end
 
   describe "GET #edit" do
-    let(:member) { create(:member) }
+    let(:member) { create(:secure_member) }
 
     shared_examples "an edit with access" do
       it "responds successfully with an HTTP 200 status code" do
@@ -155,7 +182,7 @@ describe MembersController do
     end
 
     context "as other member" do
-      before { @controller.send(:login!, create(:member)) }
+      before { @controller.send(:login!, create(:secure_member)) }
 
       it "redirects home" do
         get :edit, :id => member.id
@@ -170,7 +197,7 @@ describe MembersController do
   end
 
   describe "PATCH/PUT #update" do
-    let(:member) { create(:member) }
+    let(:member) { create(:secure_member) }
 
     shared_examples "an update with access" do
       context "with valid params" do
@@ -258,7 +285,7 @@ describe MembersController do
   end
 
   describe "DELETE #destroy" do
-    let(:member) { create(:member) }
+    let(:member) { create(:secure_member) }
 
     shared_examples "a destroy with access" do
       it "destorys the member" do
@@ -304,7 +331,7 @@ describe MembersController do
   end
 
   describe "PUT #change_password" do
-    let(:member) { create(:member) }
+    let(:member) { create(:secure_member) }
     let(:params) do
       { :old_password => member.password,
         :password => "gl0ry!ous",

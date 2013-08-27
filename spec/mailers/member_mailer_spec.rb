@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe MemberMailer do
   describe "password_reset" do
-    let(:member) { member = create(:member) }
+    let(:member) { member = create(:secure_member) }
     let(:mail) { member.send_password_reset }
 
     it "sends the message to the right email" do
