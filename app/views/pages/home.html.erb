@@ -15,9 +15,15 @@
       <% @events.each do |event| %>
       <div class="entry">
         <h4><%= event.title %></h4>
-        <p><span class="glyphicon glyphicon-time"></span> <%= event.start_time.localtime.strftime("%m/%d/%Y - %I:%M %p") %></p>
-        <p><span class="glyphicon glyphicon-map-marker"></span> <%= event.location %></p>
+        <p>
+          <span class="glyphicon glyphicon-calendar"></span> <%= event.start_time.localtime.strftime("%m/%d") %>
+          <span class="glyphicon glyphicon-time"></span> <%= event.start_time.localtime.strftime("%I:%M %p") %>
+          <span class="glyphicon glyphicon-map-marker"></span> <%= event.location %>
+        </p>
         <p><%= event.description %></p>
+        <% event.tags.each do |tag| %>
+          <span class="label label-default"><%= tag.name %></span>
+        <% end %>
       </div>
       <% end %>
     </div>
