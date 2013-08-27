@@ -25,11 +25,11 @@
   </nav>
   <% end %>
 
-  <nav class="navbar navbar-inverse navbar-static-top">
+  <nav class="navbar navbar-static-top">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="/images/logos/logo-white.png" alt="NU ACM">
-      </a>
+      <%= link_to home_path, :class => "navbar-brand" do %>
+        <%= image_tag "logo-blue.png", :alt => "NUACM" %>
+      <% end %>
 
       <ul class="nav navbar-nav pull-right">
         <li><%= active_link_to "Events", events_path %></li>

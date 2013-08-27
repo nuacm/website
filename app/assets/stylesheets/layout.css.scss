@@ -3,16 +3,19 @@ This is where the layout of the page is defined. If you are looking for a
 place to put element styles or global styles look in styles.css.scss or
 /elements */
 
-body {
-  // background-image: url('/images/square_bg.png');
-  // background-color: #DDD;
-}
-
 .navbar {
   margin-bottom: 0;
 
-  .navbar-brand img {
-    max-width: 5em;
+  .navbar-brand {
+    padding: 13px;
+
+    img {
+      max-height: 20px;
+    }
+  }
+
+  ul {
+    height: 100%;
   }
 }
 
