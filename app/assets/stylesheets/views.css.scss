@@ -1,11 +1,3 @@
+@import "views/home";
 @import "views/about";
-
-// Should go in views/home or something:
-#events h3 {
-  margin-top: 0;
-}
-
-// Should go in views/posts or something:
-ol#posts, ol#events {
-  padding: 0;
-}
+@import "views/posts";
