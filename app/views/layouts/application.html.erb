@@ -25,18 +25,18 @@
   </nav>
   <% end %>
 
-  <nav class="navbar navbar-static-top">
+  <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <%= link_to home_path, :class => "navbar-brand" do %>
         <%= image_tag "logo-blue.png", :alt => "NUACM" %>
       <% end %>
 
       <ul class="nav navbar-nav pull-right">
-        <li><%= active_link_to "Events", events_path %></li>
-        <li><%= active_link_to "About", about_path %></li>
-        <li><%= active_link_to "Members", members_path %></li>
-        <li><%= active_link_to "News", posts_path %></li>
-        <li><%= active_link_to "Join", '#' %></li>
+        <%= active_link_to "Events", events_path, :li => true %>
+        <%= active_link_to "About", about_path, :li => true %>
+        <%= active_link_to "Members", members_path, :li => true %>
+        <%= active_link_to "News", posts_path, :li => true %>
+        <%= active_link_to "Join", '#', :li => true %>
       </ul>
     </div>
   </nav>
