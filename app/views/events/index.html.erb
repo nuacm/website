@@ -1,12 +1,10 @@
-<div class="container">
-  <h1>Events</h1>
+<h1>Events</h1>
 
-  <ol id="events">
-    <% @events.each do |event| %>
-    <div class="event">
-      <h2><%= link_to event.title, event_path(event) %></h2>
-      <p><%= event.description %></p>
-    </div>
-    <% end %>
-  </ol>
-</div>
+<ol id="events">
+  <% @events.each do |event| %>
+  <div class="event">
+    <h2><%= link_to event.title, event_path(event) %></h2>
+    <p><%= event.description %></p>
+  </div>
+  <% end %>
+</ol>

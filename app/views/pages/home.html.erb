@@ -1,23 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div id="posts" class="col-lg-7">
-      <div class="post">
-        <h1><%= @post.title %></h1>
-        <p><%= simple_format @post.body %></p>
-        <i>&mdash; <%= @post.member.name %></i>
-      </div>
+<div class="row">
+  <div id="posts" class="col-lg-7">
+    <div class="post">
+      <h1><%= @post.title %></h1>
+      <p><%= simple_format @post.body %></p>
+      <i>&mdash; <%= @post.member.name %></i>
     </div>
+  </div>
 
-    <div id="events" class="col-lg-4 col-lg-offset-1">
-      <div class="col2">
-        <h3>Join us at our next event!</h3>
-        <% @events.each do |event| %>
-          <div class="event">
-            <h4><%= event.title %></h4>
-            <p><%= event.description %></p>
-          </div>
-        <% end %>
-      </div>
+  <div id="events" class="col-lg-4 col-lg-offset-1">
+    <div class="col2">
+      <h3>Join us at our next event!</h3>
+      <% @events.each do |event| %>
+        <div class="event">
+          <h4><%= event.title %></h4>
+          <p><%= event.description %></p>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
