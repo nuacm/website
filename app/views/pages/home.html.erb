@@ -1,7 +1,9 @@
 <div id="posts" class="col-lg-7">
   <div>
-    <h1><%= @post.title %></h1>
-    <i>&mdash; <%= @post.member.name %></i>
+    <h1><%= @post.title %> <small><%= @post.member.name %></small></h1>
+    <% @post.tags.each do |tag| %>
+      <span class="label label-default"><%= tag.name %></span>
+    <% end %>
     <p><%= simple_format @post.body %></p>
   </div>
 </div>
