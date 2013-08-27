@@ -2,7 +2,7 @@
 
 <ol id="posts">
   <% @posts.each do |post| %>
-  <div class="post">
+  <div class="entry">
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>
   </div>

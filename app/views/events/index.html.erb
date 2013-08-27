@@ -2,7 +2,7 @@
 
 <ol id="events">
   <% @events.each do |event| %>
-  <div class="event">
+  <div class="entry">
     <h2><%= link_to event.title, event_path(event) %></h2>
     <p><%= event.description %></p>
   </div>
