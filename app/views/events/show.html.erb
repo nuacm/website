@@ -1,23 +1,31 @@
-<h1><%= @event.title %></h1>
-
-<p>At <span style="text-decoration:underline"><%= @event.location %></span></p>
-<% if @event.end_time %>
-  <p>From <span style="text-decoration:underline"><%= l @event.start_time %></span> to <span style="text-decoration:underline"><%= l @event.end_time %></span></p>
-<% else %>
-  <p>On <%= @event.start_time %></p>
-<% end %>
-
-<p><%= @event.description %></p>
-
-<% unless @event.tags.empty? %>
-  <div style="padding:5px;background-color:#eee">
-    <% @event.tags.each do |tag| %>
-      <span><%= tag.name %></span>
+<div id="event">
+  <h1>
+    <%= @event.title %>
+    <% if logged_in? :as_officer => true %>
+    <small>
+      <%= link_to 'Edit', edit_event_path(@event) %>
+      <%= link_to 'Delete', event_path(@event), :confirm => "Are you sure?", :method => :delete %>
+    </small>
     <% end %>
-  </div>
-<% end %>
+  </h1>
 
-<% if logged_in? :as_officer => true %>
-  <%= link_to 'Edit', edit_event_path(@event) %>
-  <%= link_to 'Delete', event_path(@event), :confirm => "Are you sure?", :method => :delete %>
-<% end %>
+  <p>
+    <span class="glyphicon glyphicon-calendar"></span> <%= @event.start_time.localtime.strftime("%m/%d/%y") %>
+    <span class="glyphicon glyphicon-time"></span> <%= @event.start_time.localtime.strftime("%I:%M %p") %>
+    <% if @event.end_time %>
+      <span class="glyphicon glyphicon-arrow-right" style="padding: 0 10px;"></span>
+      <span class="glyphicon glyphicon-calendar"></span> <%= @event.end_time.localtime.strftime("%m/%d/%y") %>
+      <span class="glyphicon glyphicon-time"></span> <%= @event.end_time.localtime.strftime("%I:%M %p") %>
+    <% end %>
+  </p>
+
+  <p>
+    <span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %>
+  </p>
+
+  <p><%= @event.description %></p>
+
+  <% @event.tags.each do |tag| %>
+    <span class="label label-default"><%= tag.name %></span>
+  <% end %>
+</div>

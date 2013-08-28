@@ -1,10 +1,25 @@
-<h1>Events</h1>
-
-<ol id="events">
-  <% @events.each do |event| %>
-  <div class="entry">
-    <h2><%= link_to event.title, event_path(event) %></h2>
-    <p><%= event.description %></p>
+<div class="events col-lg-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Upcoming Events</h3>
+    </div>
+    <div class="panel-body">
+      <% @upcoming_events.each do |event| %>
+        <%= render "shared/event", :event => event %>
+      <% end %>
+    </div>
   </div>
-  <% end %>
-</ol>
+</div>
+
+<div class="events col-lg-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3>Past Events</h3>
+    </div>
+    <div class="panel-body">
+      <% @past_events.each do |event| %>
+        <%= render "shared/event", :event => event %>
+      <% end %>
+    </div>
+  </div>
+</div>
