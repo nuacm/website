@@ -1,28 +1,28 @@
 <div class="container">
 <div class="row">
 
-	<div class="col-lg-9 col-md-9">
-		<h1>Members</h1>
-			<div class="row">
+  <div class="col-lg-9 col-md-9">
+    <h1>Members</h1>
+      <div class="row">
 
-				<ul id="members">
-				  <% @members.each do |member| %>
-				  	<div class="col-lg-4 col-md-4">
-				    	<h3><%= link_to member.name, member_path(member) %></h3>
-				    	<p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
-						</div>
-				  <% end %>
-				</ul>
+        <ul id="members">
+          <% @members.each do |member| %>
+            <div class="col-lg-4 col-md-4">
+              <h3><%= link_to member.name, member_path(member) %></h3>
+              <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
+            </div>
+          <% end %>
+        </ul>
 
-			</div>
-	</div>
+      </div>
+  </div>
 
-	<div class="col-lg-3 col-md-3">
-		<h1>Benefits</h1>
-		<p>As an ACM member, you get access to stuff.</p>
-		<p>For $10 a year, you get a cool t-shirt, your name and/or other info listed on the left, and the warm fuzzy feeling that comes with supporting a student organization.</p>
-		<a class="btn btn-success btn-lg btn-block" href="#">Join NU ACM!</a>
-	</div>
+  <div class="col-lg-3 col-md-3">
+    <h1>Benefits</h1>
+    <p>As an ACM member, you get access to stuff.</p>
+    <p>For $10 a year, you get a cool t-shirt, your name and/or other info listed on the left, and the warm fuzzy feeling that comes with supporting a student organization.</p>
+    <a class="btn btn-success btn-lg btn-block" href="#">Join NU ACM!</a>
+  </div>
 
 
 </div>
