@@ -20,10 +20,14 @@ class MembersController < ApplicationController
   end
 
   def create
-    @member = Member.new(member_params :allow_password => true)
+    if params[:member][:password]
+      @member = SecureMember.new(member_params :allow_password => true)
+    else
+      @member = Member.new(member_params)
+    end
 
     if @member.save
-      login! @member
+      login! @member if params[:member][:password]
       redirect_to @member, :notice => "Signed up successfully."
     else
       render :new

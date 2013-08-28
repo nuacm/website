@@ -1,4 +1,4 @@
-class Officer < Member
+class Officer < SecureMember
 
   has_and_belongs_to_many :positions, foreign_key: "member_id"
   has_many :posts, :as => :member

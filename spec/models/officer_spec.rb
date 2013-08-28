@@ -4,7 +4,7 @@ describe Officer do
   subject { create(:officer) }
   let(:web_chair) { create(:position, :title => "Web Chair") }
 
-  it { should be_a(Member) }
+  it { should be_a(SecureMember) }
 
   it "has a Positions relation" do
     subject.positions << web_chair

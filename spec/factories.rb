@@ -17,12 +17,15 @@ FactoryGirl.define do
   factory :member do
     name { Faker::Name.name }
     email { Faker::Internet.email }
-    password { Faker::Internet.email }
-    password_confirmation { |m| m.password }
 
-    factory :officer, :class => Officer do
-      after(:create) do |officer, evaluator|
-        officer.positions << create(:position)
+    factory :secure_member, :class => SecureMember do
+      password { Faker::Internet.email }
+      password_confirmation { |m| m.password }
+
+      factory :officer, :class => Officer do
+        after(:create) do |officer, evaluator|
+          officer.positions << create(:position)
+        end
       end
     end
   end
