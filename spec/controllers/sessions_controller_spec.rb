@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
-  let(:member) { create(:member) }
+  let(:member) { create(:secure_member) }
 
   describe "GET #new" do
     it "responds successfully with an HTTP 200 status code" do
