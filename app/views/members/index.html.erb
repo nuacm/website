@@ -6,7 +6,7 @@
   <% @members.each do |member| %>
   <div class="entry">
     <h3><%= link_to member.name, member_path(member) %></h3>
-    <p><%= member.email %></p>
+    <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
   </div>
   <% end %>
 </ul>
