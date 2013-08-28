@@ -16,7 +16,7 @@
     <div class="panel-body">
       <% @events.each do |event| %>
       <div class="entry">
-        <h4><%= event.title %></h4>
+        <h4><%= link_to event.title, event_path(event) %></h4>
         <p>
           <span class="glyphicon glyphicon-calendar"></span> <%= event.start_time.localtime.strftime("%m/%d") %>
           <span class="glyphicon glyphicon-time"></span> <%= event.start_time.localtime.strftime("%I:%M %p") %>
