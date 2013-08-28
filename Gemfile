@@ -22,6 +22,9 @@ gem 'valid_email'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+# Mailchimp for getting members on the mailling list.
+gem 'mailchimp-api', require: "mailchimp"
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
