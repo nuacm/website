@@ -8,8 +8,10 @@
         <ul id="members">
           <% @members.each do |member| %>
             <div class="col-lg-4 col-md-4">
+              <div class="single">
               <h3><%= link_to member.name, member_path(member) %></h3>
               <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
+              </div>
             </div>
           <% end %>
         </ul>
