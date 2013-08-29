@@ -11,12 +11,13 @@
 <div class="events col-lg-4 col-lg-offset-1">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3>Upcoming <%= link_to "Events", events_path %></h3>
+      <h3>Upcoming Events</h3>
     </div>
     <div class="panel-body">
       <% @events.each do |event| %>
         <%= render "shared/event", :event => event %>
       <% end %>
     </div>
+    <div class="panel-footer"><%= link_to "View more events", events_path %></div>
   </div>
 </div>
