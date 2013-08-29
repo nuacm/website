@@ -48,7 +48,7 @@ place to put element styles or global styles look in styles.css.scss or
   color: #FFF;
   text-align: center;
 
-  &> div {
-    padding: 1em 0;
+  p {
+    margin: .96em 0;
   }
 }
