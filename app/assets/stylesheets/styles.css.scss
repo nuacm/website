@@ -10,28 +10,3 @@ this is the right place. */
     background-color: #eee;
   }
 }
-
-.single {
-  background-color: $whitegrey;
-  padding: 12px;
-  margin-bottom: 12px;
-  min-height: 121px;
-
-    h3 {
-      margin-top: .25em;
-    }
-
-    .email {
-      overflow:hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; 
-      width: 90%;
-
-      &:hover {
-        overflow: visible;
-        width: 100%;
-        font-size: .84em;   // If nobody has super-long email addresses, 
-                            // we should get rid of this whole block.
-      }
-    }
-}
