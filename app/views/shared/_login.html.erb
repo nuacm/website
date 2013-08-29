@@ -1,9 +1,0 @@
-<div class="login">
-	<% if current_member %>
-	  <div class="logged-in">Welcome, <%= current_member.name %></div>
-	  <div class="log-out btn"><%= link_to "Log Out", logout_path, :method => :delete %></div>
-	<% else %>
-	  <div class="sign-up btn"><%= link_to "Sign Up", signup_path %></div>
-	  <div class="sign-in btn"><%= link_to "Sign In", login_path %></div>
-	<% end %>
-</div>
