@@ -5,8 +5,8 @@ class Member < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, :email => true
 
   before_create { create_authorization_key }
-  after_create { subscribe_to("ACM Members") }
-  after_destroy { unsubscribe_from("ACM Members") }
+  after_create { subscribe_to("ACM Members") if Rails.env == :production }
+  after_destroy { unsubscribe_from("ACM Members") if Rails.env == :production }
 
   has_one :authorization_key,
           -> { where :key_type => "authorization_key" },
