@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :event do
     title { Faker::Lorem.sentence(3, false, 2).chomp('.') }
     description { Faker::Lorem.paragraphs(2).join("\n") }
-    start_time { Random.rand(2.years).from_now }
+    start_time { Random.rand(2.years).from_now - 1.year }
     end_time { |e| e.start_time + Random.rand(24).hours }
     location { Faker::Address.street_address }
 
