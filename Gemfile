@@ -23,7 +23,7 @@ gem 'valid_email'
 gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Mailchimp for getting members on the mailling list.
-gem 'mailchimp-api', require: "mailchimp"
+gem 'gibbon'
 
 # Use unicorn as the app server
 # gem 'unicorn'

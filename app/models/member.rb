@@ -32,20 +32,23 @@ class Member < ActiveRecord::Base
 
   # subscribe_to String ->
   def subscribe_to(list_name)
-    mailchimp = Mailchimp::API.new(NUACM::Application.config.mailchimp_api_key)
-    list = mailchimp.lists.list['data'].find { |l| l['name'] == list_name }
-    id = list['id']
-    mailchimp.lists.subscribe id, { 'email' => self.email }
+    list = Gibbon::API.lists.list({ :filters => { :list_name => list_name } })['data'].first
+    name_parts = self.name.split(' ')
+    request = {
+      :id => list['id'],
+      :email => { :email => self.email },
+      :merge_vars => { :FNAME => name_parts[0], :LNAME => name_parts[1..-1].join(' ') },
+    }
+    Gibbon::API.lists.subscribe(request)
   end
 
   # unsubscribe_from String ->
   def unsubscribe_from(list_name)
-    mailchimp = Mailchimp::API.new(NUACM::Application.config.mailchimp_api_key)
-    list = mailchimp.lists.list['data'].find { |l| l['name'] == list_name }
-    id = list['id']
-    begin
-      mailchimp.lists.unsubscribe id, { 'email' => self.email }
-    rescue Mailchimp::EmailNotExistsError
-    end
+    list = Gibbon::API.lists.list({ :filters => { :list_name => list_name } })['data'].first
+    request = {
+      :id => list['id'],
+      :email => { :email => self.email },
+    }
+    Gibbon::API.lists.unsubscribe(request)
   end
 end
