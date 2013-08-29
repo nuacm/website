@@ -12,7 +12,10 @@
   </div>
 <% end %>
 
+
 <% if logged_in? :as_officer => true %>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  <%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete %>
+<div class="well">
+  <%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-default" %>
+  <%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %>
+</div>
 <% end %>
