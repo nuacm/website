@@ -1,6 +1,20 @@
 /* events.css.scss
 This is where styles specific to the events page live. */
 
-ol#events {
-  padding: 0;
+.events {
+  h3 {
+    margin: 3px 0;
+  }
+
+  .panel-body {
+    padding: 0;
+  }
+
+  .entry {
+    margin-bottom: 0;
+  }
+}
+
+#event {
+  margin-bottom: 20px;
 }

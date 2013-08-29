@@ -10,6 +10,14 @@ class Event < ActiveRecord::Base
   validates :start_time, :presence => true
   validate :end_time_after_start_time
 
+  def self.upcoming
+    where ["start_time >= ?", DateTime.current.midnight]
+  end
+
+  def self.past
+    where ["start_time < ?", DateTime.current.midnight]
+  end
+
   private
 
   def end_time_after_start_time
