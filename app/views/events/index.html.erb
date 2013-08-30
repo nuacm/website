@@ -1,7 +1,15 @@
 <div class="col-lg-12">
   <% if logged_in? :as_officer => true %>
-  <div class="well">
-    <%= link_to 'Create', new_event_path, :class => "btn btn-primary" %>
+  <div class="well admin">
+    <ul>
+      <li><code>Next event in <%= distance_of_time_in_words(DateTime.current, @upcoming_events.first.start_time) %>.</code></li>
+      <li><code><%= @upcoming_events.size %> upcoming events.</code></li>
+      <li><code><%= @past_events.size %> past events.</code></li>
+    </ul>
+    <ul class="pull-right">
+      <li><%= link_to 'Create', new_event_path, :class => "btn btn-primary" %></li>
+    </ul>
+    <div class="clearfix"></div>
   </div>
   <% end %>
 </div>

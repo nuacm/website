@@ -16,3 +16,16 @@ This is where styles for admin only features of the site will live. */
     margin: 0;
   }
 }
+
+.admin {
+
+  ul, li {
+    display: inline-block;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+}
