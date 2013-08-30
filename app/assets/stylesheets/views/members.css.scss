@@ -15,18 +15,24 @@ ul#members {
     h3 {
       margin-top: .25em;
     }
+}
 
-    .email {
-      overflow:hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; 
-      width: 90%;
+a.email {
+  text-decoration: none;
+  color: $dark;
 
-      &:hover {
-        overflow: visible;
-        width: 100%;
-        font-size: .84em;   // If nobody has super-long email addresses, 
-                            // we should get rid of this whole block.
-      }
-    }
+  &:hover {
+    color: $plum;
+  }
+}
+
+.panel-title {
+  font-size: 2em;
+  text-transform: capitalize;
+}
+
+ul.member-details {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
