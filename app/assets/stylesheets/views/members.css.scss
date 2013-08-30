@@ -6,26 +6,6 @@ ul#members {
   padding: 0;
 }
 
-.single {
-  background-color: $whitegrey;
-  padding: 12px;
-  margin-bottom: 12px;
-  min-height: 121px;
-
-    h3 {
-      margin-top: .25em;
-    }
-}
-
-a.email {
-  text-decoration: none;
-  color: $dark;
-
-  &:hover {
-    color: $plum;
-  }
-}
-
 .panel-title {
   font-size: 2em;
   text-transform: capitalize;
