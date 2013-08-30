@@ -9,22 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-  <% if logged_in? :as_officer => true %>
-  <nav class="navbar navbar-inverse navbar-static-top admin-nav">
-    <div class="container">
-      <%= link_to current_member.name, member_path(current_member), :class => "navbar-brand" %>
-      <ul class="nav navbar-nav">
-        <li><%= link_to "logout", logout_path, :method => :delete %></li>
-      </ul>
-      <ul class="nav navbar-nav pull-right">
-        <li><%= link_to "Create Event", new_event_path %></li>
-        <li><%= link_to "Create Post", new_post_path %></li>
-      </ul>
-    </div>
-  </nav>
-  <% end %>
-
   <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
       <%= link_to home_path, :class => "navbar-brand" do %>
@@ -40,6 +24,20 @@
       </ul>
     </div>
   </nav>
+
+  <% if logged_in? :as_officer => true %>
+  <div class="well admin-nav">
+    <div class="container">
+      <h1>
+        <span class="glyphicon glyphicon-flash"></span>
+        <%= link_to current_member.name, member_path(current_member) %>
+      </h1>
+      <ul class="pull-right">
+        <%= link_to "Logout", logout_path, :method => :delete, :class => "btn btn-default" %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
 
   <div id="pitch">
     <div class="container">

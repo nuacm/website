@@ -2,14 +2,30 @@
 This is where styles for admin only features of the site will live. */
 
 .admin-nav {
-  $admin-bg-color: #1f1f1f;
-  $admin-stripe-color: lighten($admin-bg-color, 10%);
-  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, $admin-bg-color), color-stop(0.25, $admin-bg-color), color-stop(0.25, $admin-stripe-color), color-stop(0.5, $admin-stripe-color), color-stop(0.5, $admin-bg-color), color-stop(0.75, $admin-bg-color), color-stop(0.75, $admin-stripe-color));
-  background-image: -webkit-linear-gradient(left bottom, $admin-bg-color 0%, $admin-bg-color 25%, $admin-stripe-color 25%, $admin-stripe-color 50%, $admin-bg-color 50%, $admin-bg-color 75%, $admin-stripe-color 75%);
-  background-image: -moz-linear-gradient(left bottom, $admin-bg-color 0%, $admin-bg-color 25%, $admin-stripe-color 25%, $admin-stripe-color 50%, $admin-bg-color 50%, $admin-bg-color 75%, $admin-stripe-color 75%);
-  background-image: -ms-linear-gradient(left bottom, $admin-bg-color 0%, $admin-bg-color 25%, $admin-stripe-color 25%, $admin-stripe-color 50%, $admin-bg-color 50%, $admin-bg-color 75%, $admin-stripe-color 75%);
-  background-image: -o-linear-gradient(left bottom, $admin-bg-color 0%, $admin-bg-color 25%, $admin-stripe-color 25%, $admin-stripe-color 50%, $admin-bg-color 50%, $admin-bg-color 75%, $admin-stripe-color 75%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$admin-bg-colorccc', endColorstr='$admin-stripe-colorbbb',GradientType=0 );
-  background-image: linear-gradient(left bottom, $admin-bg-color 0%, $admin-bg-color 25%, $admin-stripe-color 25%, $admin-stripe-color 50%, $admin-bg-color 50%, $admin-bg-color 75%, $admin-stripe-color 75%);
-  background-size: 30px 30px;
+  margin: 0;
+  border-radius: 0;
+
+  h1 {
+    display: inline-block;
+    font-size: 24px;
+    margin: 0;
+    padding: 3px 0;
+  }
+
+  ul {
+    margin: 0;
+  }
+}
+
+.admin {
+
+  ul, li {
+    display: inline-block;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
 }

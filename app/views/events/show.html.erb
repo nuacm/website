@@ -1,31 +1,28 @@
-<div id="event">
-  <h1>
-    <%= @event.title %>
-    <% if logged_in? :as_officer => true %>
-    <small>
-      <%= link_to 'Edit', edit_event_path(@event) %>
-      <%= link_to 'Delete', event_path(@event), :confirm => "Are you sure?", :method => :delete %>
-    </small>
-    <% end %>
-  </h1>
+<h1><%= @event.title %></h1>
 
-  <p>
-    <span class="glyphicon glyphicon-calendar"></span> <%= @event.start_time.localtime.strftime("%m/%d/%y") %>
-    <span class="glyphicon glyphicon-time"></span> <%= @event.start_time.localtime.strftime("%I:%M %p") %>
-    <% if @event.end_time %>
-      <span class="glyphicon glyphicon-arrow-right" style="padding: 0 10px;"></span>
-      <span class="glyphicon glyphicon-calendar"></span> <%= @event.end_time.localtime.strftime("%m/%d/%y") %>
-      <span class="glyphicon glyphicon-time"></span> <%= @event.end_time.localtime.strftime("%I:%M %p") %>
-    <% end %>
-  </p>
-
-  <p>
-    <span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %>
-  </p>
-
-  <p><%= @event.description %></p>
-
-  <% @event.tags.each do |tag| %>
-    <span class="label label-default"><%= tag.name %></span>
+<p>
+  <span class="glyphicon glyphicon-calendar"></span> <%= @event.start_time.localtime.strftime("%m/%d/%y") %>
+  <span class="glyphicon glyphicon-time"></span> <%= @event.start_time.localtime.strftime("%I:%M %p") %>
+  <% if @event.end_time %>
+    <span class="glyphicon glyphicon-arrow-right" style="padding: 0 10px;"></span>
+    <span class="glyphicon glyphicon-calendar"></span> <%= @event.end_time.localtime.strftime("%m/%d/%y") %>
+    <span class="glyphicon glyphicon-time"></span> <%= @event.end_time.localtime.strftime("%I:%M %p") %>
   <% end %>
+</p>
+
+<p>
+  <span class="glyphicon glyphicon-map-marker"></span> <%= @event.location %>
+</p>
+
+<p><%= @event.description %></p>
+
+<% @event.tags.each do |tag| %>
+  <span class="label label-default"><%= tag.name %></span>
+<% end %>
+
+<% if logged_in? :as_officer => true %>
+<div class="well">
+  <%= link_to 'Edit', edit_event_path(@event), :class => "btn btn-default" %>
+  <%= link_to 'Delete', event_path(@event), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %>
 </div>
+<% end %>
