@@ -1,3 +1,11 @@
+<div class="col-lg-12">
+  <% if logged_in? :as_officer => true %>
+  <div class="well">
+    <%= link_to 'Create', new_event_path, :class => "btn btn-primary" %>
+  </div>
+  <% end %>
+</div>
+
 <div class="col-lg-7">
   <div class="events panel panel-default">
     <div class="panel-heading">
@@ -26,11 +34,11 @@
 
 <div class="col-lg-4 col-lg-offset-1">
   <h3>Stay Informed</h3>
-  <p>Want to know the latest and greatest about what's happening on campus? 
-    Do you want to attend really cool events and workshops? Then make sure you 
+  <p>Want to know the latest and greatest about what's happening on campus?
+    Do you want to attend really cool events and workshops? Then make sure you
     subscribe to our <a href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Ffeeds%2Facm%2540ccs.neu.edu%2Fpublic%2Fbasic" target="_blank">Google Calendar</a>
-    and <a href="https://www.facebook.com/nuacm" target="_blank">like our Facebook 
-    page.</a> We'll keep you up to date with all that is going on so you won't 
+    and <a href="https://www.facebook.com/nuacm" target="_blank">like our Facebook
+    page.</a> We'll keep you up to date with all that is going on so you won't
     miss out on anything awesome!
   </p>
   <a href="https://www.facebook.com/nuacm" target="_blank"><button class="btn btn-primary">Facebook</button></a>

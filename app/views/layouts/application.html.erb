@@ -33,9 +33,8 @@
         <%= link_to current_member.name, member_path(current_member) %>
       </h1>
       <ul class="pull-right">
-        <%= link_to "Create Event", new_event_path, :class => "btn btn-primary" %>
-        <%= link_to "Create Post", new_post_path, :class => "btn btn-primary" %>
         <%= link_to "Logout", logout_path, :method => :delete, :class => "btn btn-default" %>
+      </ul>
     </div>
   </div>
   <% end %>
