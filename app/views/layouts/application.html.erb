@@ -28,7 +28,10 @@
   <% if logged_in? :as_officer => true %>
   <div class="well admin-nav">
     <div class="container">
-      <h1>Officer: <%= link_to current_member.name, member_path(current_member) %></h1>
+      <h1>
+        <span class="glyphicon glyphicon-flash"></span>
+        <%= link_to current_member.name, member_path(current_member) %>
+      </h1>
       <ul class="pull-right">
         <%= link_to "Create Event", new_event_path, :class => "btn btn-primary" %>
         <%= link_to "Create Post", new_post_path, :class => "btn btn-primary" %>
