@@ -17,16 +17,6 @@ describe EventsController do
       get :index
       expect(response).to render_template("index")
     end
-
-    it "has 10 events" do
-      get :index
-      assigns(:events).size.should eq(10)
-    end
-
-    it "retrieves the events is order of start time" do
-      get :index
-      assigns(:events).should == Event.order('start_time ASC')
-    end
   end
 
   describe "GET #show" do
