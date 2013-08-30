@@ -3,8 +3,8 @@ class Member < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :email => true
 
-  after_create { subscribe_to("ACM Members") if Rails.env == :production }
-  after_destroy { unsubscribe_from("ACM Members") if Rails.env == :production }
+  after_create { subscribe_to("ACM Members") if Rails.env == "production" }
+  after_destroy { unsubscribe_from("ACM Members") if Rails.env == "production" }
 
   # subscribe_to String ->
   def subscribe_to(list_name)
