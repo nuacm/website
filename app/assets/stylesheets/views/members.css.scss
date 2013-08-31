@@ -2,8 +2,12 @@
 This is where styles specific to the members page live. */
 
 ul#members {
-  list-style: none;
   padding: 0;
+
+  div {
+    height: 75px;
+    overflow: hidden; // For people with stupidly long names.
+  }
 }
 
 .panel-title {
