@@ -2,9 +2,16 @@
 
 <ol id="posts">
   <% @posts.each do |post| %>
-  <div class="entry">
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-2">
+      Side content. Dates and things.
+    </div>
+
+    <div class="col-lg-7 col-md-7">
     <h2><%= link_to post.title, post_path(post) %></h2>
     <p><%= post.body %></p>
+    </div>
   </div>
+  <hr />
   <% end %>
 </ol>
