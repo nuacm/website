@@ -1,16 +1,32 @@
-<%= form_for @member do |f| %>
-  <% @member.errors.full_messages.each do |error_message| %>
-    <%= error_message %><br>
-  <% end %>
-  <br>
+<div class="col-lg-5 col-lg-offset-2">
+  <h3>What does signing up mean?</h3>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
 
-  <%= f.label :name, 'Full Name' %>:
-  <%= f.text_field :name %><br />
-  <%= f.label :email, 'Email' %>:
-  <%= f.email_field :email %><br />
-  <%= f.label :password, 'Password' %>:
-  <%= f.password_field :password %><br />
-  <%= f.label :password_confirmation, 'Password Confirmation' %>:
-  <%= f.password_field :password_confirmation %><br />
-  <%= f.submit %>
-<% end %>
+<div class="col-lg-3">
+  <%= form_for @member do |f| %>
+    <% @member.errors.full_messages.each do |error_message| %>
+      <div class="alert alert-danger">
+        <%= error_message %>
+      </div>
+    <% end %>
+    <br>
+
+    <div class="form-group">
+      <%= f.label :name, 'Full Name' %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email, :class => "form-control" %>
+    </div>
+
+    <%= f.submit "Sign up", :class => "btn btn-primary" %>
+  <% end %>
+</div>
