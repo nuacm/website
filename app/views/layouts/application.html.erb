@@ -25,19 +25,29 @@
   </nav>
   <% end %>
 
-  <nav class="navbar navbar-default navbar-static-top">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
     <div class="container">
-      <%= link_to home_path, :class => "navbar-brand" do %>
-        <%= image_tag "logo-blue.png", :alt => "NUACM" %>
-      <% end %>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to home_path, :class => "navbar-brand" do %>
+          <%= image_tag "logo-blue.png", :alt => "NUACM" %>
+        <% end %>
+      </div>
 
-      <ul class="nav navbar-nav pull-right">
-        <%= active_link_to "Events", events_path, :li => true %>
-        <%= active_link_to "News", posts_path, :li => true %>
-        <%= active_link_to "Members", members_path, :li => true %>
-        <%= active_link_to "About", about_path, :li => true %>
-        <%= active_link_to "Join", '#', :li => true %>
-      </ul>
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <%= active_link_to "Events", events_path, :li => true %>
+          <%= active_link_to "News", posts_path, :li => true %>
+          <%= active_link_to "Members", members_path, :li => true %>
+          <%= active_link_to "About", about_path, :li => true %>
+          <%= active_link_to "Join", '#', :li => true %>
+        </ul>
+      </div>
     </div>
   </nav>
 
