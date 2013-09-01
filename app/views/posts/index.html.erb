@@ -3,7 +3,7 @@
 <ol id="posts">
   <% @posts.each do |post| %>
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-2">
+    <div class="col-lg-3 col-md-3">
       <p>
         <span class="glyphicon glyphicon-user"></span>
         <%= post.member.name %>
@@ -20,8 +20,8 @@
     </div>
 
     <div class="col-lg-7 col-md-7">
-    <h2><%= link_to post.title, post_path(post) %></h2>
-    <p><%= post.body %></p>
+      <h2><%= link_to post.title, post_path(post) %></h2>
+      <p><%= simple_format post.body %></p>
     </div>
   </div>
   <hr />
