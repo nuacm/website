@@ -4,19 +4,19 @@
   <% @posts.each do |post| %>
   <div class="row">
     <div class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-2">
-      <span class="detail">
+      <p>
         <span class="glyphicon glyphicon-user"></span>
         <%= post.member.name %>
-      </span>
-      <span class="detail">
+      </p>
+      <p>
         <span class="glyphicon glyphicon-calendar"></span>
         <%= post.created_at.localtime.strftime("%B %d, %Y") %>
-      </span>
-      <span class="detail">
+      </p>
+      <p>
         <% post.tags.each do |tag| %>
           <span class="label label-default"><%= tag.name %></span>
         <% end %>
-      </span>
+      </p>
     </div>
 
     <div class="col-lg-7 col-md-7">
