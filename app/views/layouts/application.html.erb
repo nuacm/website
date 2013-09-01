@@ -37,17 +37,33 @@
   </nav>
 
   <% if logged_in? :as_officer => true %>
-  <div class="well admin-nav">
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
     <div class="container">
-      <h1>
-        <span class="glyphicon glyphicon-flash"></span>
-        <%= link_to current_member.name, member_path(current_member) %>
-      </h1>
-      <ul class="pull-right">
-        <%= link_to "Logout", logout_path, :method => :delete, :class => "btn btn-default" %>
-      </ul>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to member_path(current_member), :class => "navbar-brand" do %>
+          <span class="glyphicon glyphicon-flash"></span>
+          <%= current_member.name %>
+        <% end %>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to logout_path, :method => :delete do %>
+              <span class="glyphicon glyphicon-log-out"></span>
+              Logout
+            <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
   <% end %>
 
   <div id="pitch">
