@@ -4,7 +4,19 @@
   <% @posts.each do |post| %>
   <div class="row">
     <div class="col-lg-3 col-md-3 col-lg-offset-1 col-md-offset-2">
-      Side content. Dates and things.
+      <span class="detail">
+        <span class="glyphicon glyphicon-user"></span>
+        <%= post.member.name %>
+      </span>
+      <span class="detail">
+        <span class="glyphicon glyphicon-calendar"></span>
+        <%= post.created_at.localtime.strftime("%B %d, %Y") %>
+      </span>
+      <span class="detail">
+        <% post.tags.each do |tag| %>
+          <span class="label label-default"><%= tag.name %></span>
+        <% end %>
+      </span>
     </div>
 
     <div class="col-lg-7 col-md-7">
