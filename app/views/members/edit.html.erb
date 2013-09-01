@@ -1,23 +1,25 @@
-<%= form_for @member do |f| %>
-  <% @member.errors.full_messages.each do |error_message| %>
-    <%= error_message %><br>
+<div class="col-lg-12">
+  <%= form_for @member do |f| %>
+    <% @member.errors.full_messages.each do |error_message| %>
+      <%= error_message %><br>
+    <% end %>
+    <br>
+
+    <%= f.label :name, 'Full Name' %>:
+    <%= f.text_field :name %><br />
+    <%= f.label :email, 'Email' %>:
+    <%= f.text_field :email %><br />
+    <%= f.submit %>
   <% end %>
-  <br>
 
-  <%= f.label :name, 'Full Name' %>:
-  <%= f.text_field :name %><br />
-  <%= f.label :email, 'Email' %>:
-  <%= f.text_field :email %><br />
-  <%= f.submit %>
-<% end %>
-
-<h2>Change Password</h2>
-<%= form_tag change_password_member_path(@member), :method => :put do %>
-  <%= label_tag 'password[old_password]', 'Old Password' %>:
-  <%= password_field_tag 'password[old_password]' %><br />
-  <%= label_tag 'password[password]', 'Password' %>:
-  <%= password_field_tag 'password[password]' %><br />
-  <%= label_tag 'password[password_confirmation]', 'Password Confirmation' %>:
-  <%= password_field_tag 'password[password_confirmation]' %><br />
-  <%= submit_tag "Change Password" %>
-<% end %>
+  <h2>Change Password</h2>
+  <%= form_tag change_password_member_path(@member), :method => :put do %>
+    <%= label_tag 'password[old_password]', 'Old Password' %>:
+    <%= password_field_tag 'password[old_password]' %><br />
+    <%= label_tag 'password[password]', 'Password' %>:
+    <%= password_field_tag 'password[password]' %><br />
+    <%= label_tag 'password[password_confirmation]', 'Password Confirmation' %>:
+    <%= password_field_tag 'password[password_confirmation]' %><br />
+    <%= submit_tag "Change Password" %>
+  <% end %>
+</div>

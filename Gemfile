@@ -25,6 +25,9 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use puma as the app server
 gem 'puma'
 
+# Mailchimp for getting members on the mailling list.
+gem 'gibbon'
+
 # Asset gems.
 gem 'therubyracer', platforms: :ruby
 gem 'sass-rails',   '~> 4.0.0'

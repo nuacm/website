@@ -1,5 +1,7 @@
-<%= form_tag password_reset_path do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email, params[:email] %>
-  <%= submit_tag "Reset Password" %>
-<% end %>
+<div class="col-lg-12">
+  <%= form_tag password_reset_path do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, params[:email] %>
+    <%= submit_tag "Reset Password" %>
+  <% end %>
+</div>
