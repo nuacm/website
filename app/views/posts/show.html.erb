@@ -1,16 +1,23 @@
-<h1><%= @post.title %></h1>
-
-<p>Written by <%= @post.member.name %></p>
-
-<%= simple_format @post.body %>
-
-<% unless @post.tags.empty? %>
-  <div style="padding:5px;background-color:#eee">
+<div class="col-lg-2 col-md-2">
+  <p>
+    <span class="glyphicon glyphicon-user"></span>
+    <%= @post.member.name %>
+  </p>
+  <p>
+    <span class="glyphicon glyphicon-calendar"></span>
+    <%= @post.created_at.localtime.strftime("%B %d, %Y") %>
+  </p>
+  <p>
     <% @post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
+      <span class="label label-default"><%= tag.name %></span>
     <% end %>
-  </div>
-<% end %>
+  </p>
+</div>
+
+<div class="col-lg-7 col-md-7">
+  <h2><%= @post.title %></h2>
+  <p><%= simple_format @post.body %></p>
+</div>
 
 <% if logged_in? :as_officer => true %>
   <%= link_to 'Edit', edit_post_path(@post) %>
