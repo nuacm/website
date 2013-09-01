@@ -1,18 +1,20 @@
-<h1><%= @post.title %></h1>
+<div class="col-lg-12">
+  <h1><%= @post.title %></h1>
 
-<p>Written by <%= @post.member.name %></p>
+  <p>Written by <%= @post.member.name %></p>
 
-<%= simple_format @post.body %>
+  <%= simple_format @post.body %>
 
-<% unless @post.tags.empty? %>
-  <div style="padding:5px;background-color:#eee">
-    <% @post.tags.each do |tag| %>
-      <span><%= tag.name %></span>
-    <% end %>
-  </div>
-<% end %>
+  <% unless @post.tags.empty? %>
+    <div style="padding:5px;background-color:#eee">
+      <% @post.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+      <% end %>
+    </div>
+  <% end %>
 
-<% if logged_in? :as_officer => true %>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-  <%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete %>
-<% end %>
+  <% if logged_in? :as_officer => true %>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+    <%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete %>
+  <% end %>
+</div>

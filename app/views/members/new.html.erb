@@ -1,16 +1,18 @@
-<%= form_for @member do |f| %>
-  <% @member.errors.full_messages.each do |error_message| %>
-    <%= error_message %><br>
-  <% end %>
-  <br>
+<div class="col-lg-12">
+  <%= form_for @member do |f| %>
+    <% @member.errors.full_messages.each do |error_message| %>
+      <%= error_message %><br>
+    <% end %>
+    <br>
 
-  <%= f.label :name, 'Full Name' %>:
-  <%= f.text_field :name %><br />
-  <%= f.label :email, 'Email' %>:
-  <%= f.email_field :email %><br />
-  <%= f.label :password, 'Password' %>:
-  <%= f.password_field :password %><br />
-  <%= f.label :password_confirmation, 'Password Confirmation' %>:
-  <%= f.password_field :password_confirmation %><br />
-  <%= f.submit %>
-<% end %>
+    <%= f.label :name, 'Full Name' %>:
+    <%= f.text_field :name %><br />
+    <%= f.label :email, 'Email' %>:
+    <%= f.email_field :email %><br />
+    <%= f.label :password, 'Password' %>:
+    <%= f.password_field :password %><br />
+    <%= f.label :password_confirmation, 'Password Confirmation' %>:
+    <%= f.password_field :password_confirmation %><br />
+    <%= f.submit %>
+  <% end %>
+</div>

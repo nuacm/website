@@ -1,13 +1,15 @@
-<%= form_for @post do |f| %>
-  <% @post.errors.full_messages.each do |error_message| %>
-    <%= error_message %><br>
+<div class="col-lg-12">
+  <%= form_for @post do |f| %>
+    <% @post.errors.full_messages.each do |error_message| %>
+      <%= error_message %><br>
+    <% end %>
+    <br>
+
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %><br />
+
+    <%= f.label :body, 'Body' %>
+    <%= f.text_area :body, :size => '60x15' %><br />
+    <%= f.submit %>
   <% end %>
-  <br>
-
-  <%= f.label :title, 'Title' %>
-  <%= f.text_field :title %><br />
-
-  <%= f.label :body, 'Body' %>
-  <%= f.text_area :body, :size => '60x15' %><br />
-  <%= f.submit %>
-<% end %>
+</div>

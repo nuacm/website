@@ -53,19 +53,25 @@
   </div>
 
   <div class="container">
-    <% if flash[:alert] %>
-      <div class="alert alert-danger">
-        <p><%= flash[:alert] %></p>
-      </div>
-    <% end %>
+    <div class="row">
+     <div class="col-lg-12">
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <p><%= flash[:alert] %></p>
+          </div>
+        <% end %>
 
-    <% if flash[:notice] %>
-      <div class="alert alert-info">
-        <p><%= flash[:notice] %></p>
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <p><%= flash[:notice] %></p>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
 
-    <%= yield %>
+    <div class="row">
+      <%= yield %>
+    </div>
   </div>
 
   <%= render(:partial => "shared/footer") %>
