@@ -1,6 +1,6 @@
 <div id="posts" class="col-lg-7">
   <div>
-    <h1><%= @post.title %> <small><%= @post.member.name %></small></h1>
+    <h1><%= link_to @post.title, post_path(@post) %> <small><%= @post.member.name %></small></h1>
     <% @post.tags.each do |tag| %>
       <span class="label label-default"><%= tag.name %></span>
     <% end %>
