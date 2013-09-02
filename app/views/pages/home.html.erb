@@ -1,17 +1,14 @@
-<div id="posts" class="col-lg-7">
+<div class="col-lg-7 col-md-7">
   <%= render "shared/post", :post => @post %>
 </div>
 
-<div class="events col-lg-4 col-lg-offset-1">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3>Upcoming Events</h3>
-    </div>
-    <div class="panel-body">
-      <% @events.each do |event| %>
-        <%= render "shared/event", :event => event %>
-      <% end %>
-    </div>
-    <div class="panel-footer"><%= link_to "View more events", events_path %></div>
+<div class="col-lg-4 col-md-5 col-lg-offset-1">
+  <h3>Upcoming Events</h3>
+  <hr />
+  <% @events.each do |event| %>
+    <%= render "shared/event", :event => event %>
+    <hr />
+  <% end %>
+  <%= link_to "View more events", events_path %>
   </div>
 </div>

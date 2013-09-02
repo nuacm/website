@@ -1,21 +1,21 @@
-<div class="entry">
-  <h4><%= link_to event.title, event_path(event) %></h4>
-  <p>
-    <span class="detail">
-      <span class="glyphicon glyphicon-calendar"></span>
-      <%= event.start_time.localtime.strftime("%m/%d") %>
-    </span>
-    <span class="detail">
-      <span class="glyphicon glyphicon-time"></span>
-      <%= event.start_time.localtime.strftime("%I:%M %p") %>
-    </span>
-    <span class="detail">
-      <span class="glyphicon glyphicon-map-marker"></span>
-      <%= event.location %>
-    </span>
-  </p>
+<div class="event">
+  <h3><%= link_to event.title, event_path(event) %></h3>
+  <span class="detail">
+    <span class="glyphicon glyphicon-calendar"></span>
+    <%= event.start_time.localtime.strftime("%m/%d") %>
+  </span>
+  <span class="detail">
+    <span class="glyphicon glyphicon-time"></span>
+    <%= event.start_time.localtime.strftime("%I:%M %p") %>
+  </span>
+  <span class="detail">
+    <span class="glyphicon glyphicon-map-marker"></span>
+    <%= event.location %>
+  </span>
+  <span class="detail">
+    <% event.tags.each do |tag| %>
+      <span class="label label-default"><%= tag.name %></span>
+    <% end %>
+  </span>
   <p><%= event.description %></p>
-  <% event.tags.each do |tag| %>
-    <span class="label label-default"><%= tag.name %></span>
-  <% end %>
 </div>

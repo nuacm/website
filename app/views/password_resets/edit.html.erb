@@ -1,3 +1,4 @@
+<div class="col-lg-12">
 <%= form_for @member, :url => password_reset_path(:reset_token => params[:reset_token]) do |f| %>
   <% if @member.errors.any? %>
     <ul>
@@ -12,3 +13,4 @@
   <%= f.password_field :password_confirmation %><br />
   <%= f.submit "Update Password" %>
 <% end %>
+</div>

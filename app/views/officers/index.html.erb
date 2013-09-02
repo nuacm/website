@@ -1,7 +1,9 @@
-<h1>Officers</h1>
+<div class="col-lg-12">
+  <h1>Officers</h1>
 
-<ul>
-  <% @officers.each do |officer| %>
-    <li><%= link_to officer.name, member_path(officer) %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @officers.each do |officer| %>
+      <li><%= link_to officer.name, member_path(officer) %></li>
+    <% end %>
+  </ul>
+</div>

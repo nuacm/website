@@ -1,12 +1,14 @@
-<h1>Members</h1>
+<div class="col-lg-12">
+  <h1>Members</h1>
 
-<p>As an ACM member, you get access to stuff.</p>
+  <p>As an ACM member, you get access to stuff.</p>
 
-<ul id="members">
-  <% @members.each do |member| %>
-  <div class="entry">
-    <h3><%= link_to member.name, member_path(member) %></h3>
-    <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
-  </div>
-  <% end %>
-</ul>
+  <ul id="members">
+    <% @members.each do |member| %>
+    <div class="entry">
+      <h3><%= link_to member.name, member_path(member) %></h3>
+      <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
+    </div>
+    <% end %>
+  </ul>
+</div>
