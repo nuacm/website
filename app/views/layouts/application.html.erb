@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
+<div id="super">
   <% if logged_in? :as_officer => true %>
   <nav class="navbar navbar-inverse navbar-static-top admin-nav">
     <div class="container">
@@ -68,6 +68,9 @@
     <%= yield %>
   </div>
 
-  <%= render(:partial => "shared/footer") %>
+  <div id="push"></div>
+</div>
+
+<%= render(:partial => "shared/footer") %>
 </body>
 </html>
