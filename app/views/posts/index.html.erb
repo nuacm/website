@@ -1,24 +1,18 @@
-<div class="row">
-  <div class="col-lg-12">
-    <h1>Newsroom</h1>
+<!-- New posts. -->
+<div class="col-lg-9 col-md-9">
+  <h1>Newsroom</h1>
+  <hr />
+  <% @posts.each do |post| %>
+    <%= render "shared/post", :post => post %>
     <hr />
-  </div>
+  <% end %>
 </div>
 
-<div class="row">
-  <!-- New posts. -->
-  <div class="col-lg-9 col-md-9">
-    <% @posts.each do |post| %>
-      <%= render "shared/post", :post => post %>
-      <hr />
+<!-- Tag select. -->
+<div class="col-lg-3 col-md-3">
+  <div class="list-group">
+    <% Tag.all.each do |tag| %>
+      <%= link_to tag.name, '#', :class => "list-group-item" %>
     <% end %>
-  </div>
-  <!-- Tag select. -->
-  <div class="col-lg-3 col-md-3">
-    <div class="list-group">
-      <% Tag.all.each do |tag| %>
-        <%= link_to tag.name, '#', :class => "list-group-item" %>
-      <% end %>
-    </div>
   </div>
 </div>
