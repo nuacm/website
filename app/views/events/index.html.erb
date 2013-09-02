@@ -1,24 +1,19 @@
 <div class="col-lg-7 col-md-7">
   <h1>Upcoming Events</h1>
   <hr />
-  <div class="events panel panel-default">
-    <div class="panel-body">
-      <% @upcoming_events.each do |event| %>
-        <%= render "shared/event", :event => event %>
-      <% end %>
-    </div>
-  </div>
+
+  <% @upcoming_events.each do |event| %>
+    <%= render "shared/event", :event => event %>
+    <hr />
+  <% end %>
 
   <br />
   <h1>Past Events</h1>
   <hr />
-  <div class="events panel panel-default">
-    <div class="panel-body">
-      <% @past_events.each do |event| %>
-        <%= render "shared/event", :event => event %>
-      <% end %>
-    </div>
-  </div>
+  <% @past_events.each do |event| %>
+    <%= render "shared/event", :event => event %>
+    <hr />
+  <% end %>
 </div>
 
 <div class="col-lg-4 col-lg-offset-1 col-md-5">
