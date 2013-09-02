@@ -1,0 +1,22 @@
+<div>
+  <% if defined?(link) && link == false %>
+    <h1><%= post.title %></h1>
+  <% else %>
+    <h1><%= link_to post.title, post_path(post) %></h1>
+  <% end %>
+  <span class="detail">
+    <span class="glyphicon glyphicon-user"></span>
+    <%= post.member.name %>
+  </span>
+  <span class="detail">
+    <span class="glyphicon glyphicon-calendar"></span>
+    <%= post.created_at.localtime.strftime("%B %d, %Y") %>
+  </span>
+  <span class="detail">
+    <% post.tags.each do |tag| %>
+      <span class="label label-default"><%= tag.name %></span>
+    <% end %>
+  </span>
+
+  <p><%= simple_format post.body %></p>
+</div>

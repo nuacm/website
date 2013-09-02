@@ -1,22 +1,5 @@
 <div id="posts" class="col-lg-7">
-  <div>
-    <h1><%= link_to @post.title, post_path(@post) %></h1>
-    <span class="detail">
-      <span class="glyphicon glyphicon-user"></span>
-      <%= @post.member.name %>
-    </span>
-    <span class="detail">
-      <span class="glyphicon glyphicon-calendar"></span>
-      <%= @post.created_at.localtime.strftime("%B %d, %Y") %>
-    </span>
-    <span class="detail">
-      <% @post.tags.each do |tag| %>
-        <span class="label label-default"><%= tag.name %></span>
-      <% end %>
-    </span>
-
-    <p><%= simple_format @post.body %></p>
-  </div>
+  <%= render "shared/post", :post => @post %>
 </div>
 
 <div class="events col-lg-4 col-lg-offset-1">

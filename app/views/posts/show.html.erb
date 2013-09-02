@@ -1,23 +1,4 @@
-<div class="col-lg-2 col-md-2">
-  <p>
-    <span class="glyphicon glyphicon-user"></span>
-    <%= @post.member.name %>
-  </p>
-  <p>
-    <span class="glyphicon glyphicon-calendar"></span>
-    <%= @post.created_at.localtime.strftime("%B %d, %Y") %>
-  </p>
-  <p>
-    <% @post.tags.each do |tag| %>
-      <span class="label label-default"><%= tag.name %></span>
-    <% end %>
-  </p>
-</div>
-
-<div class="col-lg-7 col-md-7">
-  <h2><%= @post.title %></h2>
-  <p><%= simple_format @post.body %></p>
-</div>
+<%= render "shared/post", :post => @post, :link => false %>
 
 <% if logged_in? :as_officer => true %>
   <%= link_to 'Edit', edit_post_path(@post) %>
