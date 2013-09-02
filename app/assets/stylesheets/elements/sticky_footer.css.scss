@@ -1,0 +1,18 @@
+$footer-height: 200px;
+
+html, body {
+  height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -$footer-height;
+}
+
+#push, #footer {
+  height: $footer-height;
+}
