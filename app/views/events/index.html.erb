@@ -1,8 +1,7 @@
 <div class="col-lg-7 col-md-7">
+  <h1>Upcoming Events</h1>
+  <hr />
   <div class="events panel panel-default">
-    <div class="panel-heading">
-      <h3>Upcoming Events</h3>
-    </div>
     <div class="panel-body">
       <% @upcoming_events.each do |event| %>
         <%= render "shared/event", :event => event %>
@@ -11,11 +10,9 @@
   </div>
 
   <br />
-
+  <h1>Past Events</h1>
+  <hr />
   <div class="events panel panel-default">
-    <div class="panel-heading">
-      <h3>Past Events</h3>
-    </div>
     <div class="panel-body">
       <% @past_events.each do |event| %>
         <%= render "shared/event", :event => event %>
