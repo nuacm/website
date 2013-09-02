@@ -1,5 +1,5 @@
-<div>
-  <h4><%= link_to event.title, event_path(event) %></h4>
+<div class="event">
+  <h3><%= link_to event.title, event_path(event) %></h3>
   <span class="detail">
     <span class="glyphicon glyphicon-calendar"></span>
     <%= event.start_time.localtime.strftime("%m/%d") %>
