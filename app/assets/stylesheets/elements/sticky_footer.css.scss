@@ -7,6 +7,7 @@ $footer-height: 200px;
   height: 100%;
   /* Negative indent footer by it's height */
   margin: 0 auto $footer-height * -1;
+  padding: 0 0 50px;
 }
 
 #push, #footer {
