@@ -3,6 +3,10 @@ This is where the layout of the page is defined. If you are looking for a
 place to put element styles or global styles look in styles.css.scss or
 /elements */
 
+html, body {
+  height: 100%;
+}
+
 .navbar {
   margin-bottom: 0;
 
