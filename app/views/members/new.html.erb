@@ -1,18 +1,41 @@
-<div class="col-lg-12">
+<div class="col-lg-5 col-lg-offset-2">
+  <h3>What does signing up mean?</h3>
+  <p>So you're probably wondering, "What's in it for me?" Well, quite a bit actually.
+  You'll get a range of benefits, from a bunch of free stuff to going to cool events.
+  We've outlined a few of the highlights below.
+  </p>
+  <p>NUACM membership comes with:</p>
+  <ul>
+    <li>A cool t-shirt</li>
+    <li>The privilege of listing your name, email, and/or other contact info on our site</li>
+    <li>First dibs on details for our events and workshops</li>
+    <li>The warm fuzzy feeling that comes with supporting a student organization</li>
+    <li>Being abble to attend our annual BBQ</li>
+    <li>A profoudn sense of joy by joining the coolest group of people on campus</li>
+  </ul>
+  <p>Membership dues are only $10 per year.</p>
+  <p>If you have any questions, feel free to <a href="mailto:acm@ccs.neu.edu">contact</a> us.</p>
+</div>
+
+<div class="col-lg-3">
   <%= form_for @member do |f| %>
     <% @member.errors.full_messages.each do |error_message| %>
-      <%= error_message %><br>
+      <div class="alert alert-danger">
+        <%= error_message %>
+      </div>
     <% end %>
     <br>
 
-    <%= f.label :name, 'Full Name' %>:
-    <%= f.text_field :name %><br />
-    <%= f.label :email, 'Email' %>:
-    <%= f.email_field :email %><br />
-    <%= f.label :password, 'Password' %>:
-    <%= f.password_field :password %><br />
-    <%= f.label :password_confirmation, 'Password Confirmation' %>:
-    <%= f.password_field :password_confirmation %><br />
-    <%= f.submit %>
+    <div class="form-group">
+      <%= f.label :name, 'Full Name' %>
+      <%= f.text_field :name, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email, :class => "form-control" %>
+    </div>
+
+    <%= f.submit "Sign up", :class => "btn btn-primary" %>
   <% end %>
 </div>

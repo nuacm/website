@@ -5,3 +5,11 @@ ul#members {
   list-style: none;
   padding: 0;
 }
+
+form#new_member {
+  margin-bottom: 20px;
+
+  .alert {
+    margin-bottom: 3px;
+  }
+}
