@@ -1,11 +1,11 @@
 <div class="col-lg-7 col-md-7">
-  <div>
+  <% if @post %>
     <h1><%= @post.title %> <small><%= @post.member.name %></small></h1>
     <% @post.tags.each do |tag| %>
       <span class="label label-default"><%= tag.name %></span>
     <% end %>
     <p><%= simple_format @post.body %></p>
-  </div>
+  <% end %>
 </div>
 
 <div class="col-lg-4 col-md-5 col-lg-offset-1">
