@@ -1,6 +1,6 @@
+<% if logged_in? :as_officer => true %>
 <div class="row">
   <div class="col-lg-12">
-    <% if logged_in? :as_officer => true %>
     <div class="well admin">
       <ul>
         <li><code>Next event in <%= distance_of_time_in_words(DateTime.current, @upcoming_events.first.start_time) %>.</code></li>
@@ -12,9 +12,9 @@
       </ul>
       <div class="clearfix"></div>
     </div>
-    <% end %>
   </div>
 </div>
+<% end %>
 
 <div class="row">
   <div class="col-lg-7 col-md-7">
