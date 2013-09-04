@@ -1,23 +1,13 @@
 /* admin.css.scss
 This is where styles for admin only features of the site will live. */
 
-.admin-nav {
-  margin: 0;
-  border-radius: 0;
-
-  h1 {
-    display: inline-block;
-    font-size: 24px;
-    margin: 0;
-    padding: 3px 0;
-  }
-
-  ul {
-    margin: 0;
-  }
-}
-
 .admin {
+  padding: 10px;
+  margin: 20px 0;
+  background: $navbar-inverse-bg;
+  border: 1px solid $navbar-inverse-border;
+  border-radius: 5px;
+  color: $navbar-default-brand-color;
 
   ul, li {
     display: inline-block;
@@ -27,5 +17,4 @@ This is where styles for admin only features of the site will live. */
     padding: 0;
     margin: 0;
   }
-
 }
