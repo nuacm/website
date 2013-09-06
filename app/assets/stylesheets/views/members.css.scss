@@ -6,17 +6,5 @@ ul#members {
 
   div {
     height: 75px;
-    overflow: hidden; // For people with stupidly long names.
   }
-}
-
-.panel-title {
-  font-size: 2em;
-  text-transform: capitalize;
-}
-
-ul.member-details {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
 }
