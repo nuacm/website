@@ -10,7 +10,6 @@
 
 <div class="col-lg-4 col-md-5 col-lg-offset-1">
   <h3>Upcoming Events</h3>
-  <hr />
   <% @events.each do |event| %>
     <%= render "shared/event", :event => event %>
     <hr />

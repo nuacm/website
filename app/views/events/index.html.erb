@@ -1,7 +1,5 @@
 <div class="col-lg-7 col-md-7">
   <h1>Upcoming Events</h1>
-  <hr />
-
   <% @upcoming_events.each do |event| %>
     <%= render "shared/event", :event => event %>
     <hr />
@@ -9,7 +7,6 @@
 
   <br />
   <h1>Past Events</h1>
-  <hr />
   <% @past_events.each do |event| %>
     <%= render "shared/event", :event => event %>
     <hr />
