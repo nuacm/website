@@ -2,14 +2,13 @@
 This is where styles specific to the members page live. */
 
 ul#members {
-  list-style: none;
   padding: 0;
+
+  div {
+    height: 75px;
+  }
 }
 
-form#new_member {
-  margin-bottom: 20px;
-
-  .alert {
-    margin-bottom: 3px;
-  }
+form#new_member .alert {
+  margin-bottom: 3px;
 }

@@ -1,14 +1,27 @@
-<div class="col-lg-12">
+<div class="col-lg-9 col-md-9">
   <h1>Members</h1>
-
-  <p>As an ACM member, you get access to stuff.</p>
-
-  <ul id="members">
-    <% @members.each do |member| %>
-    <div class="entry">
-      <h3><%= link_to member.name, member_path(member) %></h3>
-      <p><span class="glyphicon glyphicon-envelope"></span> <%= member.email %></p>
+    <div class="row">
+      <ul id="members">
+        <% @members.each do |member| %>
+          <div class="col-lg-4 col-md-4">
+            <h3><%= member.name %></h3>
+          </div>
+        <% end %>
+      </ul>
     </div>
-    <% end %>
-  </ul>
+</div>
+
+<div class="col-lg-3 col-md-3">
+  <h1>Benefits</h1>
+  <p>NUACM membership comes with:</p>
+    <ul>
+      <li>A cool t-shirt</li>
+      <li>The privilege of listing your name, email, and/or other contact info on our site</li>
+      <li>First dibs on details for our events and workshops</li>
+      <li>The warm fuzzy feeling that comes with supporting a student organization</li>
+      <li>A profound sense of joy by joining the coolest group of people on campus</li>
+    </ul>
+  <p>Dues are $10 per year.</p>
+
+  <%= link_to "Join Now!", signup_path, :class => "btn btn-primary btn-lg btn-block" %>
 </div>
