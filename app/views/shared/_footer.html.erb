@@ -1,27 +1,17 @@
 <div id="footer">
   <div class="container">
-  <div id="mailing-list">
-    <div class="row">
-      <h2>Don't get left out. Sign up for our mailing list!</h2>
-      <p>Know about all our events. It's better than staying in your
-        room and playing League.</p>
-    </div>
+    <h2>Don't get left out. Sign up now!</h2>
+    <%= form_for Member.new, :html => {:class => "form-inline"} do |f| %>
+      <div class="form-group">
+        <%= f.text_field :name, :class => "form-control", :placeholder => "Full Name" %>
+      </div>
 
-    <div class="row"><div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-      <form action="http://neu.us7.list-manage2.com/subscribe/post?u=c63e996ca44a0ec7d4dd8f944&amp;id=7e5f3fd9f8" method="post" id="subscribe" name="mc-embedded-subscribe-form" class="form-inline" target="_blank">
-        <div class="input-group input-group-lg">
-          <input type="email" class="form-control" name="EMAIL" placeholder="you@ccs.neu.edu" required>
-          <span class="input-group-btn">
-            <button type="submit" name="subscribe" class="btn btn-primary">Sign me up!</button>
-          </span>
-        </div>
-      </form>
-    </div></div>
+      <div class="form-group">
+        <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
+      </div>
 
-    <div class="row">
-      <p>&copy; NU ACM. Want to get involved? <a href="mailto:acm@ccs.neu.edu">Get at us.</a></p>
-    </div>
-
-  </div>
+      <%= f.submit "Sign up", :class => "btn btn-primary" %>
+    <% end %>
+    <p>&copy; NUACM 2013. Want to get involved? <a href="mailto:acm@ccs.neu.edu">Get at us.</a></p>
   </div>
 </div>
