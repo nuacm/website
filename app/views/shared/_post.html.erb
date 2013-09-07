@@ -1,8 +1,8 @@
 <div>
   <% if defined?(link) && link == false %>
-    <h1><%= post.title %></h1>
+    <h3><%= post.title %></h3>
   <% else %>
-    <h1><%= link_to post.title, post_path(post) %></h1>
+    <h3><%= link_to post.title, post_path(post) %></h3>
   <% end %>
   <span class="detail">
     <span class="glyphicon glyphicon-user"></span>

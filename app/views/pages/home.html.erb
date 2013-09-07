@@ -1,10 +1,10 @@
 <div class="col-lg-7 col-md-7">
+  <h2>Latest News</h2>
   <%= render "shared/post", :post => @post %>
 </div>
 
 <div class="col-lg-4 col-md-5 col-lg-offset-1">
-  <h3>Upcoming Events</h3>
-  <hr />
+  <h2>Upcoming Events</h2>
   <% @events.each do |event| %>
     <%= render "shared/event", :event => event %>
     <hr />

@@ -1,16 +1,21 @@
-<!-- New posts. -->
-<div class="col-lg-9 col-md-9">
+<div class="col-lg-7 col-md-7">
+  <h1>News</h1>
+
   <% @posts.each do |post| %>
     <%= render "shared/post", :post => post %>
     <hr />
   <% end %>
 </div>
 
-<!-- Tag select. -->
-<div class="col-lg-3 col-md-3">
-  <div class="list-group">
-    <% Tag.all.each do |tag| %>
-      <%= link_to tag.name, '#', :class => "list-group-item" %>
-    <% end %>
-  </div>
+<div class="col-lg-4 col-lg-offset-1 col-md-5">
+  <h3>Stay Informed</h3>
+  <p>Want to know the latest and greatest about what's happening on campus?
+    Do you want to attend really cool events and workshops? Then make sure you
+    subscribe to our <a href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Ffeeds%2Facm%2540ccs.neu.edu%2Fpublic%2Fbasic" target="_blank">Google Calendar</a>
+    and <a href="https://www.facebook.com/nuacm" target="_blank">like our Facebook
+    page.</a> We'll keep you up to date with all that is going on so you won't
+    miss out on anything awesome!
+  </p>
+  <a href="https://www.facebook.com/nuacm" target="_blank"><button class="btn btn-primary">Facebook</button></a>
+  <a href="http://www.google.com/calendar/render?cid=https%3A%2F%2Fwww.google.com%2Fcalendar%2Ffeeds%2Facm%2540ccs.neu.edu%2Fpublic%2Fbasic" target="_blank"><button class="btn btn-warning">Google Calendar</button></a>
 </div>
