@@ -36,7 +36,7 @@ FactoryGirl.define do
 
   factory :post do
     title { Faker::Lorem.sentence(3, false, 2).chomp('.') }
-    body { Faker::Lorem.paragraphs(10).join("\n") }
+    body { Faker::Lorem.paragraphs(10).join("\n\n") }
     member { create(:officer) }
   end
 

@@ -1,17 +1,5 @@
 <div class="col-lg-12">
-  <h1><%= @post.title %></h1>
-
-  <p>Written by <%= @post.member.name %></p>
-
-  <%= simple_format @post.body %>
-
-  <% unless @post.tags.empty? %>
-    <div style="padding:5px;background-color:#eee">
-      <% @post.tags.each do |tag| %>
-        <span><%= tag.name %></span>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render "shared/post", :post => @post, :link => false %>
 
   <% if logged_in? :as_officer => true %>
     <%= link_to 'Edit', edit_post_path(@post) %>
