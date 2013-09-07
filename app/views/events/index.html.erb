@@ -1,3 +1,23 @@
+<div class="col-lg-12">
+  <% if logged_in? :as_officer => true %>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="admin">
+        <span>
+          <b><%= @past_events.size %></b> past events,
+          <b><%= @upcoming_events.size %></b> upcoming events with the next event in
+          <b><%= distance_of_time_in_words(DateTime.current, @upcoming_events.first.start_time) %></b>.
+        </span>
+        <ul class="pull-right">
+          <li><%= link_to 'Create', new_event_path, :class => "btn btn-success" %></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
 <div class="col-lg-7 col-md-7">
   <h1>Upcoming Events</h1>
   <% @upcoming_events.each do |event| %>
@@ -12,6 +32,7 @@
     <hr />
   <% end %>
 </div>
+
 
 <div class="col-lg-4 col-lg-offset-1 col-md-5">
   <h3>Stay Informed</h3>

@@ -2,7 +2,12 @@
   <%= render "shared/post", :post => @post, :link => false %>
 
   <% if logged_in? :as_officer => true %>
-    <%= link_to 'Edit', edit_post_path(@post) %>
-    <%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete %>
+  <div class="admin">
+    <ul class="pull-right">
+      <li><%= link_to 'Edit', edit_post_path(@post), :class => "btn btn-default" %></li>
+      <li><%= link_to 'Delete', post_path(@post), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
   <% end %>
 </div>

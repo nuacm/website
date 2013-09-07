@@ -1,3 +1,18 @@
+<div class="col-lg-12">
+  <% if logged_in? :as_officer => true %>
+  <div class="admin">
+    <span>
+      <b><%= @posts.size %></b> posts written by
+      <b><%= @posts.map { |p| p.member }.uniq.size %></b> authors.
+    </span>
+    <ul class="pull-right">
+      <li><%= link_to 'Create', new_post_path, :class => "btn btn-success" %></li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+  <% end %>
+</div>
+
 <div class="col-lg-7 col-md-7">
   <h1>News</h1>
 
