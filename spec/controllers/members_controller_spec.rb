@@ -263,7 +263,8 @@ describe MembersController do
       it_behaves_like("an update with access")
 
       it "pays dues" do
-        patch :update, :id => member.id, :member => {:dues_attributes => [:amount]}
+        patch :update, :id => member.id, :member => {:dues_attributes => {'0' => {:amount => 10}}}
+        member.dues.count.should == 1
       end
     end
 
