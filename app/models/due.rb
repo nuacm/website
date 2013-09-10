@@ -3,7 +3,7 @@ class Due < ActiveRecord::Base
 
   validates :amount, :presence => true
 
-  def good_till
+  def good_until
     before_september = self.created_at < Date.new(self.created_at.year, 9, 1)
     if before_september
       Date.new(self.created_at.year, 9, 1)
@@ -13,6 +13,6 @@ class Due < ActiveRecord::Base
   end
 
   def expired?
-    Date.today > self.good_till
+    Date.today > self.good_until
   end
 end

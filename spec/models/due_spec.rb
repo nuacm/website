@@ -6,7 +6,7 @@ describe Due do
   it { should belong_to :member }
 
   it { should validate_presence_of(:amount) }
-  it { should respond_to :good_till }
+  it { should respond_to :good_until }
   it { should respond_to :expired? }
 
   context "created before September 1st of this year" do
@@ -16,8 +16,8 @@ describe Due do
       Timecop.travel(Date.new(Date.today.year, 8, 8))
     end
 
-    it "is good till September 1st of this year" do
-      subject.good_till.should == Date.new(Date.today.year, 9, 1)
+    it "is good until September 1st of this year" do
+      subject.good_until.should == Date.new(Date.today.year, 9, 1)
     end
   end
 
@@ -28,8 +28,8 @@ describe Due do
       Timecop.travel(Date.new(Date.today.year, 11, 11))
     end
 
-    it "is good till September 1st of next year" do
-      subject.good_till.should == Date.new(Date.today.year + 1, 9, 1)
+    it "is good until September 1st of next year" do
+      subject.good_until.should == Date.new(Date.today.year + 1, 9, 1)
     end
   end
 
