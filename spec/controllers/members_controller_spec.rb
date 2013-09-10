@@ -261,6 +261,10 @@ describe MembersController do
     context "as logged in officer" do
       before { @controller.send(:login!, create(:officer)) }
       it_behaves_like("an update with access")
+
+      it "pays dues" do
+        patch :update, :id => member.id, :member => {:dues_attributes => [:amount]}
+      end
     end
 
     context "as not logged in member" do

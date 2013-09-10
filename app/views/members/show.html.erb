@@ -2,6 +2,22 @@
   <h1><%= @member.name %></h1>
 
   <% if logged_in? :as_member => @member, :as_officer => true %>
+  <div class="dues">
+    <% @member.dues.each do |due| %>
+      <p>
+        <span class="detail">
+          <span class="glyphicon glyphicon-usd"></span><%= due.amount %>
+        </span>
+        <span class="detail">
+          Paid on <%= due.created_at.localtime.strftime("%m/%d/%Y") %>,
+        </span>
+        <span class="detail">
+          Valid untill <%= due.good_till.strftime("%m/%d/%Y") %>.
+        </span>
+      </p>
+    <% end %>
+  </div>
+
   <div class="admin">
     <ul class="pull-right">
       <li><%= link_to 'Edit', edit_member_path(@member), :class => "btn btn-default" %></li>
