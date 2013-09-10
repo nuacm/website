@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  has_many :dues
 
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :email => true
