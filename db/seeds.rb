@@ -20,6 +20,8 @@ when "development"
   end
 
   10.times { FactoryGirl.create(:tagging) }
+
+  25.times { FactoryGirl.create(:due, :amount => 10) }
 when "production"
   # maybe one day we'll need this.
 end

@@ -4,7 +4,16 @@
       <ul id="members">
         <% @members.each do |member| %>
           <div class="col-lg-4 col-md-4">
-            <h3><%= member.name %></h3>
+            <% if logged_in? :as_officer => true %>
+              <h3>
+                <% if member.dues.detect { |m| m.expired? == false } %>
+                  <span class="glyphicon glyphicon-usd"></span>
+                <% end %>
+                <%= link_to member.name, member_path(member) %>
+              </h3>
+            <% else %>
+              <h3><%= member.name %></h3>
+            <% end %>
           </div>
         <% end %>
       </ul>

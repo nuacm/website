@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :due do # lol due do.
+    amount { rand(1..100) }
+    member
+  end
+
   factory :event do
     title { Faker::Lorem.sentence(3, false, 2).chomp('.') }
     description { Faker::Lorem.paragraphs(2).join("\n") }

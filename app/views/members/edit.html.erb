@@ -22,4 +22,23 @@
     <%= password_field_tag 'password[password_confirmation]' %><br />
     <%= submit_tag "Change Password" %>
   <% end %>
+
+  <% if logged_in? :as_officer => true %>
+  <div class="admin">
+    <h2>Dues</h2>
+    <%= form_for @member do |f| %>
+      <% @member.dues.build %>
+      <%= f.fields_for :dues do |d| %>
+        <%= f.label :amount, 'Amount ($)' %>:
+        <%= d.text_field :amount %>
+        <% if d.object.persisted? %>
+          <%= d.check_box :_destroy %>
+          <%= d.label :_destroy, "Delete Due" %>
+        <% end %>
+        <br />
+      <% end %>
+      <%= f.submit "Update Member Dues" %>
+    <% end %>
+  </div>
+  <% end %>
 </div>

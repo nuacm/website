@@ -1,4 +1,8 @@
 class Member < ActiveRecord::Base
+  has_many :dues
+
+  accepts_nested_attributes_for :dues, :allow_destroy => true,
+                                       :reject_if => :all_blank
 
   validates :name, :presence => true
   validates :email, :presence => true, :uniqueness => true, :email => true

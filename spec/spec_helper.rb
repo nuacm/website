@@ -37,4 +37,8 @@ RSpec.configure do |config|
   # Always clear out the ActionMailer deliveries before each test.
   # This will make testing mail sending much more stable and reliable.
   config.before(:each) { ActionMailer::Base.deliveries.clear }
+
+  # Always reset Timecop, because I've forgot in the past, and I'll forget
+  # again, and the issues are weird and frustrating.
+  config.after(:each) { Timecop.return }
 end
