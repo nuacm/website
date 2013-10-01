@@ -2,6 +2,7 @@ NUACM::Application.routes.draw do
   # General routes.
   get '/',      :to => 'pages#home',  :as => 'home'
   get '/about', :to => 'pages#about', :as => 'about'
+  get '/speak', :to => 'pages#speak', :as => 'speak'
 
   # Event routes.
   resources :events
