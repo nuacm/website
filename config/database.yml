@@ -12,7 +12,3 @@ development:
 test:
   <<: *common
   database: nuacm_test
-
-production:
-  <<: *common
-  database: nuacm_production
