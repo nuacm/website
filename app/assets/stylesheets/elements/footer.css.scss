@@ -16,7 +16,10 @@ $footer-height: 60px;
 
 #footer {
   height: $footer-height;
-  background: $lightgray;
+
+  .container {
+    border-top: 1px solid $lightgray;
+  }
 
   ul {
     margin: 20px 0;
