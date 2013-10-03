@@ -1,17 +1,15 @@
 <div id="footer">
   <div class="container">
-    <h2>Don't get left out. Sign up now!</h2>
-    <%= form_for Member.new, :html => {:class => "form-inline"} do |f| %>
-      <div class="form-group">
-        <%= f.text_field :name, :class => "form-control", :placeholder => "Full Name" %>
-      </div>
+    <ul class="pull-left">
+      <li><p class="cr">&copy; NUACM 2013.</p></li>
+      <li><p><%= mail_to "acm@ccs.neu.edu", "Contact" %></p></li>
+      <li><p><a href="https://maps.google.com/?q=440+Huntington+Avenue,Boston,MA+02115" target="_blank">Location</a></p></li>
+    </ul>
 
-      <div class="form-group">
-        <%= f.email_field :email, :class => "form-control", :placeholder => "Email" %>
-      </div>
-
-      <%= f.submit "Sign up", :class => "btn btn-primary" %>
-    <% end %>
-    <p>&copy; NUACM 2013. Want to get involved? <a href="mailto:acm@ccs.neu.edu">Get at us.</a></p>
+    <ul class="pull-right">
+      <li><%= link_to "Sign up", signup_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Source Code", "https://github.com/nuacm" %></li>
+    </ul>
   </div>
 </div>
