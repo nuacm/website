@@ -21,6 +21,15 @@ html, body {
   ul {
     height: 100%;
   }
+
+  .signup-button {
+    @extend .pull-right;
+    @extend .btn;
+    @extend .btn-primary;
+    @extend .navbar-btn;
+    margin-left: 20px;
+    margin-right: 15px;
+  }
 }
 
 #pitch {
