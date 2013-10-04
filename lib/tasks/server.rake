@@ -32,38 +32,65 @@ class Server
   end
 end
 
+# Prints to the screen. Levels are :default,
+# :success, :warning, and :error.
+def say(message, level=:default)
+  string = if level == :default
+    message
+  else
+    prefix = "[#{level.capitalize}]"
+    "#{prefix} #{message}"
+  end
+
+  puts string
+end
+
 namespace :server do
 
   desc "Get the status of the servers parts."
   task :status do
     if Server.running?
-      puts "Server is running."
+      say "Server is running."
     else
-      puts "Server is not running."
+      say "Server is not running."
     end
   end
 
   desc "Start up the server, if the server is already up just say that."
   task :start do
-    if puma?
-      puts "Server is already running."
+    if Server.running?
+      say "Server is already running.", :warning
     else
-      puts "Starting the server..."
+
+      # TODO: Start the server here.
+
+      if Server.running?
+        say "Server started.", :success
+      else
+        say "Starting server failed.", :error
+      end
     end
   end
 
   desc "Stop the server, if it's not running just say that."
   task :stop do
-    if puma?
-      puts "Stopping the server..."
+    if Server.running?
+
+      # TODO: Stop the server here.
+
+      if Server.running?
+        say "Stopping server failed.", :error
+      else
+        say "Server stopped.", :success
+      end
     else
-      puts "Server is already stopped."
+      say "Server is already stopped.", :warning
     end
   end
 
   desc "Restart the server, trying hot first, then cold."
   task :restart do
-    if puma?
+    if Server.running?
       begin
         run "server:restart:hot"
       rescue
@@ -76,15 +103,21 @@ namespace :server do
 
   namespace :restart do
     desc "Restart the server, if it's not running just say that."
-    task :cold => [:stop, :start] do
-    end
+    task :cold => [:stop, :start]
 
     desc "Hot Restart the server without ever taking it down."
     task :hot do
-      if puma?
-        puts "Hot restarting the server..."
+      if Server.running?
+
+        # TODO: Restart the server here.
+
+        if Server.running?
+          say "Server hot restarted.", :success
+        else
+          say "Hot restarting server failed.", :error
+        end
       else
-        puts "Server is not running."
+        say "Server is not running.", :error
       end
     end
   end
