@@ -44,16 +44,20 @@ class Server
       rails?
     end
 
+    # Stop the server, simply kill it by it's PID.
     def stop
       system "kill #{pid} > /dev/null 2>&1"
       sleep(0.1)
       not rails?
     end
 
+    # Send Puma the signal to start spawning new versions of the server
+    # from updated code.
     def hot_restart
       system "kill -signal_name USR2 #{pid} > /dev/null 2>&1"
     end
 
+    # Return true when all of the services are true.
     def running?
       result = true
       SERVICES.each do |_, check|
