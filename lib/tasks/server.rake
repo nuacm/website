@@ -15,32 +15,39 @@ end
 
 # Wrap the server control functionality.
 class Server
+
+  # Location for the rails PID file.
+  PID_FILE = "tmp/pids/server.pid"
+
   # Define a collection of services the server uses to
   # check.
   SERVICES = {}
 
-  SERVICES[:puma] = -> do
-    [true, false].sample
-  end
-
-  SERVICES[:postgres] = -> do
-    [true, false].sample
+  SERVICES[:rails] = -> do
+    File.exists? PID_FILE
   end
 
   class << self
+
+    # Start the server, using `rails`. This will deamonize it, and
+    # create a pid file for the server in tmp/pids
     def start
-      say "Starting server..."
-      [true, false].sample
+      flags = "--daemon"
+      system "rails server #{flags} > /dev/null 2>&1"
+      sleep(0.1)
+      rails?
     end
 
     def stop
-      say "Stoping server..."
-      [true, false].sample
+      pid = File.read(PID_FILE)
+      system "kill #{pid} > /dev/null 2>&1"
+      sleep(0.1)
+      not rails?
     end
 
     def hot_restart
-      say "Hot Restarting server..."
-      [true, false].sample
+      pid = File.read(PID_FILE)
+      system "kill -signal_name USR2 #{pid} > /dev/null 2>&1"
     end
 
     def running?
@@ -92,19 +99,6 @@ namespace :server do
       end
     else
       say "Server is already stopped.", :warning
-    end
-  end
-
-  desc "Restart the server, trying hot first, then cold."
-  task :restart do
-    if Server.running?
-      begin
-        run "server:restart:hot"
-      rescue
-        run "server:restart:cold"
-      end
-    else
-      run "server:restart:cold"
     end
   end
 
