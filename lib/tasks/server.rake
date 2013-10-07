@@ -1,7 +1,4 @@
-# This is the command run after every git clone/pull.
-# We need to ensure all the setup is done, and start
-# the server. With Puma we can restart while live
-# by sending the Puma server a signal.
+# These are rake tasks for managing the rails server.
 
 class Server
   # Define a collection of services the server uses to
