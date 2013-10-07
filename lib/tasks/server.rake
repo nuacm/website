@@ -1,5 +1,19 @@
 # These are rake tasks for managing the rails server.
 
+# Prints to the screen. Levels are :default,
+# :success, :warning, and :error.
+def say(message, level=:default)
+  string = if level == :default
+    message
+  else
+    prefix = "[#{level.capitalize}]"
+    "#{prefix} #{message}"
+  end
+
+  puts string
+end
+
+# Wrap the server control functionality.
 class Server
   # Define a collection of services the server uses to
   # check.
@@ -14,6 +28,21 @@ class Server
   end
 
   class << self
+    def start
+      say "Starting server..."
+      [true, false].sample
+    end
+
+    def stop
+      say "Stoping server..."
+      [true, false].sample
+    end
+
+    def hot_restart
+      say "Hot Restarting server..."
+      [true, false].sample
+    end
+
     def running?
       result = true
       SERVICES.each do |_, check|
@@ -27,19 +56,6 @@ class Server
       define_method("#{name}?", check)
     end
   end
-end
-
-# Prints to the screen. Levels are :default,
-# :success, :warning, and :error.
-def say(message, level=:default)
-  string = if level == :default
-    message
-  else
-    prefix = "[#{level.capitalize}]"
-    "#{prefix} #{message}"
-  end
-
-  puts string
 end
 
 namespace :server do
@@ -58,10 +74,7 @@ namespace :server do
     if Server.running?
       say "Server is already running.", :warning
     else
-
-      # TODO: Start the server here.
-
-      if Server.running?
+      if Server.start
         say "Server started.", :success
       else
         say "Starting server failed.", :error
@@ -72,13 +85,10 @@ namespace :server do
   desc "Stop the server, if it's not running just say that."
   task :stop do
     if Server.running?
-
-      # TODO: Stop the server here.
-
-      if Server.running?
-        say "Stopping server failed.", :error
-      else
+      if Server.stop
         say "Server stopped.", :success
+      else
+        say "Stopping server failed.", :error
       end
     else
       say "Server is already stopped.", :warning
@@ -105,10 +115,7 @@ namespace :server do
     desc "Hot Restart the server without ever taking it down."
     task :hot do
       if Server.running?
-
-        # TODO: Restart the server here.
-
-        if Server.running?
+        if Server.hot_restart
           say "Server hot restarted.", :success
         else
           say "Hot restarting server failed.", :error
