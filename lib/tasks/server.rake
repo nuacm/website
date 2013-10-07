@@ -17,7 +17,7 @@ end
 class Server
 
   # Location for the rails PID file.
-  PID_FILE = "tmp/pids/server.pid"
+  PID_FILE = "tmp/pids/puma.pid"
 
   # Define a collection of services the server uses to
   # check.
@@ -38,8 +38,8 @@ class Server
     # Start the server, using `rails`. This will deamonize it, and
     # create a pid file for the server in tmp/pids
     def start
-      flags = "--daemon"
-      system "rails server #{flags} > /dev/null 2>&1"
+      flags = "--config config/puma.rb --pidfile #{PID_FILE}"
+      system "puma #{flags} > /dev/null 2>&1"
       sleep(0.1)
       rails?
     end
@@ -54,7 +54,7 @@ class Server
     # Send Puma the signal to start spawning new versions of the server
     # from updated code.
     def hot_restart
-      system "kill -signal_name USR2 #{pid} > /dev/null 2>&1"
+      system "kill -s USR2 #{pid} > /dev/null 2>&1"
     end
 
     # Return true when all of the services are true.
