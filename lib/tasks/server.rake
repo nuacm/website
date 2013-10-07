@@ -29,6 +29,12 @@ class Server
 
   class << self
 
+    # Read the PID from the PID_FILE. This is the current
+    # process id for the rails server.
+    def pid
+      File.read(PID_FILE)
+    end
+
     # Start the server, using `rails`. This will deamonize it, and
     # create a pid file for the server in tmp/pids
     def start
@@ -39,14 +45,12 @@ class Server
     end
 
     def stop
-      pid = File.read(PID_FILE)
       system "kill #{pid} > /dev/null 2>&1"
       sleep(0.1)
       not rails?
     end
 
     def hot_restart
-      pid = File.read(PID_FILE)
       system "kill -signal_name USR2 #{pid} > /dev/null 2>&1"
     end
 
