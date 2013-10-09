@@ -9,5 +9,8 @@ Bundler.require(:default, Rails.env)
 module NUACM
   class Application < Rails::Application
     config.autoload_paths << "#{config.root}/lib"
+
+    # Set the server time to Eastern US.
+    config.time_zone = "Eastern Time (US & Canada)"
   end
 end
