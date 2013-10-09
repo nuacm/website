@@ -5,8 +5,11 @@
       <div class="admin">
         <span>
           <b><%= @past_events.size %></b> past events,
-          <b><%= @upcoming_events.size %></b> upcoming events with the next event in
-          <b><%= distance_of_time_in_words(DateTime.current, @upcoming_events.first.start_time) %></b>.
+          <b><%= @upcoming_events.size %></b> upcoming events
+          <% if @upcoming_events.first %>
+            with the next event in
+            <b><%= distance_of_time_in_words(DateTime.current, @upcoming_events.first.start_time) %></b>
+          <% end %>
         </span>
         <ul class="pull-right">
           <li><%= link_to 'Create', new_event_path, :class => "btn btn-success" %></li>
