@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.past
-    where ["start_time < ?", DateTime.current.midnight]
+    where(["start_time < ?", DateTime.current.midnight]).order("start_time DESC")
   end
 
   private
