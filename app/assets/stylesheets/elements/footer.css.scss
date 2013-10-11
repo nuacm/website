@@ -1,4 +1,4 @@
-$footer-height: 150px;
+$footer-height: 60px;
 
 /* Wrapper for page content to push down footer */
 #wrap {
@@ -16,11 +16,27 @@ $footer-height: 150px;
 
 #footer {
   height: $footer-height;
-  background: $dark;
-  color: #eee;
-  text-align: center;
+  font-size: 13px;
+
+  .container {
+    border-top: 1px solid $lightgray;
+  }
+
+  ul {
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  ul li {
+    display: inline-block;
+    margin-right: 14px;
+  }
 
   p {
-    margin: .96em 0;
+    margin: 0;
+  }
+
+  .cr {
+    color: $gray;
   }
 }
