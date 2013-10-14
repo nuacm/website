@@ -4,8 +4,6 @@
   <title>We're sorry, but something went wrong (500)</title>
 
   <style>
-
-
     body {
       background-image: url('img/m16.jpg');
       background-position: center bottom;
@@ -20,12 +18,18 @@
       color: #333;
     }
 
-    div.dialog {
-      background-color: rgba(255,255,255,.5);
+    .dialog {
+      background-color: rgba(255,255,255,.6);
       max-width: 30em;
       padding: 3em 3em 2em 3em;
       margin: 3em auto 0 auto;
       text-align: center;
+    }
+
+    .dialog p {
+      font-size: 1.5em;
+      margin: 10px auto 10px auto;
+      font-weight: 200;
     }
 
     .logo {
@@ -34,10 +38,12 @@
       display: block;
     }
 
-    h1, h2 {
+    h1 {
       margin: 0;
       padding: 0;
-      font-weight: 300;
+      font-weight: 800;
+      font-size: 3.5em;
+      letter-spacing: -2px;
     }
 
     @media (max-width: 1609px) {
@@ -49,11 +55,12 @@
 </head>
 
 <body>
-  <!-- This file lives in public/422.html -->
+  <!-- This file lives in public/500.html -->
   
 
   <div class="dialog">
-    <h1>Error 500: Something has gone terribly wrong</h1>
+    <h1>Error 500</h1>
+    <p>Something has gone terribly wrong</p>
     <p>If you're on web team, check the logs for more information.</p>
   </div>
   <a href="http://acm.ccs.neu.edu/">
