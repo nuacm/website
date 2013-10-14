@@ -20,12 +20,18 @@
       color: #333;
     }
 
-    div.dialog {
+    .dialog {
       background-color: rgba(255,255,255,.5);
       max-width: 30em;
       padding: 3em 3em 2em 3em;
       margin: 3em auto 0 auto;
       text-align: center;
+    }
+
+    .dialog p {
+      font-size: 1.5em;
+      margin: 10px auto 10px auto;
+      font-weight: 200;
     }
 
     .logo {
@@ -34,15 +40,17 @@
       display: block;
     }
 
-    h1, h2 {
+    h1 {
       margin: 0;
       padding: 0;
-      font-weight: 300;
+      font-weight: 800;
+      font-size: 3.5em;
+      letter-spacing: -2px;
     }
 
-    @media (max-width: 1609px) {
+    @media (max-width: 1200px) {
       body {
-        background-size: 1610px;
+        background-size: 1200px;
       }
     }
   </style>
@@ -51,9 +59,9 @@
 <body>
   <!-- This file lives in public/404.html -->
   
-
   <div class="dialog">
-    <h1>Error 404: We are now flying through space.</h1>
+    <h1>Error 404</h1>
+    <p>We are now flying through space.</p>
     <p>The page you were looking for doesn't exist. You may have mistyped the address or the page may have moved.</p>
   </div>
   <a href="http://acm.ccs.neu.edu/">
