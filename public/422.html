@@ -2,25 +2,61 @@
 <html>
 <head>
   <title>The change you wanted was rejected (422)</title>
+
   <style>
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
+
+
+    body {
+      background-image: url('img/m16.jpg');
+      background-position: center bottom;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-color: #0E1039;
+
+      margin: 0;
+      padding: 0;
+      font-family: 'Helvetica', sans-serif;
+      color: #333;
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+
+    div.dialog {
+      background-color: rgba(255,255,255,.5);
+      max-width: 30em;
+      padding: 3em 3em 2em 3em;
+      margin: 3em auto 0 auto;
+      text-align: center;
+    }
+
+    .logo {
+      margin: 5px auto;
+      width: 300px;
+      display: block;
+    }
+
+    h1, h2 {
+      margin: 0;
+      padding: 0;
+      font-weight: 300;
+    }
+
+    @media (max-width: 1609px) {
+      body {
+        background-size: 1610px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/422.html -->
+  
+
   <div class="dialog">
-    <h1>The change you wanted was rejected.</h1>
+    <h1>Error 422: The change you wanted was rejected.</h1>
     <p>Maybe you tried to change something you didn't have access to.</p>
   </div>
+  <a href="http://acm.ccs.neu.edu/">
+  <img src="img/logo-white.png" class="logo"></a>
 </body>
 </html>
