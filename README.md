@@ -1,6 +1,7 @@
 # NUACM
 
 [![Build Status](https://travis-ci.org/nuacm/website.png?branch=master)](https://travis-ci.org/nuacm/website)
+[![Dependencies Status](https://gemnasium.com/nuacm/website.png)](https://gemnasium.com/nuacm)
 
 Northeastern University ACM's website. This readme will walk through the steps required to get the site up and running for development.
 
