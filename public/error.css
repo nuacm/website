@@ -30,6 +30,14 @@ html {
   text-decoration: none;
 }
 
+.dialog a {
+  color: #1C517D;
+}
+
+.dialog a:hover {
+  color: #2D83C9;
+}
+
 .logo {
   margin: 0 auto;
   width: 300px;
@@ -38,13 +46,4 @@ html {
 
 .logo img {
   width: 100%;
-}
-
-a {
-  color: #1C517D;
-}
-
-a:hover {
-  font-style: italic;
-  color: #2D83C9;
 }
