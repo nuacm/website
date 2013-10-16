@@ -24,10 +24,11 @@ html {
   letter-spacing: -2px;
 }
 
-.dialog p {
+.dialog p, .dialog a {
   font-size: 1.5em;
   margin: 10px auto 10px auto;
   font-weight: 200;
+  text-decoration: none;
 }
 
 .logo {
