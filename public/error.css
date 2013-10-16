@@ -39,3 +39,12 @@ html {
 .logo img {
   width: 100%;
 }
+
+a {
+  color: #1C517D;
+}
+
+a:hover {
+  font-style: italic;
+  color: #2D83C9;
+}
