@@ -36,6 +36,7 @@ html {
 
 .dialog a:hover {
   color: #2D83C9;
+  text-decoration:underline;
 }
 
 .logo {
