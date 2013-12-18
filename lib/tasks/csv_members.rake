@@ -21,8 +21,8 @@ desc "Export members to csv file, in the following format (last, first, email)"
 task :export_members, [:path] => :environment do |t,args|
   CSV.open("#{args[:path]}.csv", "wb") do |csv|
     Member.all.each do |m|
-      csv << [m.name, m.email]
-    end  
+      csv << [m.first_name, m.last_name, m.email]
+    end
   end
 end
 
