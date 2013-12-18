@@ -10,14 +10,23 @@ class Member < ActiveRecord::Base
   after_create { subscribe_to("ACM Members") if Rails.env == "production" }
   after_destroy { unsubscribe_from("ACM Members") if Rails.env == "production" }
 
+  # first_name -> String
+  def first_name
+    self.name.split(' ')[0]
+  end
+
+  # last_name -> String
+  def last_name
+    self.name.split(' ')[1..-1].join(' ')
+  end
+
   # subscribe_to String ->
   def subscribe_to(list_name)
     list = Gibbon::API.lists.list({ :filters => { :list_name => list_name } })['data'].first
-    name_parts = self.name.split(' ')
     request = {
       :id => list['id'],
       :email => { :email => self.email },
-      :merge_vars => { :FNAME => name_parts[0], :LNAME => name_parts[1..-1].join(' ') },
+      :merge_vars => { :FNAME => self.first_name, :LNAME => self.last_name },
     }
     Gibbon::API.lists.subscribe(request)
   end
